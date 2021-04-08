@@ -15,10 +15,9 @@ class BagView(TemplateView):
         return context
 
 def add_to_bag(request, item_id):
-    """ Adds a specified product to cart, Checks for sizes and quantity of the sizes
-    if sizes are the same it adds to quantity, addes to cart and redirecs to products page
+    """ Adds quantity 1 to the bag as each item 
+    is unquie gets the session and adds bag to it
     """
-
     product = get_object_or_404(Product, pk=item_id)
     redirect_url = request.POST.get('redirect_url')
     size = None
@@ -26,6 +25,4 @@ def add_to_bag(request, item_id):
     bag = request.session.get('bag', {})
     bag[item_id] = quantity
     request.session['bag'] = bag
-    print(request.session['bag'])
-
     return redirect(redirect_url)
