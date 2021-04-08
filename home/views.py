@@ -12,29 +12,31 @@ from shop.models import Category
 
 def IndexView(request):
     feat_item = Product.objects.filter(feat_item=True)
+    products = Product.objects.all()
     category = Category.objects.all()
     context = {
         'feat_item' : feat_item,
-        'category': category
+        'category': category,
+        'product' : products,
     }
-    return render(request, "index.html", context)
+    return render(request, "home/index.html", context)
 
 
 class AboutView(TemplateView):
-    template_name = "about.html"
+    template_name = "home/about.html"
 
 
 class TermsView(TemplateView):
-    template_name = "terms.html"
+    template_name = "home/terms.html"
 
 
 class PrivacyView(TemplateView):
-    template_name = "privacy.html"
+    template_name = "home/privacy.html"
 
 
 class ContactView(generic.FormView):
     form_class = ContactForm
-    template_name = "contact.html"
+    template_name = "home/contact.html"
 
     def get_success_url(self):
         return reverse("contact")

@@ -22,6 +22,8 @@ ALLOWED_HOSTS = ['*']
 
 
 TAX_RATE_PERCENTAGE = 23
+FREE_DELIVERY_THRESHOLD = 50
+STANDARD_DELIVERY_PERCENTAGE = 12
 # Application definition
 
 INSTALLED_APPS = [
@@ -62,6 +64,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'bag.contexts.bag_contents',
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
