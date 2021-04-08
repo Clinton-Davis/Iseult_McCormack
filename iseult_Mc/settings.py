@@ -21,6 +21,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
+TAX_RATE_PERCENTAGE = 23
 # Application definition
 
 INSTALLED_APPS = [
@@ -35,6 +36,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'home',
     'shop',
+    'bag',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +134,10 @@ MEDIA_ROOT = BASE_DIR / "media"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Basic',
+    },
+}
+
