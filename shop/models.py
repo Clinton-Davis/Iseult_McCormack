@@ -36,16 +36,16 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-    # def get_absolute_url(self):
-    #     return reverse('shop:product_detail', kwargs={'pk': self.pk})
+    def get_absolute_url(self):
+        return reverse('shop:product_detail', kwargs={'pk': self.pk})
 
-    # @property
-    # def productcomments(self):
-    #     return self.productcomment_set.all()
+    @property
+    def productcomments(self):
+        return self.productcomment_set.all()
 
-    # @property
-    # def productcomments_count(self):
-    #     return self.productcomment_set.all().count
+    @property
+    def productcomments_count(self):
+        return self.productcomment_set.all().count
 
     # @property
     # def rating_ave(self):

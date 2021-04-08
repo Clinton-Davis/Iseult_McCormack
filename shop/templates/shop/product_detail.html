@@ -5,5 +5,23 @@
 {% block head_title %}| Shop {% endblock head_title %}
 <!-- 1 -->
 {% block content %}
-<h1>PRODUCT-DETAL-VIEW</h1>
+<!-- 1 -->
+<h1>DETAILED VIEW</h1>
+<div class="card" style="width: 24rem">
+  <img src="{{ product.image.url }}" class="card-img-top" alt="..." />
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{ product.name}}</li>
+    <li class="list-group-item">{{ product.category.friendly_name}}</li>
+    <li class="list-group-item">&euro; {{ product.price}}</li>
+    <li class="list-group-item">
+      <form action="{% url 'bag:add_to_bag' product.id %}" method="POST">
+        <!-- 1 -->
+        {% csrf_token %}
+        <input type="submit" value="Add to Bag" />
+        <input type="hidden" name="redirect_url" value="{{ request.path }}" />
+      </form>
+    </li>
+    <li class="list-group-item">{{ product.description|safe}}</li>
+  </ul>
+</div>
 {% endblock content %}
