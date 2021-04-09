@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&family=Montserrat&display=swap");
 
-:root{
-  --garamond: 'EB Garamond', serif;
-  --montserrat: 'Montserrat', sans-serif;
+:root {
+  --garamond: "EB Garamond", serif;
+  --montserrat: "Montserrat", sans-serif;
 }
 
 * {
@@ -12,6 +12,7 @@
 }
 html {
   font-size: 16px;
+  font-family: var(--montserrat);
 }
 
 a {
@@ -19,3 +20,23 @@ a {
   /* color: #0d6efd; */
   text-decoration: none;
 }
+section {
+  height: fit-content;
+}
+.hf {
+  font-family: var(--garamond);
+}
+.invert_shadow {
+  box-shadow: 0px 2px 21px -1px rgba(0, 0, 0, 1),
+    0px 2px 21px -1px rgba(0, 0, 0, 1) inset;
+}
+/* .back_blur {
+  backdrop-filter: blur(5px);
+} */
+/* .overlay {
+  background: url(/static/img/Iseult\ Design2000.png) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+} */

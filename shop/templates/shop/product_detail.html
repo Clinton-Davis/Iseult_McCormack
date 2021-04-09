@@ -6,22 +6,90 @@
 <!-- 1 -->
 {% block content %}
 <!-- 1 -->
-<h1>DETAILED VIEW</h1>
-<div class="card" style="width: 24rem">
-  <img src="{{ product.image.url }}" class="card-img-top" alt="..." />
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">{{ product.name}}</li>
-    <li class="list-group-item">{{ product.category.friendly_name}}</li>
-    <li class="list-group-item">&euro; {{ product.price}}</li>
-    <li class="list-group-item">
-      <form action="{% url 'bag:add_to_bag' product.id %}" method="POST">
-        <!-- 1 -->
-        {% csrf_token %}
-        <input type="submit" value="Add to Bag" />
-        <input type="hidden" name="redirect_url" value="{{ request.path }}" />
-      </form>
-    </li>
-    <li class="list-group-item">{{ product.description|safe}}</li>
-  </ul>
-</div>
+<section class="">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
+        <div class="image-container my-5">
+          {% if product.image %}
+          <a href="{{ product.image.url }}" target="_blank">
+            <img
+              class="card-img-top img-fluid"
+              src="{{ product.image.url }}"
+              alt="{{ product.name }}"
+            />
+          </a>
+          {% else %}
+          <a href="">
+            <!-- <img
+            class="card-img-top img-fluid"
+            src=" MEDIA_URL noimage.png"
+            alt=" product.name "
+          /> -->
+          </a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="product-details-container mb-5 mt-md-5">
+          <p class="mb-0">{{ product.name }}</p>
+          <p class="lead mb-0 text-left font-weight-bold">
+            ${{ product.price }}
+          </p>
+          {% if product.category %}
+          <p class="small mt-1 mb-0">
+            <a
+              class="text-muted"
+              href="{% url 'shop:shop' %}?category={{ product.category.name }}"
+            >
+              <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name
+              }}
+            </a>
+          </p>
+          {% endif %}
+          <!-- 1 -->
+          <br />
+          {% if request.user.is_superuser %}
+          <small>
+            <a class="text-warning" href="">Edit</a>
+            /
+            <a class="text-danger" href="">Delete</a>
+          </small>
+          {% endif %}
+          <p class="mt-3">{{ product.description|safe }}</p>
+          <form
+            class="form"
+            action="{% url 'bag:add_to_bag' product.id %}"
+            method="POST"
+          >
+            {% csrf_token %}
+            <div class="form-row">
+              <div class="col{% if s %}-12 mt-2{% endif %}">
+                <a
+                  href="{% url 'shop:shop' %}"
+                  class="btn btn-outline-black rounded-0 mt-5"
+                >
+                  <span class="icon">
+                    <i class="fas fa-chevron-left"></i>
+                  </span>
+                  <span class="text-uppercase">Keep Shopping</span>
+                </a>
+                <input
+                  type="submit"
+                  class="btn btn-black rounded-0 text-uppercase mt-5"
+                  value="Add to Bag"
+                />
+              </div>
+              <input
+                type="hidden"
+                name="redirect_url"
+                value="{{ request.path }}"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock content %}

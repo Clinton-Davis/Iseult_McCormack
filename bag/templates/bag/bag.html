@@ -5,15 +5,16 @@
 {% block head_title %} - About {% endblock head_title %}
 <!-- 1 -->
 {% block content %}
-<h1>BAG</h1>
+<h1 class="hf">BAG</h1>
 <div class="table-responsive rounded d-none d-md-block">
   <table class="table table-sm table-borderless">
     <thead class="text-black">
       <tr>
-        <th scope="col">Product Info</th>
-        <th scope="col"></th>
-        <th scope="col">Price</th>
-        <th scope="col">Subtotal</th>
+        <th class="hf" scope="col">Product Info</th>
+        <th class="hf" scope="col"></th>
+        <th class="hf" scope="col">Price</th>
+        <th class="hf" scope="col">Subtotal</th>
+        <th class="hf" scope="col">Remove</th>
       </tr>
     </thead>
 
@@ -36,17 +37,24 @@
             <!-- &euro;  item.product.price | calc_subtotal:item.quantity  -->
             <p class="my-0">&euro;{{ item.product.price }}</p>
         </p>
-      </td>
+    </td>
+    <td class="py-3">
+        <p class="my-0">
+            <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}">
+                <i class="fas fa-trash-alt"></i>
+            </a>
+        </p>
+    </td>
     </tr>
     {% endfor %}
     <tr>
       <td colspan="5" class="pt-5 text-right">
         <h6><strong>Bag Total: &euro;{{ bag_total|floatformat:2 }}</strong></h6>
         <h6>Delivery: &euro;{{ delivery|floatformat:2 }}</h6>
-        <h4 class="mt-4"><strong>Grand Total: &euro;{{ grand_total|floatformat:2 }}</strong></h4>
+        <h4 class="mt-4"><strong class="hf">Grand Total: <span class="hf">&euro;</span>{{ grand_total|floatformat:2 }}</strong></h4>
         {% if free_delivery_delta > 0 %}
         <p class="mb-1 text-danger">
-            You could get free delivery by spending just <strong>&euro;{{ free_delivery_delta }}</strong>
+            You could get free delivery by spending just <strong><span class="hf">&euro;</span>{{ free_delivery_delta }}</strong>
             more!
         </p>
         {% endif %}
@@ -71,3 +79,24 @@
   </table>
 </div>
 {% endblock content %}
+{% block postloadjs %}
+  
+{{ block.super }}
+<script type="text/javascript">
+    // Remove item and reload on click
+    $('.remove-item').click(function (e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var url = `/bag/remove/${itemId}/`;
+        var data = {
+            'csrfmiddlewaretoken': csrfToken,
+        };
+
+        $.post(url, data)
+            .done(function () {
+                location.reload();
+            });
+    })
+</script>
+{% endblock postloadjs %}
+
