@@ -23,9 +23,15 @@ def add_to_bag(request, item_id):
     size = None
     quantity = 1
     bag = request.session.get('bag', {})
-    bag[item_id] = quantity
-    request.session['bag'] = bag
-    return redirect(redirect_url)
+    if item_id in list(bag.keys()):
+        messages.warning(request, f'You already have the {product.name} in your bag.\
+            Every item is unique.')
+        return redirect(redirect_url)
+    else:
+        bag[item_id] = quantity
+        messages.success(request, f'Added {product.name} to your bag')
+        request.session['bag'] = bag
+        return redirect(redirect_url)
 
 def remove_from_bag(request, item_id):
     """Remove the item from the shopping bag"""

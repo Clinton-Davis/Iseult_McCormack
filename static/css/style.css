@@ -40,3 +40,18 @@ section {
   -o-background-size: cover;
   background-size: cover;
 } */
+
+/**--Bootsrap Toasts */
+
+.message_container {
+  position: fixed;
+  top: 72px;
+  right: 2rem;
+  z-index: 9999999;
+}
+.custom-toast {
+  overflow: visible;
+}
+.toast-capper {
+  height: 2px;
+}
