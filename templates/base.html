@@ -48,7 +48,7 @@
     <script rel="stylesheet" src="https://js.stripe.com/v3/"></script>
     {% endblock Core_js %}
 
-    <!-- 1 -->
+    <!-- 2 -->
     {% block extra_js %}
     <!-- 1 -->
     {% endblock extra_js %}
@@ -56,6 +56,8 @@
 
   <body>
     <!--NavBar-->
+    {% include "base_partials/_nav_bar.html" %}
+    <!-- 2 -->
     {% if messages %}
     <div class="message_container">
       {% for message in messages %}
@@ -86,7 +88,7 @@
     </div>
     {% endif %}
 
-    <!-- 1 -->
+    <!-- 2 -->
 
     {% block content %}
     <!-- 1 -->
