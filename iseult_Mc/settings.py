@@ -22,8 +22,11 @@ ALLOWED_HOSTS = ['*']
 
 
 TAX_RATE_PERCENTAGE = 23
+
 FREE_DELIVERY_THRESHOLD = 50
+
 STANDARD_DELIVERY_PERCENTAGE = 12
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -43,6 +46,7 @@ INSTALLED_APPS = [
     'home',
     'shop',
     'bag',
+    'checkout',
 ]
 
 MIDDLEWARE = [
@@ -86,6 +90,14 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
    
 ]
+
+# Alluth Configuration
+# https://django-allauth.readthedocs.io/en/latest/configuration.html
+ACCOUNT_AUTHENTICATION_METHOD = "username"
+
+ACCOUNT_EMAIL_REQUIRED = True
+
+ACCOUNT_EMAIL_VERIFICATION = "optional"
 
 SITE_ID = 1
 
