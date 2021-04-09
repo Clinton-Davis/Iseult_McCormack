@@ -12,6 +12,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('bag/', include('bag.urls', namespace='bag')),
     path('shop/', include('shop.urls', namespace='shop')),
+    path('checkout/', include('checkout.urls', namespace='checkout')),
     path('favicon.ico', RedirectView.as_view(
         url=staticfiles_storage.url('img/favicon.ico'))),
 ]
