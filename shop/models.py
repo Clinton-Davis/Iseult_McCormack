@@ -55,9 +55,9 @@ class Product(models.Model):
     #     self.save()
     #     return all_ratings['rating__avg']
 
-    # @property
-    # def view_count(self):
-    #     return self.productview_set.all().count()
+    @property
+    def view_count(self):
+        return self.productview_set.all().count()
     
     
 class productComment(models.Model):

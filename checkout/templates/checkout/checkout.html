@@ -102,7 +102,6 @@
           <legend class="fieldset-label small text-black px-2 w-auto">
             Delivery
           </legend>
-
           <!-- 1 -->
           {{ order_form.street_address1 | as_crispy_field }}
           <!-- 1 -->
@@ -115,7 +114,7 @@
           {{ order_form.postcode | as_crispy_field }}
           <!-- 1 -->
           {{ order_form.country | as_crispy_field }}
-
+          <!-- 1 -->
           <div class="form-check form-check-inline float-right mr-0">
             {% if user.is_authenticated %}
             <label class="form-check-label" for="id-save-info"
