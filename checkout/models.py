@@ -5,6 +5,9 @@ from django.db.models import Sum
 from shop.models import Product
 # from profiles.models import UserProfile
 import shortuuid
+import uuid
+
+
 
 
 class Order(models.Model):
@@ -32,12 +35,10 @@ class Order(models.Model):
         max_digits=10, decimal_places=2, null=False, default=0)
 
     def _generate_order_number(self):
-        """Generate a random, unique order number using UUID."""
-        u = uuid.uuid4().hex.upper()
-        s = shortuuid.encode(u)
-        shortuuid.decode(s)
-        short = s[:7]
-        return short
+        """
+        Generate a random, unique order number using UUID
+        """
+        return uuid.uuid4().hex.upper()
     
     def update_total(self):
         """Update grand total each time a line item is added,
