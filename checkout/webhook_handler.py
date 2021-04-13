@@ -5,7 +5,7 @@ from django.conf import settings
 from datetime import datetime
 from .models import Order, OrderLineItem
 from shop.models import Product
-# from accounts.models import UserProfile
+from profiles.models import UserProfile
 import json
 import time
 
@@ -81,13 +81,7 @@ class StripeWH_Handler:
             Subscriptions and shop payments."""
 
         intent = event.data.object
-        if intent.description == 'Subscription creation':
-
-            return HttpResponse(
-                content=f'Webhook Subscription payments revieved: {event["type"]}',
-                status=200
-            )
-
+      
         pid = intent.id
         cart = intent.metadata.cart
         save_info = intent.metadata.save_info

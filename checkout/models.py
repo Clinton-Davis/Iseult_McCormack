@@ -3,7 +3,8 @@ from django.db import models
 from django.db.models import Sum
 from django_countries.fields import CountryField
 from shop.models import Product
-# from profiles.models import UserProfile
+# from accounts.models import UserProfile
+import datetime
 import shortuuid
 import uuid
 
@@ -38,13 +39,21 @@ class Order(models.Model):
 
     def _generate_order_number(self):
         """
-        Generate a random, unique order number using UUID
+        Generate a order number using date of creation and short uuid code.
         """
-        return uuid.uuid4().hex.upper()
+        u = uuid.uuid4()
+        s = shortuuid.encode(u)
+        shortuuid.decode(s) == u
+        short = s[:3]
+        d = datetime.datetime.now()
+        date_code = d.strftime("%Y%m%d")   
+        return date_code + short.upper()
     
     def update_total(self):
-        """Update grand total each time a line item is added,
-        accounting for delivery costs, tax, and discounts."""
+        """
+        Update grand total each time a line item is added,
+        accounting for delivery costs.
+        """
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))[
             'lineitem_total__sum'] or 0
         
@@ -57,8 +66,11 @@ class Order(models.Model):
         self.save()
         
     def save(self, *args, **kwargs):
-        """Override the original save method to set
-        the order number if it hasn't been set already."""
+        """
+        Override the original save method to set
+        the order number if it hasn't been set already.
+        """
+        
         if not self.order_number:
             self.order_number = self._generate_order_number()
         super().save(*args, **kwargs)
@@ -68,6 +80,7 @@ class Order(models.Model):
 
 
 class OrderLineItem(models.Model):
+    
     order = models.ForeignKey(Order, null=False, blank=False,
                               on_delete=models.CASCADE, related_name='lineitems')
     product = models.ForeignKey(Product, null=False, blank=False, 
@@ -77,8 +90,11 @@ class OrderLineItem(models.Model):
                                          null=False, blank=False, editable=False)
     
     def save(self, *args, **kwargs):
-        """Override the original save method to set
-        the order number if it hasn't been set already."""
+        """
+        Override the original save method to set
+        the order number if it hasn't been set already.
+        """
+        
         self.lineitem_total = self.product.price * self.quantity
         super().save(*args, **kwargs)
         
