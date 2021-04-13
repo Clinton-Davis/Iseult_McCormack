@@ -3,12 +3,9 @@ from .models import Product, Category, productComment, ProductView
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'in_stock', 'sales_items',
-                    'price', 'category', 'feat_item',
-                     )
+    list_display = ('name', 'in_stock', 'category','price', 'feat_item','sales_items',)
 
-    list_editable = ('in_stock', 'sales_items',
-                     'price', 'category', 'feat_item',)
+    list_editable = ('in_stock', 'sales_items','price', 'feat_item',)
 
     list_filter = ('category', 'in_stock', 'feat_item',)
 

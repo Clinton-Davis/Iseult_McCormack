@@ -4,6 +4,8 @@ from django.views.generic import TemplateView
 from django.contrib import messages
 from shop.models import Product
 
+#? If in the future size becomes a avaiable, Use the Blue Code(?)
+
 class BagView(TemplateView):
     template_name = 'bag/bag.html'
 
@@ -18,8 +20,7 @@ def add_to_bag(request, item_id):
     """ Adds quantity 1 to the bag as each item 
     is unquie gets the session and adds bag to it
     """
-    #? If in the future size becomes a avaiable, Use the Blue Code
-    
+
     product = get_object_or_404(Product, pk=item_id)
     redirect_url = request.POST.get('redirect_url')
     size = None
@@ -37,6 +38,7 @@ def add_to_bag(request, item_id):
         request.session['bag'] = bag
         return redirect(redirect_url)
     
+
 #? def add_to_bag(request, item_id):
     # product = get_object_or_404(Product, pk=item_id)
     # quantity = int(request.POST.get('quantity'))
