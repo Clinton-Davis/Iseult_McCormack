@@ -66,7 +66,8 @@ ROOT_URLCONF = 'iseult_Mc.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"],
+        'DIRS': [BASE_DIR / "templates",
+                 BASE_DIR / 'templates', 'allauth'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -97,10 +98,12 @@ AUTHENTICATION_BACKENDS = [
 # Alluth Configuration
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_AUTHENTICATION_METHOD = "username"
-
 ACCOUNT_EMAIL_REQUIRED = True
-
 ACCOUNT_EMAIL_VERIFICATION = "optional"
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = False
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
 
 SITE_ID = 1
 
