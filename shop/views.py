@@ -14,7 +14,7 @@ class All_Products(View):
     template_name = 'shop/shop.html'
     
     def get(self, request, *args, **kwargs):
-        products = Product.objects.all().order_by('item_code')
+        products = Product.objects.all().order_by('code')
         query = None
         categories = None
         sort = None

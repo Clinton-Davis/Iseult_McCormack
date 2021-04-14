@@ -30,8 +30,16 @@ class Product(models.Model):
     in_stock = models.BooleanField(default=True)
     sales_items = models.BooleanField(default=False)
     feat_item = models.BooleanField(default=False)
-    item_code = models.CharField(max_length=25, null=False,
+    code = models.CharField(max_length=25, null=False,
                             blank=False)
+    inventory = models.IntegerField(default=1)
+    
+    def check_stock(self):
+        if self.inventory > 0:
+            self.in_stock = True
+        else:
+            self.in_stock = False
+        self.save()
 
     def __str__(self):
         return self.name
