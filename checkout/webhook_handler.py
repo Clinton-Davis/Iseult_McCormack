@@ -16,35 +16,6 @@ class StripeWH_Handler:
 
         self.request = request
 
-    def _send_invoice_paid_email(self, intent):
-        """Sends a finalized invoice email when subscritpion is fully paid."""
-
-        customer_email = intent.customer_email
-        period_start = datetime.fromtimestamp(intent.period_start)
-        amount_paid = intent.amount_paid / 100
-        invoice_pdf = intent.invoice_pdf
-        hosted_invoice_url = intent.hosted_invoice_url
-        subject = render_to_string(
-            'checkout/confirmation_emails/finalized_invoice_subject.txt',
-            {'intent': intent,
-             'customer_email': customer_email,
-             }
-        )
-        body = render_to_string(
-            'checkout/confirmation_emails/finalized_invoice_body.txt',
-            {
-                'customer_email': customer_email,
-                'period_start': period_start,
-                'amount_paid': amount_paid,
-                'invoice_pdf': invoice_pdf,
-                'hosted_invoice_url': hosted_invoice_url, }
-        )
-        send_mail(
-            subject,
-            body,
-            settings.DEFAULT_FROM_EMAIL,
-            [customer_email]
-        )
 
     def _send_shopping_confirmation_email(self, order):
         """Send a confirmation email"""
@@ -53,8 +24,8 @@ class StripeWH_Handler:
 
         subject = render_to_string(
             'checkout/confirmation_emails/confirmation_email_subject.txt',
-            {'order': order}
-        )
+            {'order': order})
+        
         body = render_to_string(
             'checkout/confirmation_emails/confirmation_email_body.txt',
             {'order': order,
@@ -81,9 +52,8 @@ class StripeWH_Handler:
             Subscriptions and shop payments."""
 
         intent = event.data.object
-      
         pid = intent.id
-        cart = intent.metadata.cart
+        bag = intent.metadata.bag
         save_info = intent.metadata.save_info
 
         stripe_receipt = intent.charges.data[0].receipt_url
@@ -112,7 +82,7 @@ class StripeWH_Handler:
         order_exists = False
         """Creating delay just in case the web hook is before the order"""
         attempt = 1
-        while attempt <= 7:
+        while attempt <= 5:
             try:
                 order = Order.objects.get(
                     full_name__iexact=shipping_details.name,
@@ -125,10 +95,9 @@ class StripeWH_Handler:
                     street_address2__iexact=shipping_details.address.line2,
                     county__iexact=shipping_details.address.state,
                     grand_total=grand_total,
-                    original_cart=cart,
+                    original_bag=bag,
                     stripe_pid=pid,
                 )
-
                 order_exists = True
                 break
             except Order.DoesNotExist:
@@ -155,11 +124,11 @@ class StripeWH_Handler:
                     street_address1=shipping_details.address.line1,
                     street_address2=shipping_details.address.line2,
                     county=shipping_details.address.state,
-                    original_cart=cart,
+                    original_bag=bag,
                     stripe_pid=pid,
                     stripe_receipt=stripe_receipt,
                 )
-                for item_id, item_data in json.loads(cart).items():
+                for item_id, item_data in json.loads(bag).items():
                     product = Product.objects.get(id=item_id)
                     if isinstance(item_data, int):
                         order_line_item = OrderLineItem(
@@ -182,7 +151,7 @@ class StripeWH_Handler:
                     order.delete()
                     return HttpResponse(content=f'Webhook revieved: {event["type"]} | ERROR: {e}',
                                         status=500)
-        print('mail send at at line 190')
+
         self._send_shopping_confirmation_email(order)
         return HttpResponse(
             content=f'Webhook payments revieved: {event["type"]} | SUCCESS: Created order in webhook',
@@ -193,14 +162,5 @@ class StripeWH_Handler:
         """ Handles payment failing events"""
         return HttpResponse(
             content=f'Webhook failed revieved: {event["type"]}',
-            status=200
-        )
-
-    def handle_invoice_paid(self, event):
-        """Calls the Invoice Paid send email fuction """
-        intent = event.data.object
-        self._send_invoice_paid_email(intent)
-        return HttpResponse(
-            content=f'Webhook invoice paid revieved: {event["type"]}',
             status=200
         )

@@ -14,7 +14,7 @@ var style = {
     color: "#000",
     fontFamily: '"Montserrat", sans-serif',
     fontSmoothing: "antialiased",
-    fontSize: "1rem",
+    fontSize: "16px",
     "::placeholder": {
       color: "#aab7c4",
     },
