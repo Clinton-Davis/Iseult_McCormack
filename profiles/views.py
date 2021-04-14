@@ -1,12 +1,29 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import TemplateView, View
 from .models import UserProfile
 from .forms import UserProfileForm
 
 from checkout.models import Order
 
-
+# class ProfileView(LoginRequiredMixin, View):
+#     template = 'profiles/profile.html'
+#     context_object_name = 'order'
+    
+#     def get(self, request, *args, **kwargs):
+#         profile = get_object_or_404(UserProfile, user=request.user)
+#         """Displaying user Profile """
+#         orders = profile.Orders.all().order_by('-date')
+#         context = {
+#             'profile': profile,
+#             'orders': orders,
+         
+#         }
+#         return render(request, 'profiles/profile.html', context)
+#     def post(self, request, *args, **kwargs):
+        
 
 def profile(request):
     profile = get_object_or_404(UserProfile, user=request.user)
@@ -22,10 +39,11 @@ def profile(request):
                 request, 'Update failed, Please ensure the form is valid.')
     else:
         form = UserProfileForm(instance=profile)
-        orders = profile.orders.all()
+        orders = profile.Orders.all().order_by('-date')
 
     context = {
         'form': form,
+        'profile': profile,
         'orders': orders,
         'on_profile_page': True
     }

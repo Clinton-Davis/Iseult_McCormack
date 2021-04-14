@@ -49,13 +49,13 @@
             <tr>
               <td>
                 <a
-                  href="{% url 'order_history' order.order_number %}"
+                  href="{% url 'profiles:order_history' order.order_number %}"
                   title="{{ order.order_number }}"
                 >
                   {{order.order_number }}
                 </a>
               </td>
-              <td>{{ order.date }}</td>
+              <td>{{ order.date|date:"d/m/Y" }}</td>
               <td>
                 <ul class="list_unstyled">
                   {% for item in order.lineitem.all %}

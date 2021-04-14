@@ -22,12 +22,10 @@ class StripeWH_Handler:
 
         customer_email = order.email
 
-        subject = render_to_string(
-            'checkout/confirmation_emails/confirmation_email_subject.txt',
-            {'order': order})
-        
+        subject = 'Iseult McCormack Creations Confirmation Email.'
+
         body = render_to_string(
-            'checkout/confirmation_emails/confirmation_email_body.txt',
+            'checkout\emails\confirmation_email_body.txt',
             {'order': order,
              'lineitems': OrderLineItem,
              'contact_email': settings.DEFAULT_FROM_EMAIL,
@@ -39,7 +37,7 @@ class StripeWH_Handler:
             [customer_email],
             fail_silently=False,
         )
-
+        
     def handle_event(self, event):
         """Handles genric/unknow/unexpected events."""
 
@@ -52,6 +50,13 @@ class StripeWH_Handler:
             Subscriptions and shop payments."""
 
         intent = event.data.object
+        if intent.description == 'Subscription creation':
+
+            return HttpResponse(
+                content=f'Webhook Subscription payments revieved: {event["type"]}',
+                status=200
+            )
+
         pid = intent.id
         bag = intent.metadata.bag
         save_info = intent.metadata.save_info
@@ -82,7 +87,7 @@ class StripeWH_Handler:
         order_exists = False
         """Creating delay just in case the web hook is before the order"""
         attempt = 1
-        while attempt <= 5:
+        while attempt <= 7:
             try:
                 order = Order.objects.get(
                     full_name__iexact=shipping_details.name,
@@ -98,6 +103,7 @@ class StripeWH_Handler:
                     original_bag=bag,
                     stripe_pid=pid,
                 )
+
                 order_exists = True
                 break
             except Order.DoesNotExist:
@@ -151,13 +157,13 @@ class StripeWH_Handler:
                     order.delete()
                     return HttpResponse(content=f'Webhook revieved: {event["type"]} | ERROR: {e}',
                                         status=500)
-
+        print('mail send at at line 190')
         self._send_shopping_confirmation_email(order)
         return HttpResponse(
             content=f'Webhook payments revieved: {event["type"]} | SUCCESS: Created order in webhook',
             status=200
         )
-
+        
     def handle_event_failed(self, event):
         """ Handles payment failing events"""
         return HttpResponse(
