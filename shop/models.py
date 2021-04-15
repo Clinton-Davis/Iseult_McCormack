@@ -1,8 +1,11 @@
 
 from django.db import models
+from django.db.models.signals import post_save
 from django.shortcuts import reverse
 from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
+
+
 
 class Category(models.Model):
 
@@ -34,12 +37,7 @@ class Product(models.Model):
                             blank=False)
     inventory = models.IntegerField(default=1)
     
-    def check_stock(self):
-        if self.inventory > 0:
-            self.in_stock = True
-        else:
-            self.in_stock = False
-        self.save()
+
 
     def __str__(self):
         return self.name
@@ -88,3 +86,6 @@ class ProductView(models.Model):
 
     def __str__(self):
         return self.product.name
+    
+    
+    

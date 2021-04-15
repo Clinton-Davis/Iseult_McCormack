@@ -8,23 +8,8 @@ from .forms import UserProfileForm
 
 from checkout.models import Order
 
-# class ProfileView(LoginRequiredMixin, View):
-#     template = 'profiles/profile.html'
-#     context_object_name = 'order'
-    
-#     def get(self, request, *args, **kwargs):
-#         profile = get_object_or_404(UserProfile, user=request.user)
-#         """Displaying user Profile """
-#         orders = profile.Orders.all().order_by('-date')
-#         context = {
-#             'profile': profile,
-#             'orders': orders,
-         
-#         }
-#         return render(request, 'profiles/profile.html', context)
-#     def post(self, request, *args, **kwargs):
         
-
+@login_required
 def profile(request):
     profile = get_object_or_404(UserProfile, user=request.user)
     template = 'profiles/profile.html'

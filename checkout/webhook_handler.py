@@ -157,7 +157,7 @@ class StripeWH_Handler:
                     order.delete()
                     return HttpResponse(content=f'Webhook revieved: {event["type"]} | ERROR: {e}',
                                         status=500)
-        print('mail send at at line 190')
+                    
         self._send_shopping_confirmation_email(order)
         return HttpResponse(
             content=f'Webhook payments revieved: {event["type"]} | SUCCESS: Created order in webhook',

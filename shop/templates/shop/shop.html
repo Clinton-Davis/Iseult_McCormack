@@ -8,6 +8,8 @@
 <!-- 1 -->
 <h1>SHOP</h1>
 {% for item in product %}
+<!-- 1 -->
+{% if item.in_stock %}
 <a href="{{ item.get_absolute_url }}">
   <div class="card" style="width: 18rem">
     <img src="{{ item.image.url }}" class="card-img-top" alt="..." />
@@ -18,6 +20,10 @@
     </ul>
   </div>
 </a>
+{% else %}
+<h1>Out of stock</h1>
+{% endif %}
+<!-- 1 -->
 {% endfor %}
 <!-- 1 -->
 {% endblock content %}
