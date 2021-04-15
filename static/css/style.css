@@ -14,6 +14,11 @@ html {
   font-size: 16px;
   font-family: var(--montserrat);
 }
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
 a {
   display: block;
@@ -23,6 +28,15 @@ a {
 section {
   height: fit-content;
 }
+img {
+  width: 100%;
+}
+ul {
+  margin-bottom: 0px;
+}
+li {
+  list-style: none;
+}
 .hf {
   font-family: var(--garamond);
 }
@@ -30,16 +44,6 @@ section {
   box-shadow: 0px 2px 21px -1px rgba(0, 0, 0, 1),
     0px 2px 21px -1px rgba(0, 0, 0, 1) inset;
 }
-/* .back_blur {
-  backdrop-filter: blur(5px);
-} */
-/* .overlay {
-  background: url(/static/img/Iseult\ Design2000.png) no-repeat center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-} */
 
 /**--Bootsrap Toasts */
 
@@ -54,4 +58,124 @@ section {
 }
 .toast-capper {
   height: 2px;
+}
+/**--Nav-*/
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background-image: url(/static/img/nav.png);
+  background-position: center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+.nav_logo,
+.nav_list,
+.burger,
+.nav_icons {
+  width: 30%;
+}
+.nav_links {
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+  font-family: var(--garamond);
+  font-style: italic;
+  font-size: 1.6em;
+  font-weight: bold;
+}
+.nav_icon_links {
+  display: flex;
+  text-align: center;
+  justify-content: flex-end;
+}
+.nav_icon_links a {
+  color: rgb(29, 29, 29);
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+.nav_links a {
+  color: rgb(29, 29, 29);
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  margin: 3px;
+  background-color: black;
+}
+
+.burger {
+  display: none;
+}
+
+.nav_active {
+  transform: translateY(0%);
+  -webkit-transform: translateY(0%);
+  -moz-transform: translateY(0%);
+  -ms-transform: translateY(0%);
+  -o-transform: translateY(0%);
+}
+
+@media screen and (max-width: 500px) {
+  .nav_links {
+    position: absolute;
+    right: 0px;
+    height: 2.5rem;
+    width: 100%;
+    top: 10vh;
+    background-image: url(/static/img/nav.png);
+    background-position: center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    transform: translateY(-500%);
+    -webkit-transform: translateY(-500%);
+    -moz-transform: translateY(-500%);
+    -ms-transform: translateY(-500%);
+    -o-transform: translateY(-500%);
+    transition: transform 0.5s ease-in-out;
+    -webkit-transition: transform 0.5s ease-in-out;
+    -moz-transition: transform 0.5s ease-in-out;
+    -ms-transition: transform 0.5s ease-in-out;
+    -o-transition: transform 0.5s ease-in-out;
+  }
+  .burger {
+    display: block;
+    margin: 0 auto;
+    /* margin-left: -2rem; */
+  }
+  .nav_icon_links a {
+    margin: 0 0.25rem;
+  }
+  .nav_icons {
+    width: 40%;
+  }
+}
+/**--Footer */
+footer {
+  margin-top: auto;
+}
+.footer_container {
+  background-image: url(/static/img/Footer.png);
+  background-position: center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  min-height: 10vh;
+}
+
+/**--Index-Page */
+.index_container {
+  margin: 0.5rem auto;
+  justify-content: center;
+  align-items: center;
+  max-width: 30rem;
 }

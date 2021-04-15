@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import url
 from django.views.generic.base import RedirectView
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.contrib import admin
@@ -16,6 +17,7 @@ urlpatterns = [
     path('checkout/', include('checkout.urls', namespace='checkout')),
     path('favicon.ico', RedirectView.as_view(
         url=staticfiles_storage.url('img/favicon.ico'))),
+    url(r'^.*/$', IndexView, name='home'),
 ]
 
 if settings.DEBUG:
