@@ -6,24 +6,49 @@
 <!-- 1 -->
 {% block content %}
 <!-- 1 -->
-<h1>SHOP</h1>
-{% for item in product %}
-<!-- 1 -->
-{% if item.in_stock %}
-<a href="{{ item.get_absolute_url }}">
-  <div class="card" style="width: 18rem">
-    <img src="{{ item.image.url }}" class="card-img-top" alt="..." />
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">{{ item.name}}</li>
-      <li class="list-group-item">{{ item.category.friendly_name}}</li>
-      <li class="list-group-item">&euro; {{ item.price}}</li>
-    </ul>
+<section class="background_image">
+  <div class="container shop_container_outer">
+    <div class="row">
+      <div class="col text-center mt-3">
+        <h2 class="display-3 aw text-wht p-3">Iseult's Shop</h2>
+      </div>
+    </div>
+    <div class="row shop_catogery_links">
+      <ul>
+        <li>
+          <a href="{% url 'shop:shop' %}?category=scarves" class="">Scarves</a>
+        </li>
+        <li>
+          <a href="{% url 'shop:shop' %}?category=paintings" class=""
+            >Paintings</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="row">
+      <div class="container shop_container">
+        {% for item in product %}
+        <!-- 1 -->
+        {% if item.in_stock %}
+        <a href="{{ item.get_absolute_url }}" class="a_card">
+          <div class="card m-3 p-1" style="width: 18rem">
+            <img src="{{ item.image.url }}" class="card-img-top" alt="..." />
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-center">{{ item.name}}</li>
+              <li class="list-group-item text-center">
+                &euro; {{ item.price}}
+              </li>
+            </ul>
+          </div>
+        </a>
+        {% else %}
+        <!-- 1 -->
+        {% endif %}
+        <!-- 1 -->
+        {% endfor %}
+        <!-- 1 -->
+      </div>
+    </div>
   </div>
-</a>
-{% else %}
-<h1>Out of stock</h1>
-{% endif %}
-<!-- 1 -->
-{% endfor %}
-<!-- 1 -->
+</section>
 {% endblock content %}

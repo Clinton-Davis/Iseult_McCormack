@@ -3,8 +3,7 @@
     <a href="{% url 'home' %}">
       <img
         src="/static/img/Logo-words-black-trans.png"
-        alt=""
-        style="width: 4rem"
+        alt="Iseult McCormak Creations Logo"
       />
     </a>
   </div>
@@ -13,22 +12,34 @@
       <li><a href="{% url 'shop:shop' %}">Shop</a></li>
       <li><a href="{% url 'about' %}">About</a></li>
       <li><a href="{% url 'contact' %}">Contact</a></li>
+      {% if request.user.is_authenticated %}
+      <li><a href="{% url 'profiles:profile' %}">Dashboard</a></li>
+      {% endif %}
     </ul>
   </div>
   <div class="burger">
-    <div class="line1"></div>
-    <div class="line2"></div>
-    <div class="line3"></div>
+    <div class="line line2"></div>
+    <div class="line line3"></div>
+    <div class="line line1"></div>
   </div>
   <div class="nav_icons">
     <ul class="nav_icon_links">
+      {% if request.user.is_authenticated %}
       <li>
-        <a href="{% url 'account_login' %}"
+        <a href="{% url 'account_logout' %}" title="Logout"
+          ><i class="fas fa-sign-out-alt"></i
+        ></a>
+      </li>
+      {% else %}
+      <li>
+        <a href="{% url 'account_login' %}" title="Login"
           ><i class="fas fa-sign-in-alt"></i
         ></a>
       </li>
+      {% endif %}
+
       <li>
-        <a href="{% url 'bag:bag_view' %}"
+        <a href="{% url 'bag:bag_view' %}" title="Go to you Bag"
           ><i class="fas fa-shopping-bag">
             <!-- 1 -->
             {% if grand_total %}
