@@ -1,37 +1,58 @@
-
 <nav>
-    <div class="nav_logo">
-      <img src="/static/img/Logo-words-black-trans.png" alt="" style="width: 4rem" />
-    </div>
-    <div class="nav_list">
-      <ul class="nav_links">
-        <li><a href="">Shop</a></li>
-        <li><a href="">About</a></li>
-        <li><a href="">Contact</a></li>
-      </ul>
-    </div>
-    <div class="burger ">
-      <div class="line1"></div>
-      <div class="line2"></div>
-      <div class="line3"></div>
-    </div>
-    <div class="nav_icons">
-      <ul class="nav_icon_links">
-        <li>
-          <a href=""><i class="fas fa-sign-in-alt"></i></a>
-        </li>
-        <li>
-          <a href=""><i class="fas fa-shopping-bag"> &euro;0:00</i></i></a>
-        </li>
-      </ul>
-    </div>
+  <div class="nav_logo">
+    <a href="{% url 'home' %}">
+      <img
+        src="/static/img/Logo-words-black-trans.png"
+        alt=""
+        style="width: 4rem"
+      />
+    </a>
+  </div>
+  <div class="nav_list">
+    <ul class="nav_links">
+      <li><a href="{% url 'shop:shop' %}">Shop</a></li>
+      <li><a href="{% url 'about' %}">About</a></li>
+      <li><a href="{% url 'contact' %}">Contact</a></li>
+    </ul>
+  </div>
+  <div class="burger">
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+  </div>
+  <div class="nav_icons">
+    <ul class="nav_icon_links">
+      <li>
+        <a href="{% url 'account_login' %}"
+          ><i class="fas fa-sign-in-alt"></i
+        ></a>
+      </li>
+      <li>
+        <a href="{% url 'bag:bag_view' %}"
+          ><i class="fas fa-shopping-bag">
+            <!-- 1 -->
+            {% if grand_total %}
+            <!-- 1 -->
+            &euro;{{ grand_total|floatformat:2 }}
+            <!-- 1 -->
+            {% else %}
+            <!-- 1 -->
+            &euro;0.00
+            <!-- 1 -->
+            {% endif %}
+            <!-- 1 -->
+          </i>
+        </a>
+      </li>
+    </ul>
+  </div>
 </nav>
 <script type="text/javascript">
   const nav_Slide = () => {
     //   const burger = document.querySelector(".burger ");
     const burger = document.querySelector(".burger");
     const nav = document.querySelector(".nav_links");
-    const navLinks = document.querySelectorAll('.nav_links li');
+    const navLinks = document.querySelectorAll(".nav_links li");
 
     burger.addEventListener("click", () => {
       //Toggle Nav
@@ -41,14 +62,14 @@
         if (link.style.animation) {
           link.style.animation = "";
         } else {
-          link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.4}s`
+          link.style.animation = `navLinkFade 0.5s ease forwards ${
+            index / 7 + 0.4
+          }s`;
         }
-      })
+      });
       //Burger Animation
-      burger.classList.toggle('toggle');
+      burger.classList.toggle("toggle");
     });
-
   };
   nav_Slide();
 </script>
-

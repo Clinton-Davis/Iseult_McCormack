@@ -2,12 +2,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>
-      Iseult McCormick {% block extra_title %}{% endblock extra_title %}
-    </title>
-
     <!-- 1 -->
-
+    {% block extra_head %}
+    <!-- 1 -->
+    {% endblock extra_head %}
+    <!-- 1 -->
     {% block meta %}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -63,6 +62,9 @@
     {% block extra_js %}
     <!-- 1 -->
     {% endblock extra_js %}
+    <title>
+      Iseult McCormick {% block extra_title %}{% endblock extra_title %}
+    </title>
   </head>
 
   <body>
