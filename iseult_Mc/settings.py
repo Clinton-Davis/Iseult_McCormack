@@ -172,7 +172,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': 'Basic',
+        'toolbar': 'full',
     },
 }
 # STRIPE

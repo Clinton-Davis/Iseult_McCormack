@@ -68,6 +68,12 @@ li {
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
 }
+
+.about {
+  background-image: url(/static/img/darkOne.jpg);
+  background-size: cover;
+  background-position: center center;
+}
 .signup {
   background-image: url(/static/img/greenBlue.jpeg);
   background-size: cover;
@@ -89,6 +95,16 @@ li {
   max-width: 80%;
   border-radius: 15px;
   backdrop-filter: blur(5px);
+}
+
+.inner_div_about {
+  background: rgba(61, 61, 61, 0.76);
+  padding: 1.5rem;
+  margin: 2rem auto;
+  max-width: 50%;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+  color: rgb(230, 228, 228);
 }
 /**--Button */
 

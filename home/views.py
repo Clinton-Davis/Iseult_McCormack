@@ -5,9 +5,11 @@ from django.core.mail import send_mail
 from django.shortcuts import reverse, render
 from django.views import generic
 from django.views.generic import TemplateView
+from django.views.generic.list import ListView
 from .forms import ContactForm
 from shop.models import Product
 from shop.models import Category
+from .models import About
 
 
 def IndexView(request):
@@ -22,8 +24,10 @@ def IndexView(request):
     return render(request, "home/index.html", context)
 
 
-class AboutView(TemplateView):
-    template_name = "home/about.html"
+class AboutView(ListView):
+     model = About
+     template_name = "home/about.html"
+     context_object_name = "about"
 
 
 class TermsView(TemplateView):
