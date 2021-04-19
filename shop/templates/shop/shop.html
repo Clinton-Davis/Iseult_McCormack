@@ -10,10 +10,10 @@
   <div class="container shop_container_outer">
     <div class="row">
       <div class="col text-center mt-3">
-        <h2 class="display-3 aw text-wht p-3">Iseult's Shop</h2>
+        <h2 class="display-3 hfi text-wht p-3">Iseult's Shop</h2>
       </div>
     </div>
-    <div class="row shop_catogery_links">
+    <div class="row shop_catogery_links hfi">
       <ul>
         <li>
           <a href="{% url 'shop:shop' %}?category=scarves" class="">Scarves</a>
@@ -35,7 +35,7 @@
             <img src="{{ item.image.url }}" class="card-img-top" alt="..." />
             <ul class="list-group list-group-flush">
               <li class="list-group-item text-center">{{ item.name}}</li>
-              <li class="list-group-item text-center">
+              <li class="list-group-item text-center lg hf">
                 &euro; {{ item.price}}
               </li>
             </ul>

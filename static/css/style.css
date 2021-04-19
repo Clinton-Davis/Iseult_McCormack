@@ -86,6 +86,7 @@ li {
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
 }
+
 @media screen and (max-width: 767px) {
   .data_container {
     max-width: 100%;
@@ -114,6 +115,11 @@ li {
   background-size: cover;
   background-position: center center;
 }
+.details {
+  background-image: url(/static/img/colour_Rose.jpeg);
+  background-size: cover;
+  background-position: center center;
+}
 
 .inner_div {
   background: rgba(248, 248, 248, 0.76);
@@ -132,13 +138,7 @@ li {
   backdrop-filter: blur(5px);
   color: rgb(230, 228, 228);
 }
-.inner_div_checkout {
-  background: rgba(248, 248, 248, 0.856);
-  padding: 1.5rem;
-  margin: 2rem auto;
-  border-radius: 15px;
-  backdrop-filter: blur(5px);
-}
+
 /**--Button */
 .remove-item {
   cursor: pointer;
@@ -178,7 +178,7 @@ li {
   );
 }
 .btn-grad_pink {
-  margin: 10px;
+  margin: 1rem 0;
   padding: 0.5em 3em;
   text-align: center;
   text-transform: uppercase;
@@ -482,4 +482,30 @@ footer {
   margin: 0 1rem;
   font-size: 1.5em;
   font-weight: 500;
+}
+
+/**--Shop-Details-Page */
+
+.product-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 28rem;
+}
+.image-container img {
+  height: 28rem;
+  border: 10px double rgb(71, 71, 71);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.inner_div_checkout {
+  background: rgb(248, 248, 248);
+  padding: 1.5rem;
+  margin: 1rem auto;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
 }
