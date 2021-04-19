@@ -1,0 +1,15 @@
+{% if item.product.image %}
+<img
+  class="img-fluid rounded"
+  src="{{ item.product.image.url }}"
+  alt="{{ item.product.name }}"
+  style="width: 8rem"
+/>
+{% else %}
+<img
+  class="img-fluid rounded"
+  src="{{ MEDIA_URL }}noimage.png"
+  alt="{{ item.product.name }}"
+  style="width: 8rem"
+/>
+{% endif %}
