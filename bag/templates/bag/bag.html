@@ -12,7 +12,17 @@
         <div class="row">
           <div class="col">
             <hr />
-            <h2 class="hfib mb-4 text-center">Shopping Bag</h2>
+            {% if product_count == 0 %}
+            <h2 class="hfi mb-4 text-center">Your bag is empty.</h2>
+            {% elif product_count == 1 %}
+            <h2 class="hfi mb-4 text-center">
+              {{ product_count }} item in your bag
+            </h2>
+            {% else %}
+            <h2 class="hfi mb-4 text-center">
+              {{product_count}} items in your bag
+            </h2>
+            {% endif %}
             <hr />
           </div>
         </div>
@@ -114,20 +124,20 @@
         </table>
       </div>
       {% else %}
-      <p class="lead mb-5">Your bag is empty.</p>
-      <a
-        href="{% url 'shopo:shop' %}"
-        class="btn btn-outline-black rounded-0 btn-lg"
-      >
+      <a href="{% url 'shop:shop' %}" class="hfi btn-grad_pink">
         <span class="icon">
-          <i class="fas fa-chevron-left"></i>
+          <i class="fas fa-arrow-circle-left"></i>
         </span>
-        <span class="text-uppercase">Keep Shopping</span>
+        <span class="text-uppercase mx-1">Keep Shopping</span>
       </a>
       {% endif %}
     </div>
   </div>
 </div>
+</div>
+</div>
+</div>
+
 {% endblock content %}
 <!-- 1 -->
 {% block postloadjs %}

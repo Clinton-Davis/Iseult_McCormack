@@ -22,12 +22,12 @@
                 />
               </a>
               {% else %}
-              <a href="">
-                <!-- <img
-            class="card-img-top img-fluid"
-            src=" MEDIA_URL noimage.png"
-            alt=" product.name "
-          /> -->
+              <a href="{{ product.image.url }}">
+                <img
+                  class="card-img-top img-fluid"
+                  src="{{ MEDIA_URL }}no_image.png"
+                  alt=" product.name "
+                />
               </a>
               {% endif %}
             </div>
@@ -61,8 +61,11 @@
                 method="POST"
               >
                 {% csrf_token %}
-                <div class="form-row">
+                <div class="form-row hfi">
                   <div class="col{% if s %}-12 mt-2{% endif %}">
+                    <button type="submit" class="btn-grad_blue hfi mt-3 w-100">
+                      Add To Bag<i class="fas fa-shopping-bag mx-2"></i>
+                    </button>
                     <a
                       href="{% url 'shop:shop' %}"
                       class="btn-grad_pink mt-3 w-100"
@@ -72,9 +75,6 @@
                       </span>
                       <span class="text-uppercase">Keep Shopping</span>
                     </a>
-                    <button type="submit" class="btn-grad_blue mt-3 w-100">
-                      Add To Bag<i class="fas fa-shopping-bag mx-2"></i>
-                    </button>
                   </div>
                   <input
                     type="hidden"

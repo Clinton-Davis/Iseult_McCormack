@@ -40,18 +40,8 @@
 
       <li>
         <a href="{% url 'bag:bag_view' %}" title="Go to you Bag"
-          ><i class="fas fa-shopping-bag">
-            <!-- 1 -->
-            {% if grand_total %}
-            <!-- 1 -->
-            &euro;{{ grand_total|floatformat:2 }}
-            <!-- 1 -->
-            {% else %}
-            <!-- 1 -->
-            &euro;0.00
-            <!-- 1 -->
-            {% endif %}
-            <!-- 1 -->
+          ><i class="fas fa-shopping-bag"
+            ><span class="count">{{ product_count }}</span>
           </i>
         </a>
       </li>

@@ -17,6 +17,7 @@ def bag_contents(request):
             'item_id' : item_id,
             'quantity': quantity,
             'product': product,
+            'product_count':  product_count
         })
     
     if bag_total < settings.FREE_DELIVERY_THRESHOLD:

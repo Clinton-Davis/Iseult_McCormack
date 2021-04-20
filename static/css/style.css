@@ -152,8 +152,8 @@ li {
   );
 }
 .btn-grad_red {
-  margin: 10px;
-  padding: 15px 45px;
+  margin: 1rem 0;
+  padding: 0.5em 3em;
   text-align: center;
   text-transform: uppercase;
   transition: 0.5s;
@@ -279,6 +279,7 @@ nav {
   text-shadow: 2px 1px rgb(0, 0, 0);
 }
 .nav_icon_links {
+  position: relative;
   display: flex;
   font-size: 1.2em;
   text-align: center;
@@ -400,6 +401,18 @@ nav {
   -ms-transform: rotate(405deg) translate(-4px, -5px);
   -o-transform: rotate(405deg) translate(-4px, -5px);
 }
+
+.count {
+  margin: 0 0 2px 2px;
+  font-size: 1rem;
+  width: 1.8rem;
+  line-height: 25px;
+  border-radius: 50%;
+  display: inherit;
+  text-align: center;
+  background: rgba(21, 77, 167, 0.836);
+  color: #fff;
+}
 /**--Footer */
 footer {
   margin-top: auto;
@@ -491,10 +504,12 @@ footer {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 28rem;
+  height: 36rem;
 }
 .image-container img {
-  height: 28rem;
+  height: 100%;
+  width: 100%;
+
   border: 10px double rgb(71, 71, 71);
   border-radius: 10px;
   -webkit-border-radius: 10px;

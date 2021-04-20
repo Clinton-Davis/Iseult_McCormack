@@ -67,7 +67,9 @@ class ProductDetailView(DetailView):
     context_object_name = 'product'
     
     def post(self, *args, **kwargs):
-        """Adds review to product using the ProductCommentForm and productComment model)."""
+        """
+        Adds review to product using the ProductCommentForm and productComment model.
+        """
         form = ProductCommentForm(self.request.POST)
         if form.is_valid():
             name_product = self.get_object()

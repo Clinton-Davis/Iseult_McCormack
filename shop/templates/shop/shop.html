@@ -32,7 +32,19 @@
         {% if item.in_stock %}
         <a href="{{ item.get_absolute_url }}" class="a_card">
           <div class="card m-3 p-1" style="width: 18rem">
-            <img src="{{ item.image.url }}" class="card-img-top" alt="..." />
+            {% if item.image %}
+            <img
+              src="{{ item.image.url }}"
+              class="card-img-top"
+              alt="{{ item.name}}"
+            />
+            {% else %}
+            <img
+              src="{{ MEDIA_URL }}no_image.png"
+              class="card-img-top"
+              alt="{{ item.name}}"
+            />
+            {% endif %}
             <ul class="list-group list-group-flush">
               <li class="list-group-item text-center">{{ item.name}}</li>
               <li class="list-group-item text-center lg hf">

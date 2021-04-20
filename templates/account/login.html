@@ -40,7 +40,7 @@
       </p>
       {% endif %}
 
-      <form class="login hf" method="POST" action="{% url 'account_login' %}">
+      <form class="hf" method="POST" action="{% url 'account_login' %}">
         {% csrf_token %}
         <!-- 1 -->
         {{ form|crispy }}
