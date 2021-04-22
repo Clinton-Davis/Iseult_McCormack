@@ -1,21 +1,36 @@
 from django.conf import settings
-from django.shortcuts import redirect, reverse, HttpResponse, get_object_or_404
+from django.shortcuts import redirect, reverse, HttpResponse, get_object_or_404, render
 from django.views.generic import TemplateView
+from django.views.generic.edit import FormView
 from django.contrib import messages
 from shop.models import Product
+from .forms import LocationForm
+from .countries import europe, uk, ire
 
 #? If in the future size becomes a avaiable, Use the Blue Code(?)
 
-class BagView(TemplateView):
-    template_name = 'bag/bag.html'
+def get_location_zones(request):
+    if request in ire:
+            zone = 3.80
+    elif request in uk:
+            zone = 5.50
+    elif request in europe:
+            zone = 6.00
+    else:
+            zone = 7.00
+            
+    sesh_zone = request.session.get('sesh_zone', {})
+    request.session['sesh_zone'] = zone
+    print("get_location_zones", zone)
+    return zone
 
-    def get_context_data(self, **kwargs):
-        tax_rate = settings.TAX_RATE_PERCENTAGE
-        context = super().get_context_data(**kwargs)
-        context['tax_rate'] = tax_rate
-        context['in_bag'] = True
-        return context
-
+def bag_view(request):
+    template = 'bag/bag.html'
+    context = {
+        'in_bag':True
+    }
+    return render(request,template,context )
+    
 def add_to_bag(request, item_id):
     """ Adds quantity 1 to the bag as each item 
     is unquie gets the session and adds bag to it
@@ -39,6 +54,30 @@ def add_to_bag(request, item_id):
         request.session['bag'] = bag
         return redirect(redirect_url)
     
+
+class LocationFormView(FormView):
+    template_name = "bag/location.html"
+
+    form_class = LocationForm
+    
+    def get_success_url(self):
+        return reverse("bag:bag_view")
+
+    
+    def form_valid(self, form ):
+        """"Getting clean data from the form """
+        messages.success(self.request,
+                         "Thank you for getting in touch with us. We have received your message.")
+
+        loc = form.cleaned_data.get('location')
+        get_loc = get_location_zones(self.request)
+        
+        
+       
+
+        
+        return super().form_valid(form)
+       
 
 #? def add_to_bag(request, item_id):
     # product = get_object_or_404(Product, pk=item_id)

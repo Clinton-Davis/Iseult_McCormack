@@ -31,11 +31,43 @@
             {% if bag_items %}
             <div class="d-block d-md-none">
               <div class="row">
-                <div class="col">{% include "bag/bag-total.html" %}</div>
+                <div class="col">
+                  <h5 class="hfi">
+                    <strong>Bag Total: &euro;{{ bag_total|floatformat:2 }}</strong>
+                  </h5>
+                  <h5 class="hfi">Delivery: &euro;{{ delivery|floatformat:2 }}</h5>
+                  <!-- Button trigger -->
+                    <a href="{% url 'bag:location' %}">Deliver To</a>
+                  <h4 class="mt-4">
+                    <strong class="hf"
+                      >Grand Total:
+                      <span class="hf">&euro;</span> {{grand_total|floatformat:2}}</strong
+                    >
+                  </h4>
+                  {% if free_delivery_delta > 0 %}
+                  <p class="mb-1 text-danger">
+                    You could get free delivery by spending just
+                    <strong><span class="hfib">&euro;</span>{{ free_delivery_delta }}</strong>
+                    more!
+                  </p>
+                  {% endif %}
+                </div>
               </div>
               <div class="row">
                 <div class="col">
-                  {% include "bag/checkout-buttons.html" %}
+                  <a href="{% url 'shop:shop' %}" class="hfi btn-grad_pink">
+                    <span class="icon">
+                      <i class="fas fa-arrow-circle-left"></i>
+                    </span>
+                    <span class="text-uppercase mx-1">Keep Shopping</span>
+                  </a>
+                  <a href="{% url 'checkout:checkout' %}" class="hfi btn-grad_blue">
+                    <span class="text-uppercase mx-2">Secure Checkout</span>
+                    <span class="icon">
+                      <i class="fas fa-lock"></i>
+                    </span>
+                  </a>
+                  
                   <p class="text-muted mb-5">
                     A summary of your bag contents is below
                   </p>
@@ -113,12 +145,42 @@
           {% endfor %}
           <tr>
             <td colspan="5" class="pt-5 text-right">
-              {% include "bag/bag-total.html" %}
+              <h5 class="hfi">
+                <strong>Bag Total: &euro;{{ bag_total|floatformat:2 }}</strong>
+              </h5>
+              <h5 class="hfi">Delivery: &euro;{{ delivery|floatformat:2 }}</h5>
+             <!-- Button trigger modal -->
+             <a href="{% url 'bag:location' %}">Deliver To</a>
+              <h4 class="mt-4">
+                <strong class="hf"
+                  >Grand Total:
+                  <span class="hf">&euro;</span> {{grand_total|floatformat:2}}</strong
+                >
+              </h4>
+              {% if free_delivery_delta > 0 %}
+              <p class="mb-1 text-danger">
+                You could get free delivery by spending just
+                <strong><span class="hfib">&euro;</span>{{ free_delivery_delta }}</strong>
+                more!
+              </p>
+              {% endif %}
             </td>
           </tr>
           <tr>
             <td colspan="5" class="text-right">
-              {% include "bag/checkout-buttons.html" %}
+              <a href="{% url 'shop:shop' %}" class="hfi btn-grad_pink">
+                <span class="icon">
+                  <i class="fas fa-arrow-circle-left"></i>
+                </span>
+                <span class="text-uppercase mx-1">Keep Shopping</span>
+              </a>
+              <a href="{% url 'checkout:checkout' %}" class="hfi btn-grad_blue">
+                <span class="text-uppercase mx-2">Secure Checkout</span>
+                <span class="icon">
+                  <i class="fas fa-lock"></i>
+                </span>
+              </a>
+              
             </td>
           </tr>
         </table>
@@ -137,7 +199,6 @@
 </div>
 </div>
 </div>
-
 {% endblock content %}
 <!-- 1 -->
 {% block postloadjs %}
