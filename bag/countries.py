@@ -1,5 +1,5 @@
 
-europe = [
+Europe = [
         "AL","AD","DK","EE","FO","GL","IS",\
         "LV","LT","NO","SE","AT","BE",\
         "FR","DE","LI","LU","NL","CH","UA",\
@@ -7,5 +7,5 @@ europe = [
         "BY","CY","GR","IT","MT","MC","ME",\
         "PT","SM","RS","ES","TR"
             ] 
-uk = ["UK", "GB", ] 
-ire = ["IE"]
+United_Kindom = ["UK", "GB", ] 
+Irlenad = ["IE"]

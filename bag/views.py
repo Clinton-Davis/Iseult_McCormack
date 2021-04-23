@@ -1,27 +1,29 @@
 from django.conf import settings
+from django_countries import countries
 from django.shortcuts import redirect, reverse, HttpResponse, get_object_or_404, render
 from django.views.generic import TemplateView
 from django.views.generic.edit import FormView
 from django.contrib import messages
 from shop.models import Product
 from .forms import LocationForm
-from .countries import europe, uk, ire
+from .countries import Europe, United_Kindom, Irlenad
 
 #? If in the future size becomes a avaiable, Use the Blue Code(?)
 
 def get_location_zones(request):
-    if request in ire:
-            zone = 3.80
-    elif request in uk:
-            zone = 5.50
-    elif request in europe:
-            zone = 6.00
+    if request in Irlenad:
+            zone = 0
+    elif request in United_Kindom:
+            zone = 550
+    elif request in Europe:
+            zone = 600
     else:
-            zone = 7.00
-            
-    sesh_zone = request.session.get('sesh_zone', {})
-    request.session['sesh_zone'] = zone
+            zone = 700
+    # sesh_zone = request.session.get('sesh_zone', {})
+    # request.session['sesh_zone'] = zone
     print("get_location_zones", zone)
+    # location_name = dict(countries)[location_code]
+    # print("get_location_zones", location_name)
     return zone
 
 def bag_view(request):

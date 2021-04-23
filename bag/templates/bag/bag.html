@@ -33,7 +33,7 @@
               <div class="row">
                 <div class="col">
                   <h5 class="hfi">
-                    <strong>Bag Total: &euro;{{ bag_total|floatformat:2 }}</strong>
+                    <strong>Bag Total: &euro;{{ bag_total.get_price}}</strong>
                   </h5>
                   <h5 class="hfi">Delivery: &euro;{{ delivery|floatformat:2 }}</h5>
                   <!-- Button trigger -->
@@ -82,7 +82,7 @@
                   <p class="my-0 text-center">{{ item.product.name}}</p>
                 </div>
                 <div class="col-6 order-sm-last">
-                  <p class="my-0 text-center">&euro;{{ item.product.price }}</p>
+                  <p class="my-0 text-center">&euro;{{ item.product.get_price }}</p>
                 </div>
                 <div class="col-6 order-sm-last">
                   <a
@@ -128,7 +128,7 @@
               <p class="my-0 text-center">{{ item.product.name}}</p>
             </td>
             <td class="py-3">
-              <p class="my-0">&euro;{{ item.product.price }}</p>
+              <p class="my-0">&euro;{{ item.product.get_price }}</p>
             </td>
             <td class="py-3">
               <p class="my-0">
