@@ -5,6 +5,7 @@ from django.views.generic import TemplateView
 from django.views.generic.edit import FormView
 from django.contrib import messages
 from shop.models import Product
+from checkout.models import Delivary
 from profiles.models import UserProfile
 from .forms import LocationForm
 from .countries import Europe, United_Kindom, Irlenad
@@ -32,16 +33,40 @@ def bag_view(request):
     template = 'bag/bag.html'
     location_form = LocationForm()
     
-    if request.user.is_authenticated:
-        try:
-            profile = UserProfile.objects.get(user=request.user)
-            location_form = LocationForm(initial={ 'country': profile.default_country})
-           
-            # print(location_form.default_country)
-        except UserProfile.DoesNotExist:
+    if request.method == 'POST':
+         form_data = {'country': request.POST['country']}
+         location_code = form_data['country']
+         code = request.session.get('code', {})
+
+         location_detail = get_object_or_404(Delivary, code=location_code)
+         
+         code["code"] = location_detail.code
+         code["name"] = location_detail.name
+         code["packet_price"] = location_detail.packet_price
+         code["parcel_price"] = location_detail.parcel_price
+         request.session["code"] = code
+         
+         context = {
+            'location_details' : location_detail,
+            'form' : location_form,
+            'in_bag':True,
+        }
+            
+         return render(request,template,context )
+            
+    else:
+        
+        if request.user.is_authenticated:
+            try:
+                profile = UserProfile.objects.get(user=request.user)
+                default_country = profile.default_country
+                print(default_country)
+                # location_details
+            
+            except UserProfile.DoesNotExist:
+                location_form = LocationForm()
+        else: 
             location_form = LocationForm()
-    else: 
-        location_form = LocationForm()
                 
     context = {
         'form' : location_form,
@@ -56,7 +81,7 @@ def add_to_bag(request, item_id):
     """
 
     product = get_object_or_404(Product, pk=item_id)
-    # redirect_url = request.POST.get('redirect_url')
+    product_cat_id = str(product.category_id)
     redirect_url = "bag:bag_view"
     size = None
     quantity = 1
@@ -67,24 +92,13 @@ def add_to_bag(request, item_id):
             Every item is unique.')
         return redirect(redirect_url)
     else:
+     
         bag[item_id] = quantity
         messages.success(request, f'Added {product.name} to your bag')
         
         request.session['bag'] = bag
         return redirect(redirect_url)
     
-
-def add_location(request):
-    redirect_url = "bag:bag_view"
-    
-    context = {
-       
-    }
-    return redirect(redirect_url)
-    
-
-       
-
 #? def add_to_bag(request, item_id):
     # product = get_object_or_404(Product, pk=item_id)
     # quantity = int(request.POST.get('quantity'))

@@ -107,3 +107,6 @@ class Delivary(models.Model):
         zone = models.IntegerField(null=False, blank=False, default=0)
         packet_price = models.IntegerField(null=False, blank=False, default=0)
         parcel_price = models.IntegerField(null=False, blank=False, default=0)
+        
+        def __str__(self):
+            return self.name
