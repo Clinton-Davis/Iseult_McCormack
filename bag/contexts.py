@@ -8,9 +8,9 @@ def bag_contents(request):
     bag_total = 0
     product_count = 0
     bag = request.session.get('bag', {})
-    sesh_zone = request.session.get('sesh_zone', {})
-    delivery = sesh_zone
-    print("delivary", delivery)
+    sesh_zone = request.session.get('sesh_zone', {}) or 0
+    
+ 
     
     
     for item_id, quantity in bag.items():
@@ -23,15 +23,20 @@ def bag_contents(request):
             'product': product,
             'product_count':  product_count
         })
+    raw_delivery = sesh_zone
+    delivery = raw_delivery / 100
+    bag_total = bag_total / 100
     
     if bag_total < settings.FREE_DELIVERY_THRESHOLD:
-        
-        free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - bag_total
+        free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - bag_total 
+        delivery = delivery
+        print("delivary for", delivery)
+
     else:
         delivery = 0
         free_delivery_delta = 0
-    
-    # grand_total = delivery + bag_total 
+        
+    grand_total = delivery + bag_total 
     
     context = {
         'bag_items':bag_items,
@@ -40,7 +45,6 @@ def bag_contents(request):
         'delivery':delivery,
         'free_delivery_delta':free_delivery_delta,
         'free_delivery_threshold' : settings.FREE_DELIVERY_THRESHOLD,
-        'tax_persentage': settings.TAX_RATE_PERCENTAGE,
-        # 'grand_total': grand_total,
+        'grand_total': grand_total,
     }
     return context

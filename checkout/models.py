@@ -27,7 +27,8 @@ class Order(models.Model):
     street_address2 = models.CharField(max_length=80, null=True, blank=True)
     county = models.CharField(max_length=80, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
-    delivery_cost = models.IntegerField( null=False, default=0)
+    delivery_cost = models.ForeignKey("Delivary", on_delete=models.SET_NULL,
+                                     null=True, blank=True)
     order_total = models.IntegerField( null=False, default=0)
     grand_total = models.IntegerField( null=False, default=0)
     original_bag = models.TextField(null=False, blank=False, default='')
@@ -98,3 +99,11 @@ class OrderLineItem(models.Model):
         
     def __str__(self):
         return f'Item codes {self.product.code} on order {self.order.order_number}'
+    
+    
+class Delivary(models.Model):
+        name = models.CharField(max_length=150, null=False, blank=False)
+        code = models.CharField(max_length=2, null=False, blank=False)
+        zone = models.IntegerField(null=False, blank=False, default=0)
+        packet_price = models.IntegerField(null=False, blank=False, default=0)
+        parcel_price = models.IntegerField(null=False, blank=False, default=0)

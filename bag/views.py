@@ -5,12 +5,14 @@ from django.views.generic import TemplateView
 from django.views.generic.edit import FormView
 from django.contrib import messages
 from shop.models import Product
+from profiles.models import UserProfile
 from .forms import LocationForm
 from .countries import Europe, United_Kindom, Irlenad
 
 #? If in the future size becomes a avaiable, Use the Blue Code(?)
 
 def get_location_zones(request):
+    print(request)
     if request in Irlenad:
             zone = 0
     elif request in United_Kindom:
@@ -28,11 +30,26 @@ def get_location_zones(request):
 
 def bag_view(request):
     template = 'bag/bag.html'
+    location_form = LocationForm()
+    
+    if request.user.is_authenticated:
+        try:
+            profile = UserProfile.objects.get(user=request.user)
+            location_form = LocationForm(initial={ 'country': profile.default_country})
+           
+            # print(location_form.default_country)
+        except UserProfile.DoesNotExist:
+            location_form = LocationForm()
+    else: 
+        location_form = LocationForm()
+                
     context = {
-        'in_bag':True
+        'form' : location_form,
+        'in_bag':True,
     }
     return render(request,template,context )
-    
+
+
 def add_to_bag(request, item_id):
     """ Adds quantity 1 to the bag as each item 
     is unquie gets the session and adds bag to it
@@ -57,28 +74,15 @@ def add_to_bag(request, item_id):
         return redirect(redirect_url)
     
 
-class LocationFormView(FormView):
-    template_name = "bag/location.html"
-
-    form_class = LocationForm
+def add_location(request):
+    redirect_url = "bag:bag_view"
     
-    def get_success_url(self):
-        return reverse("bag:bag_view")
-
-    
-    def form_valid(self, form ):
-        """"Getting clean data from the form """
-        messages.success(self.request,
-                         "Thank you for getting in touch with us. We have received your message.")
-
-        loc = form.cleaned_data.get('location')
-        get_loc = get_location_zones(self.request)
-        
-        
+    context = {
        
+    }
+    return redirect(redirect_url)
+    
 
-        
-        return super().form_valid(form)
        
 
 #? def add_to_bag(request, item_id):
