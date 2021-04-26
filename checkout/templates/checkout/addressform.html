@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+<!-- 1 -->
+{% load static %}
+<!-- 1 -->
+{% block head_title %}| Delivery Costs {% endblock head_title %}
+<!-- 1 -->
+{% block content %}
+<div class="container_background">
+  <div class="container data_container contact invert_shadow">
+    <div class="inner_div back_shadow">
+      <h1 class="display-3 text-center">Delivery</h1>
+      <form
+        action="{% url 'checkout:payment' %}"
+        method="POST"
+        id="payment-form"
+      >
+        {% csrf_token %}
+        <fieldset class="rounded px-3 mb-5">
+          <legend class="fieldset-label small text-black px-2 w-auto">
+            Delivery to:
+          </legend>
+          <!-- 1 -->
+          {{ address_form.fullname | as_crispy_field }}
+          <!-- 1 -->
+          {{ address_form.phone_number | as_crispy_field }}
+          <!-- 1 -->
+          {{ address_form.street_address1 | as_crispy_field }}
+          <!-- 1 -->
+          {{ address_form.street_address2 | as_crispy_field }}
+          <!-- 1 -->
+          {{ address_form.town_or_city | as_crispy_field }}
+          <!-- 1 -->
+          {{ address_form.postcode | as_crispy_field }}
+          <!-- 1 -->
+          {{ address_form.county | as_crispy_field }}
+          <!-- 1 -->
+          {{ address_form.country | as_crispy_field }}
+          <!-- 1 -->
+          <div class="form-check form-check-inline float-right mr-0">
+            <label class="form-check-label" for="id-save-info">
+              Save this delivery information to my profile
+            </label>
+            <input
+              class="form-check-input ml-2 mr-0"
+              type="checkbox"
+              id="id-save-info"
+              name="save-info"
+              checked
+            />
+          </div>
+        </fieldset>
+
+        <div class="submit-button text-right mt-5 mb-2 hfib">
+          <a href="{% url 'bag:bag_view' %}" class="btn-grad_pink">
+            <span class="icon">
+              <i class="fas fa-arrow-circle-left"></i>
+            </span>
+            <span class="font-weight-bold mx-1">Adjust Bag</span>
+          </a>
+          <button id="submit-button" class="btn-grad_blue w-100 hfib">
+            <span class="font-weight-bold mx-2">Save & continue</span>
+            <span class="icon">
+              <i class="fas fa-lock"></i>
+            </span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}

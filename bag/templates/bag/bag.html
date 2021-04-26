@@ -33,13 +33,20 @@
               <div class="row">
                 <div class="col">
                   <h5 class="hfi">
-                    <strong>Bag Total: &euro;{{ bag_total.get_price}}</strong>
+                    <strong>Bag Total: &euro;{{ bag_total|floatformat:2 }}</strong>
                   </h5>
-                  <h5 class="hfi">Delivery: &euro;{{ delivery|floatformat:2 }}</h5>
-                  <!-- Button trigger -->
-                  <a class="" data-toggle="modal" data-target="#staticBackdrop">
-                    (To {{ selected_location}})
-                  </a>
+                  {% if selected_location == "None" %}
+                <p><small>Delivary price will be will be caluclated <br> when you address is know.</small></p>
+              {% else %}
+              {% if product.category == "painting" %}
+              <h5 class="hfi">Delivary: &euro;{{code_parcel_price|floatformat:2 }}</h5>
+              <small>(To {{code}})</small>
+              {% else %} 
+              <h5 class="hfi">Delivary: &euro;{{ code_packet_price|floatformat:2 }}</h5>
+              <small>(To {{selected_location}})</small>
+              {% endif %}
+              {% endif %}
+                 
                   <h4 class="mt-4">
                     <strong class="hf"
                       >Grand Total:
@@ -63,7 +70,7 @@
                     </span>
                     <span class="text-uppercase mx-1">Keep Shopping</span>
                   </a>
-                  <a href="{% url 'checkout:checkout' %}" class="hfi btn-grad_blue">
+                  <a href="{% url 'checkout:address' %}" class="hfi btn-grad_blue">
                     <span class="text-uppercase mx-2">Secure Checkout</span>
                     <span class="icon">
                       <i class="fas fa-lock"></i>
@@ -150,11 +157,18 @@
               <h5 class="hfi">
                 <strong>Bag Total: &euro;{{ bag_total|floatformat:2 }}</strong>
               </h5>
-              <h5 class="hfi">Delivary: &euro;{{ delivery|floatformat:2 }}</h5>
-             <!-- Button trigger modal -->
-              <a class="" data-toggle="modal" data-target="#staticBackdrop">
-                (To {{ selected_location}})
-              </a>
+              {% if selected_location == "None" %}
+                <p><small>Delivary price will be will be caluclated <br> when you address is know.</small></p>
+              {% else %}
+              {% if product.category == "painting" %}
+              <h5 class="hfi">Delivary: &euro;{{code_parcel_price|floatformat:2 }}</h5>
+              <small>(To {{code}})</small>
+              {% else %} 
+              <h5 class="hfi">Delivary: &euro;{{ code_packet_price|floatformat:2 }}</h5>
+              <small>(To {{selected_location}})</small>
+              {% endif %}
+              {% endif %}
+            
             
               <h4 class="mt-4">
                 <strong class="hf"
@@ -179,7 +193,7 @@
                 </span>
                 <span class="text-uppercase mx-1">Keep Shopping</span>
               </a>
-              <a href="{% url 'checkout:checkout' %}" class="hfi btn-grad_blue">
+              <a href="{% url 'checkout:address' %}" class="hfi btn-grad_blue">
                 <span class="text-uppercase mx-2">Secure Checkout</span>
                 <span class="icon">
                   <i class="fas fa-lock"></i>
@@ -204,30 +218,7 @@
 </div>
 </div>
 </div>
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="{% url 'bag:bag_view'  %}" method="POST" class="">
-            {% csrf_token %}
-            <!-- 1 -->
-            {{ form|crispy }}
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Update</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+
 {% endblock content %}
 <!-- 1 -->
 {% block postloadjs %}
