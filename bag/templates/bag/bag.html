@@ -37,7 +37,9 @@
                   </h5>
                   <h5 class="hfi">Delivery: &euro;{{ delivery|floatformat:2 }}</h5>
                   <!-- Button trigger -->
-                    <a href="">Deliver To</a>
+                  <a class="" data-toggle="modal" data-target="#staticBackdrop">
+                    (To {{ selected_location}})
+                  </a>
                   <h4 class="mt-4">
                     <strong class="hf"
                       >Grand Total:
@@ -150,9 +152,9 @@
               </h5>
               <h5 class="hfi">Delivary: &euro;{{ delivery|floatformat:2 }}</h5>
              <!-- Button trigger modal -->
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+              <a class="" data-toggle="modal" data-target="#staticBackdrop">
                 (To {{ selected_location}})
-              </button>
+              </a>
             
               <h4 class="mt-4">
                 <strong class="hf"
