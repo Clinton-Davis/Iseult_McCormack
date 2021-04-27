@@ -1,0 +1,17 @@
+def get_delivary_price(request):
+    """
+    Finds the user, and gets there saved country code.
+    Finds the categorys in the session bag
+    Returns the price
+    """
+    profile = UserProfile.objects.get(user=request.user)
+    user_delivary_code = profile.country
+    code = get_object_or_404(Delivary, code=user_delivary_code)
+    bag = request.session.get('bag', {})
+    for item_id, item_data in bag.items():
+        product = Product.objects.get(id=item_id)
+    if product.category.name == "paintings":
+        delivery = code.parcel_price
+    else:
+        delivery = code.packet_price
+    return delivery
