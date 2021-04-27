@@ -57,14 +57,13 @@ def checkout_address(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Profile updated successfully')
+            return redirect(reverse('checkout:payment'))
         else:
             messages.error(
                 request, 'Update failed, Please ensure the form is valid.')
     else:
         form = UserProfileForm(instance=profile)
    
-
-    
     context = {
         "address_form": form
     }
@@ -75,20 +74,22 @@ def checkout_address(request):
 def checkout_payment(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-   
+    payment_form = PaymentForm()
     profile = get_object_or_404(UserProfile, user=request.user)
+    delivary = get_delivary_price(request)
+    
     
     if request.method == 'POST':
         bag = request.session.get('bag', {})
         payment_form = PaymentForm()
         
+        
         if payment_form.is_valid():
-            order = payment_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
+            order = payment_form.save(commit=False)
             order.stripe_pid = pid
-            delivary = get_delivary_price(request)
             order.delivery_cost = delivary
-            print(delivary)
+            print("insideform_valid", delivary)
             order.original_bag = json.dumps(bag)
             order.save()
             for item_id, item_data in bag.items():

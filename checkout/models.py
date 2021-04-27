@@ -48,7 +48,7 @@ class Order(models.Model):
             self.delivery_cost = self.delivery_cost
         else:
             self.delivery_cost = 0
-           
+        print(self.delivery_cost)
         self.grand_total = self.order_total + self.delivery_cost
         self.save()
     
