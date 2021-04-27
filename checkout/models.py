@@ -101,3 +101,16 @@ class OrderLineItem(models.Model):
         
     def __str__(self):
         return f'Item codes {self.product.code} on order {self.order.order_number}'
+    
+    
+class Delivary(models.Model):
+        name = models.CharField(max_length=150, null=False, blank=False)
+        code = models.CharField(max_length=2, null=False, blank=False)
+        zone = models.IntegerField(null=False, blank=False, default=0)
+        packet_price = models.DecimalField(
+        max_digits=5, decimal_places=2, null=False)
+        parcel_price = models.DecimalField(
+        max_digits=5, decimal_places=2, null=False)
+        
+        def __str__(self):
+            return self.name
