@@ -2737,5 +2737,16 @@
       "packet_price": "700",
       "parcel_price": "2900"
     }
+  },
+  {
+    "model": "checkout.delivary",
+    "pk": "251",
+    "fields": {
+      "code": "00",
+      "name": "None",
+      "zone": "5",
+      "packet_price": "0",
+      "parcel_price": "0"
+    }
   }
 ]

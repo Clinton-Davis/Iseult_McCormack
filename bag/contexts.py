@@ -25,16 +25,18 @@ def bag_contents(request):
         })
     
     if request.user.is_authenticated:
-        try:
             profile = UserProfile.objects.get(user=request.user)
-            default_country = profile.default_country
-            code = Delivary.objects.get(code=default_country)
-            code_packet_price = code.packet_price /100
-            code_parcel_price = code.parcel_price /100
-        except:
-            code = Delivary.objects.get(code="00")
-            code_packet_price = code.packet_price /100
-            code_parcel_price = code.parcel_price /100
+            if profile.country == "":
+                code = Delivary.objects.get(code="00")
+                code_packet_price = code.packet_price /100
+                code_parcel_price = code.parcel_price /100
+            else:
+                default_country = profile.country
+                code = Delivary.objects.get(code=default_country)
+                code_packet_price = code.packet_price /100
+                code_parcel_price = code.parcel_price /100
+            
+        
             
     else:
         code = Delivary.objects.get(code="00")

@@ -3,7 +3,8 @@ from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.models import User
-from .forms import PaymentForm
+from django.contrib.auth.decorators import login_required
+from .forms import OrderForm
 from .models import Order, OrderLineItem, Delivary
 from shop.models import Product
 from profiles.forms import UserProfileForm
@@ -48,16 +49,16 @@ def cache_checkout_data(request):
         messages.error(request, 'Sorry, your payment cannot be \
             processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
-
+@login_required()
 def checkout_address(request):
-    template = "checkout/addressform.html"
+    template = "checkout/checkout_address.html"
     profile = get_object_or_404(UserProfile, user=request.user)
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
             messages.success(request, 'Profile updated successfully')
-            return redirect(reverse('checkout:payment'))
+            return redirect(reverse('checkout:checkout_payment'))
         else:
             messages.error(
                 request, 'Update failed, Please ensure the form is valid.')
@@ -71,26 +72,36 @@ def checkout_address(request):
 
 
 
-def checkout_payment(request):
+def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-    payment_form = PaymentForm()
-    profile = get_object_or_404(UserProfile, user=request.user)
-    delivary = get_delivary_price(request)
-    
-    
+    order_form = OrderForm()
+    profile = UserProfile.objects.get(user=request.user)
+
     if request.method == 'POST':
         bag = request.session.get('bag', {})
-        payment_form = PaymentForm()
-        
-        
-        if payment_form.is_valid():
+
+        form_data = OrderForm(initial={
+                    'full_name': profile.full_name(),
+                    'email': profile.user.email,
+                    'phone_number': profile.phone_number,
+                    'country': profile.country,
+                    'postcode': profile.postcode,
+                    'town_or_city': profile.town_or_city,
+                    'street_address1': profile.street_address1,
+                    'street_address2': profile.street_address2,
+                    'county': profile.county,
+                })
+        order_form = OrderForm(form_data)
+        if order_form.is_valid():
+            order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
-            order = payment_form.save(commit=False)
-            order.stripe_pid = pid
+            delivary = get_delivary_price(request)
+            print(delivary)
             order.delivery_cost = delivary
-            print("insideform_valid", delivary)
+            order.stripe_pid = pid
             order.original_bag = json.dumps(bag)
+            
             order.save()
             for item_id, item_data in bag.items():
                 try:
@@ -120,15 +131,16 @@ def checkout_payment(request):
                     return redirect(reverse('view_bag'))
 
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout:checkout_success', args=[order.order_number]))
+            return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
+    else:
         bag = request.session.get('bag', {})
         if not bag:
             messages.error(
                 request, "There's nothing in your bag at the moment")
-            return redirect(reverse('shop:shop'))
+            return redirect(reverse('products'))
 
         current_bag = bag_contents(request)
         total = current_bag['grand_total']
@@ -139,19 +151,16 @@ def checkout_payment(request):
             currency=settings.STRIPE_CURRENCY,
         )
 
-
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \
             Did you forget to set it in your environment?')
 
     template = 'checkout/checkout_payment.html'
     context = {
-       
         'profile': profile,
-        'payment_form': payment_form,
+        'order_form': order_form,
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
-        'on_checkout_page': True
     }
 
     return render(request, template, context)

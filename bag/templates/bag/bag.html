@@ -157,24 +157,32 @@
               <h5 class="hfi">
                 <strong>Bag Total: &euro;{{ bag_total|floatformat:2 }}</strong>
               </h5>
-              {% if selected_location == "None" %}
-                <p><small>Delivary price will be will be caluclated <br> when you address is know.</small></p>
+             {% if selected_location == "None" %}
+                <a href="{% url 'checkout:address' %}"><small>Add address for Delivary cost</small></a>
               {% else %}
-              {% if product.category == "painting" %}
-              <h5 class="hfi">Delivary: &euro;{{code_parcel_price|floatformat:2 }}</h5>
-              <small>(To {{code}})</small>
-              {% else %} 
-              <h5 class="hfi">Delivary: &euro;{{ code_packet_price|floatformat:2 }}</h5>
-              <small>(To {{selected_location}})</small>
-              {% endif %}
+                {% if product.category.name == "painting" %}
+                <h5 class="hfi">Delivary: &euro;{{code_parcel_price|floatformat:2 }}</h5>
+                <small>(To {{selected_location}})</small>
+                {% else %} 
+                <h5 class="hfi">Delivary: &euro;{{ code_packet_price|floatformat:2 }}</h5>
+                <small>(To {{selected_location}})</small>
+                {% endif %}
               {% endif %}
             
             
-              <h4 class="mt-4">
+              <h4 class="mt-4"> 
+                {% if location_name == "None"  %}
                 <strong class="hf"
-                  >Grand Total:
-                  <span class="hf">&euro;</span> {{grand_total|floatformat:2}}</strong
+                >Total:
+                <span class="hf">&euro;</span> {{grand_total|floatformat:2}}</strong
+                ><br>
+                <small>Without Delivary</small>
+                {% else %}
+                <strong class="hf"
+                >Grand Total:
+                <span class="hf">&euro;</span> {{grand_total|floatformat:2}}</strong
                 >
+                {% endif %}
               </h4>
               {% if free_delivery_delta > 0 %}
               <p class="mb-1 text-danger">

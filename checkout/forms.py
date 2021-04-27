@@ -4,6 +4,14 @@ from profiles.models import UserProfile
 from .models import Order
 
 
-class PaymentForm(forms.Form):
-    hidden = forms.HiddenInput()
+class OrderForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        exclude = ('full_name', 'email', 'phone_number',
+                  'street_address1', 'street_address2',
+                  'town_or_city', 'postcode', 'country',
+                  'county',)
+
+
+
         
