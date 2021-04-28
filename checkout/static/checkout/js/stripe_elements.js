@@ -80,7 +80,7 @@ form.addEventListener("submit", function (ev) {
             var errorDiv = document.getElementById("card-errors");
             var html = `
                     <span class="icon" role="alert">
-                    <i class="fas fa-times"></i>
+                    <i class="fas fa-exclamation-triangle"></i>
                     </span>
                     <span>${result.error.message}</span>`;
             $(errorDiv).html(html);

@@ -91,7 +91,7 @@ class OrderLineItem(models.Model):
         the order number if it hasn't been set already.
         """
         
-        self.lineitem_total = self.product.price.get_price * self.quantity
+        self.lineitem_total = self.product.price * self.quantity
         super().save(*args, **kwargs)
         
     def __str__(self):
