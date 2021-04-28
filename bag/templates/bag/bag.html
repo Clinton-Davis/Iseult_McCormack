@@ -33,30 +33,43 @@
               <div class="row">
                 <div class="col">
                   <h5 class="hfi">
-                    <strong>Bag Total: &euro;{{ bag_total|floatformat:2 }}</strong>
+                    <strong
+                      >Bag Total: &euro;{{ bag_total|floatformat:2 }}</strong
+                    >
                   </h5>
                   {% if selected_location == "None" %}
-                <p><small>Delivary price will be will be caluclated <br> when you address is know.</small></p>
-              {% else %}
-              {% if product.category == "painting" %}
-              <h5 class="hfi">Delivary: &euro;{{code_parcel_price|floatformat:2 }}</h5>
-              <small>(To {{code}})</small>
-              {% else %} 
-              <h5 class="hfi">Delivary: &euro;{{ code_packet_price|floatformat:2 }}</h5>
-              <small>(To {{selected_location}})</small>
-              {% endif %}
-              {% endif %}
-                 
+                  <p>
+                    <small
+                      >Delivary price will be will be caluclated <br />
+                      when you address is know.</small
+                    >
+                  </p>
+                  {% else %} {% if product.category == "painting" %}
+                  <h5 class="hfi">
+                    Delivary: &euro;{{code_parcel_price|floatformat:2 }}
+                  </h5>
+                  <small>(To {{code}})</small>
+                  {% else %}
+                  <h5 class="hfi">
+                    Delivary: &euro;{{ code_packet_price|floatformat:2 }}
+                  </h5>
+                  <small>(To {{selected_location}})</small>
+                  {% endif %} {% endif %}
+
                   <h4 class="mt-4">
                     <strong class="hf"
                       >Grand Total:
-                      <span class="hf">&euro;</span> {{grand_total|floatformat:2}}</strong
+                      <span class="hf">&euro;</span>
+                      {{grand_total|floatformat:2}}</strong
                     >
                   </h4>
                   {% if free_delivery_delta > 0 %}
                   <p class="mb-1 text-danger">
                     You could get free delivery by spending just
-                    <strong><span class="hfib">&euro;</span>{{ free_delivery_delta }}</strong>
+                    <strong
+                      ><span class="hfib">&euro;</span>{{ free_delivery_delta
+                      }}</strong
+                    >
                     more!
                   </p>
                   {% endif %}
@@ -70,13 +83,16 @@
                     </span>
                     <span class="text-uppercase mx-1">Keep Shopping</span>
                   </a>
-                  <a href="{% url 'checkout:address' %}" class="hfi btn-grad_blue">
+                  <a
+                    href="{% url 'checkout:address' %}"
+                    class="hfi btn-grad_blue"
+                  >
                     <span class="text-uppercase mx-2">Secure Checkout</span>
                     <span class="icon">
                       <i class="fas fa-lock"></i>
                     </span>
                   </a>
-                  
+
                   <p class="text-muted mb-5">
                     A summary of your bag contents is below
                   </p>
@@ -91,7 +107,9 @@
                   <p class="my-0 text-center">{{ item.product.name}}</p>
                 </div>
                 <div class="col-6 order-sm-last">
-                  <p class="my-0 text-center">&euro;{{ item.product.get_price }}</p>
+                  <p class="my-0 text-center">
+                    &euro;{{ item.product.get_price }}
+                  </p>
                 </div>
                 <div class="col-6 order-sm-last">
                   <a
@@ -157,37 +175,45 @@
               <h5 class="hfi">
                 <strong>Bag Total: &euro;{{ bag_total|floatformat:2 }}</strong>
               </h5>
-             {% if selected_location == "None" %}
-                <a href="{% url 'checkout:address' %}"><small>Add address for Delivary cost</small></a>
+              {% if selected_location == "None" %}
+              <a href="{% url 'checkout:address' %}"
+                ><small>Add address for Delivary cost</small></a
+              >
+              {% else %} {% if product.category.name == "painting" %}
+              <h5 class="hfi">
+                Delivary: &euro;{{code_parcel_price|floatformat:2 }}
+              </h5>
+              <small>(To {{selected_location}})</small>
               {% else %}
-                {% if product.category.name == "painting" %}
-                <h5 class="hfi">Delivary: &euro;{{code_parcel_price|floatformat:2 }}</h5>
-                <small>(To {{selected_location}})</small>
-                {% else %} 
-                <h5 class="hfi">Delivary: &euro;{{ code_packet_price|floatformat:2 }}</h5>
-                <small>(To {{selected_location}})</small>
-                {% endif %}
-              {% endif %}
-            
-            
-              <h4 class="mt-4"> 
-                {% if location_name == "None"  %}
+              <h5 class="hfi">
+                Delivary: &euro;{{ code_packet_price|floatformat:2 }}
+              </h5>
+              <small>(To {{selected_location}})</small>
+              {% endif %} {% endif %}
+
+              <h4 class="mt-4">
+                {% if location_name == "None" %}
                 <strong class="hf"
-                >Total:
-                <span class="hf">&euro;</span> {{grand_total|floatformat:2}}</strong
-                ><br>
+                  >Total:
+                  <span class="hf">&euro;</span>
+                  {{grand_total|floatformat:2}}</strong
+                ><br />
                 <small>Without Delivary</small>
                 {% else %}
                 <strong class="hf"
-                >Grand Total:
-                <span class="hf">&euro;</span> {{grand_total|floatformat:2}}</strong
+                  >Grand Total:
+                  <span class="hf">&euro;</span>
+                  {{grand_total|floatformat:2}}</strong
                 >
                 {% endif %}
               </h4>
               {% if free_delivery_delta > 0 %}
               <p class="mb-1 text-danger">
                 You could get free delivery by spending just
-                <strong><span class="hfib">&euro;</span>{{ free_delivery_delta|floatformat:2 }}</strong>
+                <strong
+                  ><span class="hfib">&euro;</span>{{
+                  free_delivery_delta|floatformat:2 }}</strong
+                >
                 more!
               </p>
               {% endif %}
@@ -207,7 +233,6 @@
                   <i class="fas fa-lock"></i>
                 </span>
               </a>
-              
             </td>
           </tr>
         </table>
@@ -222,9 +247,6 @@
       {% endif %}
     </div>
   </div>
-</div>
-</div>
-</div>
 </div>
 
 {% endblock content %}

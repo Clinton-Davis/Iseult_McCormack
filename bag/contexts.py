@@ -35,16 +35,12 @@ def bag_contents(request):
                 code = Delivary.objects.get(code=default_country)
                 code_packet_price = code.packet_price /100
                 code_parcel_price = code.parcel_price /100
-            
-        
-            
+
     else:
         code = Delivary.objects.get(code="00")
         code_packet_price = code.packet_price /100
         code_parcel_price = code.parcel_price /100
         
-    
-    
     bag_total = bag_total / 100
     
     if bag_total < settings.FREE_DELIVERY_THRESHOLD:
@@ -68,6 +64,7 @@ def bag_contents(request):
         "code_parcel_price": code_parcel_price,
         'free_delivery_delta':free_delivery_delta,
         'free_delivery_threshold' : settings.FREE_DELIVERY_THRESHOLD,
+        'delivery': delivery,
         'grand_total': grand_total,
     }
     return context
