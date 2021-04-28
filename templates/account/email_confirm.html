@@ -10,7 +10,7 @@
 <div class="container_background">
   <div class="container data_container login invert_shadow">
     <div class="inner_div back_shadow">
-      <h1>{% trans "Confirm E-mail Address" %}</h1>
+      <h1 class="hf">{% trans "Confirm E-mail Address" %}</h1>
       <!-- 1 -->
       {% if confirmation %}
       <!-- 1 -->
@@ -27,7 +27,9 @@
         action="{% url 'account_confirm_email' confirmation.key %}"
       >
         {% csrf_token %}
-        <button type="submit">{% trans 'Confirm' %}</button>
+        <button class="btn-grad_blue hf" type="submit">
+          {% trans 'Confirm' %}
+        </button>
       </form>
       <!-- 1 -->
       {% else %}
@@ -37,8 +39,8 @@
       <p>
         {% blocktrans %}This e-mail confirmation link expired or is invalid.
         Please
-        <a href="{{ email_url }}">issue a new e-mail confirmation request</a>.{%
-        endblocktrans %}
+        <a href="{{ email_url }}">issue a new e-mail confirmation request</a>.
+        {% endblocktrans %}
       </p>
       <!-- 1 -->
       {% endif %}

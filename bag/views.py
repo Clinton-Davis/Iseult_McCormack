@@ -1,20 +1,59 @@
 from django.conf import settings
-from django.shortcuts import redirect, reverse, HttpResponse, get_object_or_404
+from django_countries import countries
+from django.shortcuts import redirect, reverse, HttpResponse, get_object_or_404, render
 from django.views.generic import TemplateView
+from django.views.generic.edit import FormView
 from django.contrib import messages
 from shop.models import Product
+from checkout.models import Delivary
+from profiles.models import UserProfile
+from .forms import LocationForm
+from checkout.views import get_delivary_price
+
 
 #? If in the future size becomes a avaiable, Use the Blue Code(?)
 
-class BagView(TemplateView):
-    template_name = 'bag/bag.html'
 
-    def get_context_data(self, **kwargs):
-        tax_rate = settings.TAX_RATE_PERCENTAGE
-        context = super().get_context_data(**kwargs)
-        context['tax_rate'] = tax_rate
-        context['in_bag'] = True
-        return context
+def bag_view(request):
+    template = 'bag/bag.html'
+    location_form = LocationForm()
+    
+    if request.user.is_authenticated:
+        try:
+            profile = UserProfile.objects.get(user=request.user)
+            user_delivary_code = profile.country
+            code = get_object_or_404(Delivary, code=user_delivary_code)
+            bag = request.session.get('bag', {})
+            for item_id, item_data in bag.items():
+                product = Product.objects.get(id=item_id)
+            
+            if product.category.name == "paintings":
+                delivery_price = code.parcel_price /100
+                location_name = code.name
+            else:
+                delivery_price = code.packet_price /100
+                location_name = code.name
+            
+            context = {
+                'product':product,
+                'delivery_price' : delivery_price,
+                'location_name' : location_name,
+                'in_bag':True,
+            }
+            return render(request,template,context )
+        
+        except UserProfile.DoesNotExist:
+                 messages.error(request, (
+                        "One of the products in your bag wasn't found in our database. "
+                        "Please call us for assistance!")
+                    )
+
+    context = {
+        'form' : location_form,
+        'in_bag':True,
+    }
+    return render(request,template,context )
+
 
 def add_to_bag(request, item_id):
     """ Adds quantity 1 to the bag as each item 
@@ -22,7 +61,7 @@ def add_to_bag(request, item_id):
     """
 
     product = get_object_or_404(Product, pk=item_id)
-    # redirect_url = request.POST.get('redirect_url')
+    product_cat_id = str(product.category_id)
     redirect_url = "bag:bag_view"
     size = None
     quantity = 1
@@ -33,13 +72,13 @@ def add_to_bag(request, item_id):
             Every item is unique.')
         return redirect(redirect_url)
     else:
+     
         bag[item_id] = quantity
         messages.success(request, f'Added {product.name} to your bag')
         
         request.session['bag'] = bag
         return redirect(redirect_url)
     
-
 #? def add_to_bag(request, item_id):
     # product = get_object_or_404(Product, pk=item_id)
     # quantity = int(request.POST.get('quantity'))

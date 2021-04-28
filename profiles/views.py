@@ -24,7 +24,7 @@ def profile(request):
                 request, 'Update failed, Please ensure the form is valid.')
     else:
         form = UserProfileForm(instance=profile)
-        orders = profile.Orders.all().order_by('-date')
+    orders = profile.Orders.all().order_by('-date')
 
     context = {
         'form': form,

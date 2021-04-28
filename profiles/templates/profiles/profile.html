@@ -10,7 +10,7 @@
   <div class="row">
     <div class="col">
       <hr />
-      <h2 class="logo-font mb-4">My Profile</h2>
+      <h2 class="logo-font mb-4">{{request.user|title }}'s Profile</h2>
       <hr />
     </div>
   </div>
@@ -26,7 +26,7 @@
         {% csrf_token %}
         <!-- 1 -->
         {{ form|crispy }}
-        <button class="btn btn-black rounded-0 text-uppercase float-right">
+        <button class="btn-grad_blue text-uppercase float-right">
           Update Information
         </button>
       </form>
