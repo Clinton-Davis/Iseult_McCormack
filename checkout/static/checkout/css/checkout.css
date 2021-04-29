@@ -79,7 +79,7 @@ select option[value=""] {
 }
 
 h1 {
-  color: #fffbf1;
+  color: #464645;
   text-shadow: 0 20px 25px #2e2e31, 0 40px 60px #2e2e31;
   font-size: 80px;
   font-weight: bold;
@@ -102,16 +102,21 @@ h1:after {
   top: 50%;
   display: block;
   border: 15px solid red;
+  border-radius: 20px;
   transform: translateX(-50%) translateY(-50%) rotate(0deg);
   animation: 10s infinite alternate ease-in-out tipsy;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
 }
 
 h1:before {
-  border-color: #d9524a #d9524a rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+  border-color: #584ad9 #0adefa rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
   z-index: -1;
 }
 
 h1:after {
-  border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #d9524a #d9524a;
+  border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #0bf817 #d9524a;
   box-shadow: 25px 25px 25px rgba(46, 46, 49, 0.8);
 }

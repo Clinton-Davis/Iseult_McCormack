@@ -39,6 +39,13 @@ class Order(models.Model):
     
     def get_grand_total(self):
         return "{:.2f}".format(self.grand_total / 100)
+    
+    def get_delivery_cost(self):
+        return "{:.2f}".format(self.delivery_cost / 100)
+    
+    def get_order_total(self):
+        return "{:.2f}".format(self.order_total / 100)
+    
 
     def _generate_order_number(self):
         """

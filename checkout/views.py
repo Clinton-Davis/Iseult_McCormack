@@ -77,6 +77,7 @@ def checkout(request):
     stripe_secret_key = settings.STRIPE_SECRET_KEY
     
     profile = UserProfile.objects.get(user=request.user)
+    
 
     if request.method == 'POST':
         bag = request.session.get('bag', {})
@@ -172,7 +173,7 @@ def checkout_success(request, order_number):
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-    
+    #Gets the Items in the bag takes it out of stock
     bag = request.session.get('bag', {})
     for item_id, item_data in bag.items():
          product = Product.objects.get(id=item_id)
@@ -219,39 +220,3 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
-
-
- 
-           
-    #         for item_id, item_data in bag.items():
-    #             try:
-    #                 product = Product.objects.get(id=item_id)
-    #                 if isinstance(item_data, int):
-    #                     order_line_item = OrderLineItem(
-    #                         order=order,
-    #                         product=product,
-    #                         quantity=item_data,
-    #                     )
-    #                     order_line_item.save()
-    #                 else:
-    #                     for size, quantity in item_data['items_by_size'].items():
-    #                         order_line_item = OrderLineItem(
-    #                             order=order,
-    #                             product=product,
-    #                             quantity=quantity,
-    #                             product_size=size,
-    #                         )
-    #                         order_line_item.save()
-    #             except Product.DoesNotExist:
-    #                 messages.error(request, (
-    #                     "One of the products in your bag wasn't found in our database. "
-    #                     "Please call us for assistance!")
-    #                 )
-    #                 order.delete()
-    #                 return redirect(reverse('view_bag'))
-
-    #             request.session['save_info'] = 'save-info' in request.POST
-    #             return redirect(reverse('checkout_success', args=[order.order_number]))
-    # else:
-    #     messages.error(request, 'There was an error with your form. \
-    #             Please double check your information.')
