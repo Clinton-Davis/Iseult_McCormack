@@ -36,6 +36,9 @@ class Order(models.Model):
     original_bag = models.TextField(null=False, blank=False, default='')
     stripe_pid = models.CharField(
         max_length=254, null=False, blank=False, default='')
+    
+    def get_grand_total(self):
+        return "{:.2f}".format(self.grand_total / 100)
 
     def _generate_order_number(self):
         """

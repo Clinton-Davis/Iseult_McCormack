@@ -60,7 +60,7 @@
                 <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
               </div>
               <div class="col-3 text-right">
-                <p class="my-0 small">&euro;{{ item.product.price }}</p>
+                <p class="my-0 small">&euro;{{ item.product.get_price }}</p>
               </div>
             </div>
             {% endfor %}
@@ -70,7 +70,7 @@
             <p class="ml-3 text-center">Please Check you details.</p>
             <div class="row text-black hf">
               <div class="col-7">
-                <div class="my-0">{{profile.fullname}}</div>
+                <div class="my-0">{{profile.full_name}}</div>
                 <div class="my-0">{{user.email}}</div>
                 <div class="my-0">{{profile.phone_number}}</div>
                 <div class="my-0">{{profile.street_address1}}</div>
@@ -154,16 +154,9 @@
     </div>
   </div>
 </div>
-
-<!-- <div id="loading-overlay">
-  <h1 class="text-light logo-font loading-spinner">
-    <span class="icon">
-      <i class="fas fa-3x fa-sync-alt fa-spin"></i>
-    </span>
-  </h1>
-</div> -->
+<!-- Spinner -->
 <div id="loading-overlay">
-  <h1 class="">Finalising Payment</h1>
+  <h1 class="hf">Finalising Payment</h1>
 </div>
 {% endblock %}
 <!-- 1 -->
