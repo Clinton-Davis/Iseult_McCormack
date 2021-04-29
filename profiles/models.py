@@ -13,7 +13,7 @@ class UserProfile(models.Model):
     delivery information and order history
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    fullname = models.CharField(max_length=80, null=False, blank=False)
+    full_name = models.CharField(max_length=80, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=True, blank=True)
     street_address1 = models.CharField(max_length=80, null=True, blank=True)
     street_address2 = models.CharField( max_length=80, null=True, blank=True)
@@ -22,7 +22,7 @@ class UserProfile(models.Model):
     county = models.CharField(max_length=80, null=True, blank=True)
     country = CountryField( blank_label='Country', null=True, blank=True)
     def __str__(self):
-        return self.fullname
+        return self.full_name
 
 
 @receiver(post_save, sender=User)

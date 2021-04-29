@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
             name='UserProfile',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('fullname', models.CharField(max_length=80)),
+                ('full_name', models.CharField(max_length=80)),
                 ('phone_number', models.CharField(blank=True, max_length=20, null=True)),
                 ('street_address1', models.CharField(blank=True, max_length=80, null=True)),
                 ('street_address2', models.CharField(blank=True, max_length=80, null=True)),
