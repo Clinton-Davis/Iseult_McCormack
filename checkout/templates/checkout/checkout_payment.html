@@ -105,36 +105,44 @@
             >
               {% csrf_token %}
               <input
-                type="text"
+                type="hidden"
                 name="full_name"
                 value="{{profile.full_name}}"
               />
-              <input type="text" name="email" value="{{profile.user.email}}" />
               <input
-                type="text"
+                type="hidden"
+                name="email"
+                value="{{profile.user.email}}"
+              />
+              <input
+                type="hidden"
                 name="phone_number"
                 value="{{profile.phone_number}}"
               />
 
               <input
-                type="text"
+                type="hidden"
                 name="street_address1"
                 value="{{profile.street_address1}}"
               />
               <input
-                type="text"
+                type="hidden"
                 name="street_address2"
                 value="{{profile.street_address2}}"
               />
-              <input type="text" name="postcode" value="{{profile.postcode}}" />
+              <input
+                type="hidden"
+                name="postcode"
+                value="{{profile.postcode}}"
+              />
 
               <input
-                type="text"
+                type="hidden"
                 name="town_or_city"
                 value="{{profile.town_or_city}}"
               />
-              <input type="text" name="county" value="{{profile.county}}" />
-              <input type="text" name="country" value="{{profile.country}}" />
+              <input type="hidden" name="county" value="{{profile.county}}" />
+              <input type="hidden" name="country" value="{{profile.country}}" />
               <fieldset class="px-3">
                 <legend class="fieldset-label small text-black px-2 w-auto">
                   <i class="pl-2 fab fa-stripe fa-3x"></i>
