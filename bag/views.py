@@ -24,6 +24,7 @@ def bag_view(request):
             user_delivary_code = profile.country
             code = get_object_or_404(Delivary, code=user_delivary_code)
             bag = request.session.get('bag', {})
+            
             if not bag:
                 messages.error(
                     request, "There's nothing in your bag at the moment")
@@ -32,13 +33,16 @@ def bag_view(request):
                 
                 for item_id, item_data in bag.items():
                     product = Product.objects.get(id=item_id)
-                
+                    
+                    
                 if product.category.name == "paintings":
                     delivery_price = code.parcel_price /100
                     location_name = code.name
+                    
                 else:
                     delivery_price = code.packet_price /100
                     location_name = code.name
+                    
                 
                 context = {
                     'product':product,

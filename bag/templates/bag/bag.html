@@ -179,7 +179,10 @@
               <a href="{% url 'checkout:address' %}"
                 ><small>Add address for Delivary cost</small></a
               >
-              {% else %} {% if product.category.name == "painting" %}
+              <!-- 1 -->
+              {% else %}
+              <!-- 1 -->
+              {% if product.category.name == "paintings" %}
               <h5 class="hfi">
                 Delivary: &euro;{{code_parcel_price|floatformat:2 }}
               </h5>
@@ -189,7 +192,9 @@
                 Delivary: &euro;{{ code_packet_price|floatformat:2 }}
               </h5>
               <small>(To {{selected_location}})</small>
-              {% endif %} {% endif %}
+              {% endif %}
+              <!-- 1 -->
+              {% endif %}
 
               <h4 class="mt-4">
                 {% if location_name == "None" %}

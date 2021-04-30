@@ -45,7 +45,7 @@ def bag_contents(request):
     
     if bag_total < settings.FREE_DELIVERY_THRESHOLD:
         free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - bag_total 
-        if "painting" in bag_categorys :
+        if "paintings" in bag_categorys :
             delivery = code_parcel_price
         else:
             delivery = code_packet_price

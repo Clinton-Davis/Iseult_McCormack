@@ -31,6 +31,7 @@ def get_delivary_price(request):
         delivery = code.parcel_price
     else:
         delivery = code.packet_price
+    print(delivery)
     return delivery
     
 
