@@ -36,6 +36,8 @@ class Order(models.Model):
     original_bag = models.TextField(null=False, blank=False, default='')
     stripe_pid = models.CharField(
         max_length=254, null=False, blank=False, default='')
+    stripe_receipt = models.URLField(
+        max_length=254, null=False, blank=True, default='')
     
     def get_grand_total(self):
         return "{:.2f}".format(self.grand_total / 100)
@@ -60,22 +62,16 @@ class Order(models.Model):
         return date_code + short.upper()
     
     def update_total(self):
-        """
-        Update grand total each time a line item is added,
-        accounting for delivery costs.
-        """
+       
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))[
             'lineitem_total__sum'] or 0
-
-        self.grand_total = self.order_total
+        self.delivery_cost = self.delivery_cost
+        self.grand_total = self.order_total + self.delivery_cost
         self.save()
     
     
     def save(self, *args, **kwargs):
-        """
-        Override the original save method to set
-        the order number if it hasn't been set already.
-        """
+       
         if not self.order_number:
             self.order_number = self._generate_order_number()
         super().save(*args, **kwargs)
@@ -96,10 +92,6 @@ class OrderLineItem(models.Model):
     lineitem_total = models.IntegerField(null=False, blank=False, editable=False)
     
     def save(self, *args, **kwargs):
-        """
-        Override the original save method to set
-        the order number if it hasn't been set already.
-        """
         
         self.lineitem_total = self.product.price * self.quantity
         super().save(*args, **kwargs)

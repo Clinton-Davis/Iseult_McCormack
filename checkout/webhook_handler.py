@@ -19,13 +19,10 @@ class StripeWH_Handler:
 
     def _send_shopping_confirmation_email(self, order):
         """Send a confirmation email"""
-
         customer_email = order.email
-
         subject = 'Iseult McCormack Creations Confirmation Email.'
-
         body = render_to_string(
-            'checkout\emails\confirmation_email_body.txt',
+            'checkout\emails\shopping_email_body.txt',
             {'order': order,
              'lineitems': OrderLineItem,
              'contact_email': settings.DEFAULT_FROM_EMAIL,
@@ -35,6 +32,23 @@ class StripeWH_Handler:
             body,
             settings.DEFAULT_FROM_EMAIL,
             [customer_email],
+            fail_silently=False,
+        )
+    def _email_order(self, order):
+        """Send a confirmation email"""
+        order_email = settings.DEFAULT_FROM_EMAIL,
+        subject = 'New Order From WebSite!'
+        body = render_to_string(
+            'checkout\emails\order_emails.txt',
+            {'order': order,
+             'lineitems': OrderLineItem,
+             'contact_email': settings.DEFAULT_FROM_EMAIL,
+             })
+        send_mail(
+            subject,
+            body,
+            settings.DEFAULT_FROM_EMAIL,
+            [order_email],
             fail_silently=False,
         )
         
@@ -54,7 +68,7 @@ class StripeWH_Handler:
         pid = intent.id
         bag = intent.metadata.bag
         save_info = intent.metadata.save_info
-
+        stripe_receipt = intent.charges.data[0].receipt_url
         billing_details = intent.charges.data[0].billing_details
         shipping_details = intent.shipping
         grand_total = round(intent.charges.data[0].amount / 100, 2)
@@ -103,7 +117,9 @@ class StripeWH_Handler:
                 attempt += 1
                 time.sleep(1)
         if order_exists:
+            order.stripe_receipt = stripe_receipt
             self._send_shopping_confirmation_email(order)
+            self._email_order(order)
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already in database',
                 status=200)
@@ -123,6 +139,7 @@ class StripeWH_Handler:
                     county=shipping_details.address.state,
                     original_bag=bag,
                     stripe_pid=pid,
+                    stripe_receipt=stripe_receipt,
                 )
                 for item_id, item_data in json.loads(bag).items():
                     product = Product.objects.get(id=item_id)
@@ -149,6 +166,7 @@ class StripeWH_Handler:
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
         self._send_shopping_confirmation_email(order)
+        self._email_order(order)
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
             status=200)
