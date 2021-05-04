@@ -93,7 +93,7 @@ class StripeWH_Handler:
             self._shopping_confirmation_email(order)
             self._email_order(order)
             return HttpResponse(
-                content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already in database',
+                content=f'Webhook received: {event["type"]} | SUCCESS: Verified in database',
                 status=200)
         
     def handle_payment_intent_payment_failed(self, event):
