@@ -10,7 +10,7 @@
   <div class="row">
     <div class="col">
       <hr />
-      <h2 class="logo-font mb-4">{{request.user|title }}'s Profile</h2>
+      <h2 class="logo-font mb-4">{{profile.user|title }}'s Profile</h2>
       <hr />
     </div>
   </div>
@@ -58,19 +58,11 @@
               <td>
                 <ul class="list_unstyled">
                   {% for item in order.lineitem.all %}
-                  <li class="small">
-                    {% if item.product.has_sizes %} Size
-                    <!-- 1 -->
-                    {{ item.product.size|upper }}
-                    <!-- 1 -->
-                    {% endif %}
-                    <!-- 1 -->
-                    {{ item.product.name }} x{{item.quantity }}
-                  </li>
+                  <li class="small">{{ item.product.category.name}}</li>
                   {% endfor %}
                 </ul>
               </td>
-              <td>&euro;{{ order.grand_total }}</td>
+              <td>&euro;{{ order.get_grand_total }}</td>
             </tr>
             {% endfor %}
           </tbody>

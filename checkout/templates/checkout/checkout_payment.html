@@ -60,7 +60,7 @@
                 <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
               </div>
               <div class="col-3 text-right">
-                <p class="my-0 small">&euro;{{ item.product.price }}</p>
+                <p class="my-0 small">&euro;{{ item.product.get_price }}</p>
               </div>
             </div>
             {% endfor %}
@@ -104,6 +104,45 @@
               id="payment-form"
             >
               {% csrf_token %}
+              <input
+                type="hidden"
+                name="full_name"
+                value="{{profile.full_name}}"
+              />
+              <input
+                type="hidden"
+                name="email"
+                value="{{profile.user.email}}"
+              />
+              <input
+                type="hidden"
+                name="phone_number"
+                value="{{profile.phone_number}}"
+              />
+
+              <input
+                type="hidden"
+                name="street_address1"
+                value="{{profile.street_address1}}"
+              />
+              <input
+                type="hidden"
+                name="street_address2"
+                value="{{profile.street_address2}}"
+              />
+              <input
+                type="hidden"
+                name="postcode"
+                value="{{profile.postcode}}"
+              />
+
+              <input
+                type="hidden"
+                name="town_or_city"
+                value="{{profile.town_or_city}}"
+              />
+              <input type="hidden" name="county" value="{{profile.county}}" />
+              <input type="hidden" name="country" value="{{profile.country}}" />
               <fieldset class="px-3">
                 <legend class="fieldset-label small text-black px-2 w-auto">
                   <i class="pl-2 fab fa-stripe fa-3x"></i>
@@ -154,12 +193,9 @@
     </div>
   </div>
 </div>
+<!-- Spinner -->
 <div id="loading-overlay">
-  <h1 class="text-light logo-font loading-spinner">
-    <span class="icon">
-      <i class="fas fa-3x fa-sync-alt fa-spin"></i>
-    </span>
-  </h1>
+  <h1 class="hf">Finalising Payment</h1>
 </div>
 {% endblock %}
 <!-- 1 -->
@@ -170,5 +206,7 @@
 {{ stripe_public_key|json_script:"id_stripe_public_key" }}
 <!-- 1 -->
 {{ client_secret|json_script:"id_client_secret" }}
+<!-- 1 -->
+
 <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock postloadjs %}

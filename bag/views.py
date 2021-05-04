@@ -7,7 +7,6 @@ from django.contrib import messages
 from shop.models import Product
 from checkout.models import Delivary
 from profiles.models import UserProfile
-from .forms import LocationForm
 from checkout.views import get_delivary_price
 
 
@@ -16,40 +15,56 @@ from checkout.views import get_delivary_price
 
 def bag_view(request):
     template = 'bag/bag.html'
-    location_form = LocationForm()
     
     if request.user.is_authenticated:
+        profile = UserProfile.objects.get(user=request.user)
+        
+        if not profile.country:
+            context = {
+                'in_bag':True,
+                }
+            return render(request,template,context )
+            
         try:
-            profile = UserProfile.objects.get(user=request.user)
             user_delivary_code = profile.country
             code = get_object_or_404(Delivary, code=user_delivary_code)
             bag = request.session.get('bag', {})
-            for item_id, item_data in bag.items():
-                product = Product.objects.get(id=item_id)
             
-            if product.category.name == "paintings":
-                delivery_price = code.parcel_price /100
-                location_name = code.name
+            if not bag:
+                messages.error(
+                    request, "There's nothing in your bag at the moment")
+                return redirect(reverse('shop:shop'))
             else:
-                delivery_price = code.packet_price /100
-                location_name = code.name
-            
-            context = {
-                'product':product,
-                'delivery_price' : delivery_price,
-                'location_name' : location_name,
-                'in_bag':True,
-            }
-            return render(request,template,context )
+                
+                for item_id, item_data in bag.items():
+                    product = Product.objects.get(id=item_id)
+                    
+                    
+                if product.category.name == "paintings":
+                    delivery_price = code.parcel_price /100
+                    location_name = code.name
+                    
+                else:
+                    delivery_price = code.packet_price /100
+                    location_name = code.name
+                    
+                
+                context = {
+                    'product':product,
+                    'delivery_price' : delivery_price,
+                    'location_name' : location_name,
+                    'in_bag':True,
+                }
+                return render(request,template,context )
         
         except UserProfile.DoesNotExist:
+            
                  messages.error(request, (
                         "One of the products in your bag wasn't found in our database. "
                         "Please call us for assistance!")
                     )
 
     context = {
-        'form' : location_form,
         'in_bag':True,
     }
     return render(request,template,context )

@@ -123,7 +123,7 @@ li {
 }
 
 .inner_div {
-  background: rgba(248, 248, 248, 0.76);
+  background: rgba(248, 248, 248, 1);
   padding: 1.5rem;
   margin: 2rem auto;
   border-radius: 15px;
@@ -144,6 +144,7 @@ li {
 .remove-item {
   cursor: pointer;
 }
+
 .btn-grad_red {
   background-image: linear-gradient(
     to right,

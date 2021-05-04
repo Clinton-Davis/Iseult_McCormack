@@ -1,3 +1,8 @@
+.invert_shadow {
+  box-shadow: 0px 2px 21px -1px rgba(0, 0, 0, 1),
+    0px 2px 15px -1px rgba(0, 0, 0, 1) inset;
+}
+
 .StripeElement,
 .stripe-style-input {
   box-sizing: border-box;
@@ -57,14 +62,76 @@ select option[value=""] {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(23, 162, 184, 0.85);
-  z-index: 9999;
+  background: rgba(255, 255, 255, 0.85);
+  z-index: 1;
 }
 
-.loading-spinner {
+/* .loading-spinner {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0;
   height: 100%;
+} */
+
+@keyframes tipsy {
+  0% {
+    transform: translateX(-50%) translateY(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-50%) rotate(360deg);
+  }
+}
+
+h1 {
+  color: #464645;
+  text-shadow: 0 20px 25px #2e2e31, 0 40px 60px #2e2e31;
+  font-size: 80px;
+  font-weight: bold;
+  text-decoration: none;
+  letter-spacing: -3px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+h1:before,
+h1:after {
+  content: "";
+  padding: 0.9em 0.4em;
+  position: absolute;
+  left: 50%;
+  width: 100%;
+  top: 50%;
+  display: block;
+  border: 15px solid red;
+  border-radius: 20px;
+  transform: translateX(-50%) translateY(-50%) rotate(0deg);
+  animation: 10s infinite alternate ease-in-out tipsy;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+h1:before {
+  border-color: #584ad9 #0adefa rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+  z-index: -1;
+}
+
+h1:after {
+  border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #0bf817 #d9524a;
+  box-shadow: 25px 25px 25px rgba(46, 46, 49, 0.8);
+}
+
+.checkout_success_bg {
+  background-image: url(/static/img/colour_rose2.jpeg);
+  background-size: cover;
+  background-position: center center;
+}
+
+.checkout_success_inner {
+  max-width: 35rem;
 }

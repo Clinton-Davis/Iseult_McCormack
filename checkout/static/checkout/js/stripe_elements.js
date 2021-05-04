@@ -7,6 +7,7 @@
 
 var stripePublicKey = $("#id_stripe_public_key").text().slice(1, -1);
 var clientSecret = $("#id_client_secret").text().slice(1, -1);
+// var country = $("#id_country").text().slice(1, -1);
 var stripe = Stripe(stripePublicKey);
 var elements = stripe.elements();
 var style = {
@@ -73,6 +74,9 @@ form.addEventListener("submit", function (ev) {
         .confirmCardPayment(clientSecret, {
           payment_method: {
             card: card,
+            billing_details: {
+              email: $.trim(form.email.value),
+            },
           },
         })
         .then(function (result) {

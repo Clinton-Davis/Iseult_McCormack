@@ -18,24 +18,40 @@ class Order(models.Model):
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=False, blank=False)
-    country = CountryField(
-        blank_label="Country *", blank=False, null=False)
-    postcode = models.CharField(
-        max_length=20, null=False, blank=False)
-    town_or_city = models.CharField(max_length=40, null=False, blank=False)
     street_address1 = models.CharField(max_length=80, null=False, blank=False)
     street_address2 = models.CharField(max_length=80, null=True, blank=True)
+    town_or_city = models.CharField(max_length=40, null=False, blank=False)
+    postcode = models.CharField(
+        max_length=20, null=False, blank=False)
     county = models.CharField(max_length=80, null=True, blank=True)
+    country = CountryField(
+        blank_label="Country *", blank=False, null=False)
+    country_name = models.CharField(max_length=150, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
-    delivery_cost = models.DecimalField(
-        max_digits=6, decimal_places=2, null=False, default=0)
-    order_total = models.DecimalField(
-        max_digits=10, decimal_places=2, null=False, default=0)
-    grand_total = models.DecimalField(
-        max_digits=10, decimal_places=2, null=False, default=0)
+    delivery_cost = models.IntegerField(null=False, default=0)
+    
+    order_total = models.IntegerField(null=False, default=0)
+    grand_total = models.IntegerField(null=False, default=0)
     original_bag = models.TextField(null=False, blank=False, default='')
     stripe_pid = models.CharField(
         max_length=254, null=False, blank=False, default='')
+    stripe_receipt = models.URLField(
+        max_length=254, null=False, blank=True, default='')
+    
+    def get_grand_total(self):
+        return "{:.2f}".format(self.grand_total / 100)
+    
+    def get_delivery_cost(self):
+        return "{:.2f}".format(self.delivery_cost / 100)
+    
+    def get_order_total(self):
+        return "{:.2f}".format(self.order_total / 100)
+    
+    def get_first_name(self):
+        names = self.full_name.split(" ")
+        first_name = names[0]
+        return first_name
+    
 
     def _generate_order_number(self):
         """
@@ -50,22 +66,15 @@ class Order(models.Model):
         return date_code + short.upper()
     
     def update_total(self):
-        """
-        Update grand total each time a line item is added,
-        accounting for delivery costs.
-        """
+       
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))[
             'lineitem_total__sum'] or 0
-
-        self.grand_total = self.order_total
+        self.delivery_cost = self.delivery_cost
+        self.grand_total = self.order_total + self.delivery_cost
         self.save()
     
     
     def save(self, *args, **kwargs):
-        """
-        Override the original save method to set
-        the order number if it hasn't been set already.
-        """
         if not self.order_number:
             self.order_number = self._generate_order_number()
         super().save(*args, **kwargs)
@@ -86,10 +95,6 @@ class OrderLineItem(models.Model):
     lineitem_total = models.IntegerField(null=False, blank=False, editable=False)
     
     def save(self, *args, **kwargs):
-        """
-        Override the original save method to set
-        the order number if it hasn't been set already.
-        """
         
         self.lineitem_total = self.product.price * self.quantity
         super().save(*args, **kwargs)
@@ -99,6 +104,7 @@ class OrderLineItem(models.Model):
     
     
 class Delivary(models.Model):
+    
         name = models.CharField(max_length=150, null=False, blank=False)
         code = models.CharField(max_length=2, null=False, blank=False)
         zone = models.IntegerField(null=False, blank=False, default=0)
