@@ -2,28 +2,26 @@ New Order:
 Order Number: {{ order.order_number }}
 Order Date:   {{ order.date }}
 
-Stripe receipt: {{ order.stripe_receipt}}
-
 items:
 {% for item in order.lineitems.all %}
-{{ item.product.name }}{% if item.product_size %} - Size: {{ item.product_size|upper  }}{% endif %}  / {{ item.quantity }} @ €{{ item.product.price }} each     
+{{ item.quantity }} {{ item.product.name }} {{ item.product.code }}
 {% endfor %}
 
 
 Client:
-
 Name:  {{ order.full_name }}
 Phone: {{ order.phone_number }}
 Email: {{ order.email }}
 
-Shipped to: 
 
+Shipped to: 
 {{ order.street_address1 }}
 {{ order.street_address2 }}
 {{ order.county }}
 {{ order.town_or_city }}
 {{ order.postcode }}
-{{ order.country }}
+{{ order.country_name }}
 
 Have a Great Day Sister :)
 
+Stripe receipt: {{ order.stripe_receipt}}

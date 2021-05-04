@@ -144,6 +144,7 @@ li {
 .remove-item {
   cursor: pointer;
 }
+
 .btn-grad_red {
   background-image: linear-gradient(
     to right,

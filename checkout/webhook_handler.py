@@ -3,11 +3,13 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
 from datetime import datetime
-from .models import Order, OrderLineItem
+from .models import Order, OrderLineItem, Delivary
 from shop.models import Product
 from profiles.models import UserProfile
 import json
 import time
+
+
 
 
 class StripeWH_Handler:
@@ -19,6 +21,7 @@ class StripeWH_Handler:
 
     def _shopping_confirmation_email(self, order):
         """Send a confirmation email"""
+        
         customer_email = order.email
         subject = 'Iseult McCormack Creations Confirmation Email.'
         body = render_to_string(
@@ -65,7 +68,6 @@ class StripeWH_Handler:
         Handle the payment_intent.succeeded webhook from Stripe
         """
         intent = event.data.object
-        print(intent)
         pid = intent.id
         bag = intent.metadata.bag
         save_info = intent.metadata.save_info
@@ -85,6 +87,9 @@ class StripeWH_Handler:
                 attempt += 1
                 time.sleep(1)
         if order_exists:
+            order.stripe_receipt = stripe_receipt
+            order.save()
+            
             self._shopping_confirmation_email(order)
             self._email_order(order)
             return HttpResponse(

@@ -18,16 +18,18 @@ class Order(models.Model):
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=False, blank=False)
-    country = CountryField(
-        blank_label="Country *", blank=False, null=False)
-    postcode = models.CharField(
-        max_length=20, null=False, blank=False)
-    town_or_city = models.CharField(max_length=40, null=False, blank=False)
     street_address1 = models.CharField(max_length=80, null=False, blank=False)
     street_address2 = models.CharField(max_length=80, null=True, blank=True)
+    town_or_city = models.CharField(max_length=40, null=False, blank=False)
+    postcode = models.CharField(
+        max_length=20, null=False, blank=False)
     county = models.CharField(max_length=80, null=True, blank=True)
+    country = CountryField(
+        blank_label="Country *", blank=False, null=False)
+    country_name = models.CharField(max_length=150, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
     delivery_cost = models.IntegerField(null=False, default=0)
+    
     order_total = models.IntegerField(null=False, default=0)
     grand_total = models.IntegerField(null=False, default=0)
     original_bag = models.TextField(null=False, blank=False, default='')
@@ -44,6 +46,11 @@ class Order(models.Model):
     
     def get_order_total(self):
         return "{:.2f}".format(self.order_total / 100)
+    
+    def get_first_name(self):
+        names = self.full_name.split(" ")
+        first_name = names[0]
+        return first_name
     
 
     def _generate_order_number(self):
@@ -68,7 +75,6 @@ class Order(models.Model):
     
     
     def save(self, *args, **kwargs):
-       
         if not self.order_number:
             self.order_number = self._generate_order_number()
         super().save(*args, **kwargs)
@@ -98,6 +104,7 @@ class OrderLineItem(models.Model):
     
     
 class Delivary(models.Model):
+    
         name = models.CharField(max_length=150, null=False, blank=False)
         code = models.CharField(max_length=2, null=False, blank=False)
         zone = models.IntegerField(null=False, blank=False, default=0)

@@ -31,9 +31,12 @@ def get_delivary_price(request):
         delivery = code.parcel_price
     else:
         delivery = code.packet_price
-    print(delivery)
     return delivery
     
+def get_country_name(name):
+    code = Delivary.objects.get(code=name)
+    name = code.name
+    return name
 
 @require_POST
 def cache_checkout_data(request):
@@ -101,7 +104,10 @@ def checkout(request):
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
             delivary = get_delivary_price(request)
+            name = order.country
+            get_name = get_country_name(name)
             order.delivery_cost = delivary
+            order.country_name = get_name
             order.stripe_pid = pid
             order.original_bag = json.dumps(bag)
             order.save()

@@ -1,3 +1,8 @@
+.invert_shadow {
+  box-shadow: 0px 2px 21px -1px rgba(0, 0, 0, 1),
+    0px 2px 15px -1px rgba(0, 0, 0, 1) inset;
+}
+
 .StripeElement,
 .stripe-style-input {
   box-sizing: border-box;
@@ -119,4 +124,14 @@ h1:before {
 h1:after {
   border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #0bf817 #d9524a;
   box-shadow: 25px 25px 25px rgba(46, 46, 49, 0.8);
+}
+
+.checkout_success_bg {
+  background-image: url(/static/img/colour_rose2.jpeg);
+  background-size: cover;
+  background-position: center center;
+}
+
+.checkout_success_inner {
+  max-width: 35rem;
 }

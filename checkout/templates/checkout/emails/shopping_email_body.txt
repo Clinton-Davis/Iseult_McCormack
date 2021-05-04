@@ -1,32 +1,29 @@
-Hello {{ order.full_name }}!
+Hello {{ order.get_first_name }}!
 
-Thank you for shopping with me.
+Thank you for shopping with us.
 
 This is your confirmation of your order from Iseult McCormack Creations. 
 
 Order Number: {{ order.order_number }}
-Order Date: {{ order.date }}
+Order Date:   {{ order.date }}
 
 {% for item in order.lineitems.all %}
-{{ item.product.name }}{% if item.product_size %} - Size: {{ item.product_size|upper  }}{% endif %}  / {{ item.quantity }} @ €{{ item.product.price }} each          
+{{ item.quantity }} {{ item.product.name }} @ €{{ item.product.price }} each          
 {% endfor %}
 
 You Paid:
-Order Total: €{{ order.order_total }}
-Delivery: €{{ order.get_delivery_cost }}
+Order Total: €{{ order.get_order_total }}
+Delivery:    €{{ order.get_delivery_cost }}
+Grand Total: €{{ order.get_grand_total }}
 
-Grand Total: €{{ order.grand_total }}
 
-Stripe receipt: {{ order.stripe_receipt}}
-
-Your order will be shipped to: 
-
+Your order will be shipped to:
 {{ order.street_address1 }}
 {{ order.street_address2 }}
 {{ order.town_or_city }}
 {{ order.postcode }}
 {{ order.county }}
-{{ order.country }}
+{{ order.country_name }}
 
 We've got your phone number on file as {{ order.phone_number }}.
 
@@ -37,3 +34,5 @@ Hope to see you again soon.
 Greatfully
 
 Iseult McCormack Creations
+
+Stripe receipt: {{ order.stripe_receipt}}

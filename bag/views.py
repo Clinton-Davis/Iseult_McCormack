@@ -7,7 +7,6 @@ from django.contrib import messages
 from shop.models import Product
 from checkout.models import Delivary
 from profiles.models import UserProfile
-from .forms import LocationForm
 from checkout.views import get_delivary_price
 
 
@@ -16,11 +15,17 @@ from checkout.views import get_delivary_price
 
 def bag_view(request):
     template = 'bag/bag.html'
-    location_form = LocationForm()
     
     if request.user.is_authenticated:
+        profile = UserProfile.objects.get(user=request.user)
+        
+        if not profile.country:
+            context = {
+                'in_bag':True,
+                }
+            return render(request,template,context )
+            
         try:
-            profile = UserProfile.objects.get(user=request.user)
             user_delivary_code = profile.country
             code = get_object_or_404(Delivary, code=user_delivary_code)
             bag = request.session.get('bag', {})
@@ -53,13 +58,13 @@ def bag_view(request):
                 return render(request,template,context )
         
         except UserProfile.DoesNotExist:
+            
                  messages.error(request, (
                         "One of the products in your bag wasn't found in our database. "
                         "Please call us for assistance!")
                     )
 
     context = {
-        'form' : location_form,
         'in_bag':True,
     }
     return render(request,template,context )
