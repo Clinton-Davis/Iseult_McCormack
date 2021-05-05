@@ -4,15 +4,12 @@
 <!-- 1 -->
 {% load bag_tools %}
 <!-- 1 -->
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}" />
-{% endblock extra_css %}
 <!-- 1 -->
 {% block head_title %} | Checkout {% endblock head_title %}
 <!-- 1 -->
 {% block content %}
-<div class="container_background">
-  <div class="container data_container about invert_shadow">
+<section class="flyers">
+  <div class="container data_container rain invert_shadow">
     <div class="inner_div_checkout back_shadow">
       <div class="container">
         <div class="row">
@@ -56,7 +53,9 @@
                 </a>
               </div>
               <div class="col-7">
-                <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+                <p class="my-0">
+                  <strong class="hf">{{ item.product.name }}</strong>
+                </p>
                 <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
               </div>
               <div class="col-3 text-right">
@@ -67,10 +66,10 @@
 
             <hr class="my-0" />
             <br />
-            <p class="ml-3 text-center">Please Check you details.</p>
+            <p class="ml-3 hf">Delivaring To:</p>
             <div class="row text-black hf">
               <div class="col-7">
-                <div class="my-0">{{profile.full_name}}</div>
+                <div class="my-0">{{profile.full_name|title}}</div>
                 <div class="my-0">{{user.email}}</div>
                 <div class="my-0">{{profile.phone_number}}</div>
                 <div class="my-0">{{profile.street_address1}}</div>
@@ -96,8 +95,9 @@
               </div>
             </div>
           </div>
-
-          <div class="col-12 col-lg-6">
+        </div>
+        <div class="row">
+          <div class="col-12">
             <form
               action="{% url 'checkout:checkout_payment' %}"
               method="POST"
@@ -192,10 +192,10 @@
       </div>
     </div>
   </div>
-</div>
+</section>
 <!-- Spinner -->
 <div id="loading-overlay">
-  <h1 class="hf">Finalising Payment</h1>
+  <h1 id="loading_text" class="hf">Finalising Payment</h1>
 </div>
 {% endblock %}
 <!-- 1 -->

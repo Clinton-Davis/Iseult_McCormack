@@ -23,7 +23,6 @@ class StripeWH_Handler:
         """Send a confirmation email"""
         
         customer_email = order.email
-        subject = 'Iseult McCormack Creations Confirmation Email.'
         body = render_to_string(
             'checkout\emails\shopping_email_body.txt',
             {'order': order,
@@ -31,16 +30,15 @@ class StripeWH_Handler:
              'contact_email': settings.DEFAULT_FROM_EMAIL,
              })
         send_mail(
-            subject,
-            body,
-            settings.DEFAULT_FROM_EMAIL,
-            [customer_email],
+            subject = 'Iseult McCormack Creations Confirmation Email.',
+            message=body,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[customer_email],
             fail_silently=False,
         )
+        
     def _email_order(self, order):
         """Send a confirmation email"""
-        order_email = settings.DEFAULT_FROM_EMAIL,
-        subject = 'New Order From WebSite!'
         body = render_to_string(
             'checkout\emails\order_emails.txt',
             {'order': order,
@@ -48,10 +46,10 @@ class StripeWH_Handler:
              'contact_email': settings.DEFAULT_FROM_EMAIL,
              })
         send_mail(
-            subject,
-            body,
-            settings.DEFAULT_FROM_EMAIL,
-            [order_email],
+            subject = 'New Order From WebSite!',
+            message=body,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[settings.DEFAULT_FROM_EMAIL],
             fail_silently=False,
         )
         

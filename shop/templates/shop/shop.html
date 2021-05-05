@@ -6,7 +6,7 @@
 <!-- 1 -->
 {% block content %}
 <!-- 1 -->
-<section class="background_image">
+<section class="flyers">
   <div class="container shop_container_outer">
     <div class="row">
       <div class="col text-center mt-3">
@@ -31,7 +31,7 @@
         <!-- 1 -->
         {% if item.in_stock %}
         <a href="{{ item.get_absolute_url }}" class="a_card">
-          <div class="card m-3 p-1" style="width: 18rem">
+          <div class="card m-3 p-1 ld ld-power-on" style="width: 18rem">
             {% if item.image %}
             <img
               src="{{ item.image.url }}"

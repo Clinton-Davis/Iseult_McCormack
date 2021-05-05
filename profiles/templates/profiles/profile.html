@@ -6,17 +6,20 @@
 <!-- 1 -->
 {% block content %}
 
-<div class="container">
-  <div class="row">
-    <div class="col">
+<section class="flyers">
+  <div class="row inner_div profiles_dashboard_inner invert_shadow">
+    <!-- Header -->
+    <div class="col-12">
       <hr />
-      <h2 class="logo-font mb-4">{{profile.user|title }}'s Profile</h2>
+      <h2 class="logo-font mb-4 display-4 text-center hfi">
+        {{profile.user|title }}'s Profile
+      </h2>
       <hr />
     </div>
-  </div>
-  <div class="row">
-    <div class="col-12 col-lg-6">
-      <p class="text-muted">Default Delivery Information</p>
+    <!-- Address Form -->
+    <div class="col-12 col-lg-6 dashbord_blocks">
+      <h4 class="hf text-center">Your Delivery Address</h4>
+      <hr />
       <form
         class="mt-3"
         action="{% url 'profiles:profile' %}"
@@ -26,21 +29,22 @@
         {% csrf_token %}
         <!-- 1 -->
         {{ form|crispy }}
-        <button class="btn-grad_blue text-uppercase float-right">
+        <button class="btn-grad_blue w-100 text-uppercase float-right hfi">
           Update Information
         </button>
       </form>
     </div>
-    <div class="col-12 col-lg-6">
-      <p class="text-muted">Order History</p>
+    <!-- Order History  -->
+    <div class="col-12 col-lg-6 dashbord_blocks">
+      <h4 class="hf text-center">Order History</h4>
+      <hr />
       <div class="order-history table-responsive">
         <table class="table table-sm table-borderless">
           <thead>
             <tr>
-              <th>Order Number</th>
-              <th>Date</th>
-              <th>Items</th>
-              <th>Order Total</th>
+              <th class="hf">Order Number</th>
+              <th class="text-center hf">Date</th>
+              <th class="text-right hf">Order Total</th>
             </tr>
           </thead>
           <tbody>
@@ -54,15 +58,9 @@
                   {{order.order_number }}
                 </a>
               </td>
-              <td>{{ order.date|date:"d/m/Y" }}</td>
-              <td>
-                <ul class="list_unstyled">
-                  {% for item in order.lineitem.all %}
-                  <li class="small">{{ item.product.category.name}}</li>
-                  {% endfor %}
-                </ul>
-              </td>
-              <td>&euro;{{ order.get_grand_total }}</td>
+              <td class="text-center">{{ order.date|date:"d/m/Y" }}</td>
+
+              <td class="text-right">&euro;{{ order.get_grand_total }}</td>
             </tr>
             {% endfor %}
           </tbody>
@@ -70,7 +68,7 @@
       </div>
     </div>
   </div>
-</div>
+</section>
 {% endblock content %}
 <!-- 1 -->
 {% block postloadjs %}

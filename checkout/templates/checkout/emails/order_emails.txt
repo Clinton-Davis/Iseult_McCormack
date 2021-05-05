@@ -6,13 +6,10 @@ items:
 {% for item in order.lineitems.all %}
 {{ item.quantity }} {{ item.product.name }} {{ item.product.code }}
 {% endfor %}
-
-
 Client:
 Name:  {{ order.full_name }}
 Phone: {{ order.phone_number }}
 Email: {{ order.email }}
-
 
 Shipped to: 
 {{ order.street_address1 }}

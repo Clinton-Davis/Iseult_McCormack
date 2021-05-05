@@ -5,21 +5,22 @@
 {% block head_title %}| Contact {% endblock head_title %}
 <!-- 1 -->
 {% block content %}
-<div class="container_background">
-  <div class="container data_container contact invert_shadow">
-    <div class="inner_div back_shadow">
-      <h1 class="display-3 text-center">Contact Us</h1>
-      <p>
-        If you would like to commision a piece or get in contact. <br />
-        Please contact me here.
-      </p>
+<section class="flyers">
+  <div class="container data_container">
+    <div class="inner_div invert_shadow">
+      <h1 class="display-3 text-center hfi">Get In Touch</h1>
+      <p>You can get in touch with me here.</p>
       <form method="POST" class="">
         {% csrf_token %}
         <!-- 1 -->
         {{ form|crispy }}
-        <input type="submit" class="btn-grad_blue" value="Submit message" />
+        <input
+          type="submit"
+          class="btn-grad_blue w-100 hfi"
+          value="Send Message"
+        />
       </form>
     </div>
   </div>
-</div>
+</section>
 {% endblock content %}

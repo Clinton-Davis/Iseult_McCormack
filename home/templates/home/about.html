@@ -5,14 +5,15 @@
 {% block head_title %} - About {% endblock head_title %}
 <!-- 1 -->
 {% block content %}
-<div class="container_background">
-  <div class="container data_container about invert_shadow">
-    <div class="inner_div_about back_shadow">
-      <h1 class="display-3 text-center">About Iseult</h1>
+<section class="flyers">
+  <div class="container data_container">
+    <div class="inner_div_about invert_shadow">
+      <h1 class="display-3 text-center hfi">Iseult McCormack</h1>
+      <h4 class="text-center hfi">Artest, Mother, Life Lover</h4>
       {% for bio in about %}
       <p>{{ bio.bio|safe }}</p>
       {% endfor %}
     </div>
   </div>
-</div>
+</section>
 {% endblock content %}
