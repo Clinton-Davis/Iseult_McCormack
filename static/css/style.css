@@ -148,6 +148,35 @@ li {
   background-size: cover;
   background-position: center center;
 }
+.speed {
+  background-image: url(/static/img/Speedline.svg);
+  background-size: cover;
+  background-position: center center;
+}
+
+.gooey {
+  background-image: url(/static/img/nav_gooey.svg);
+  background-size: cover;
+  background-position: center center;
+}
+.nav_gooey {
+  background-image: url(/static/img/nav_gooey.svg);
+  background-size: cover;
+  background-position: center center;
+}
+
+.nav_Raindrops {
+  background-image: url(/static/img/Raindrop_deep.svg);
+  background-size: cover;
+  background-position: center center;
+}
+
+.outer_container {
+  padding: 1rem;
+  margin: 2rem auto;
+  border-radius: 20px;
+  width: 100%;
+}
 
 .inner_div {
   background: rgba(248, 248, 248, 1);
@@ -155,6 +184,7 @@ li {
   margin: 2rem auto;
   border-radius: 15px;
   backdrop-filter: blur(5px);
+  width: 90%;
 }
 
 .inner_div_about {
@@ -333,14 +363,27 @@ nav {
   width: 30px;
   height: 3px;
   margin: 3px;
-  background-color: black;
+  border-radius: 5px;
+  border: 1px rgba(0, 0, 0, 0.568) solid;
   transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
 }
-
+.line2 {
+  background: #4568bb;
+}
+.line3 {
+  background: #852c74;
+}
+.line1 {
+  background: #07377e;
+}
 .burger {
   display: none;
   cursor: pointer;
@@ -353,13 +396,8 @@ nav {
     height: 2.5rem;
     width: 100%;
     top: 11vh;
-    z-index: -1;
-    background-image: url(/static/img/nav.png);
-    background-position: center;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    z-index: -10;
+    background: #ebecee;
     transform: translateY(-300%);
     -webkit-transform: translateY(-300%);
     -moz-transform: translateY(-300%);
@@ -414,21 +452,21 @@ nav {
 }
 
 .toggle .line1 {
-  transform: rotate(-405deg) translate(-4px, 5px);
-  -webkit-transform: rotate(-405deg) translate(-4px, 5px);
-  -moz-transform: rotate(-405deg) translate(-4px, 5px);
-  -ms-transform: rotate(-405deg) translate(-4px, 5px);
-  -o-transform: rotate(-405deg) translate(-4px, 5px);
+  transform: rotate(720deg) translate(0px, -6px);
+  -webkit-transform: rotate(720deg) translate(0px, -6px);
+  -moz-transform: rotate(720deg) translate(0px, -6px);
+  -ms-transform: rotate(720deg) translate(0px, -6px);
+  -o-transform: rotate(720deg) translate(0px, -6px);
 }
 .toggle .line2 {
   opacity: 0;
 }
 .toggle .line3 {
-  transform: rotate(405deg) translate(-4px, -5px);
-  -webkit-transform: rotate(405deg) translate(-4px, -5px);
-  -moz-transform: rotate(405deg) translate(-4px, -5px);
-  -ms-transform: rotate(405deg) translate(-4px, -5px);
-  -o-transform: rotate(405deg) translate(-4px, -5px);
+  transform: rotate(-720deg) translate(0px, 6px);
+  -webkit-transform: rotate(-720deg) translate(0px, 6px);
+  -moz-transform: rotate(-720deg) translate(0px, 6px);
+  -ms-transform: rotate(-720deg) translate(0px, 6px);
+  -o-transform: rotate(-720deg) translate(0px, 6px);
 }
 
 .count {
@@ -702,4 +740,54 @@ select option[value=""] {
 
 .checkout_success_inner {
   max-width: 35rem;
+}
+
+/** ABOUT  */
+
+.about_inner_div {
+  background: rgba(248, 248, 248, 1);
+  padding: 1.5rem;
+  margin: 2rem auto;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+}
+
+/*! MEDIA QUERYS */
+
+/*? Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .outer_container {
+    width: 80%;
+  }
+}
+
+/*? Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .outer_container {
+    width: 70%;
+  }
+}
+
+/*? Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .outer_container {
+    width: 60%;
+  }
+}
+
+/*? xtra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .outer_container {
+    width: 50%;
+  }
+}
+@media (min-width: 1300px) {
+  .outer_container {
+    width: 40%;
+  }
+}
+@media (min-width: 1600px) {
+  .outer_container {
+    max-width: 65rem;
+  }
 }
