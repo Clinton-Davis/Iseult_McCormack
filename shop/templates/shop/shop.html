@@ -13,6 +13,7 @@
         <h2 class="display-3 hfi text-wht p-3">Iseult's Shop</h2>
       </div>
     </div>
+
     <div class="row shop_catogery_links hfi">
       <ul>
         <li>
@@ -27,6 +28,8 @@
     </div>
     <div class="row">
       <div class="container shop_container">
+        {% if item %}
+        <!-- 1 -->
         {% for item in product %}
         <!-- 1 -->
         {% if item.in_stock %}
@@ -59,6 +62,17 @@
         <!-- 1 -->
         {% endfor %}
         <!-- 1 -->
+        {% else %}
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <h2 class="hf text-center">Sorry No Stock Left</h2>
+              <p class="text-center">The Painter is painting</p>
+              <p class="text-center">The ink is drying</p>
+            </div>
+          </div>
+        </div>
+        {% endif %}
       </div>
     </div>
   </div>
