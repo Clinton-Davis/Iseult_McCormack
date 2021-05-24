@@ -8,11 +8,9 @@ from .forms import ProductCommentForm
 from .models import Product, Category, ProductView
 
 
-
 class All_Products(View):
     context_object_name = 'product'
     template_name = 'shop/shop.html'
-    
     def get(self, request, *args, **kwargs):
         products = Product.objects.all().order_by('code')
         query = None

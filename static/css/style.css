@@ -587,8 +587,8 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 36rem;
+  justify-content: start;
+  min-height: 28rem;
 }
 .image-container img {
   height: 100%;

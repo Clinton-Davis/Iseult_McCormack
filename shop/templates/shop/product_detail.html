@@ -2,6 +2,11 @@
 <!-- 1 -->
 {% load static %}
 <!-- 1 -->
+{% load cloudinary %}
+<!-- 1 -->
+{% cloudinary product_model_instance.image.name width=900 height=900
+format='webP' crop='fill' %}
+<!-- 1 -->
 {% block head_title %}| Shop {% endblock head_title %}
 <!-- 1 -->
 {% block content %}
@@ -18,7 +23,7 @@
                 <img
                   class="card-img-top img-fluid"
                   src="{{ product.image.url }}"
-                  alt="{{ product.name }}"
+                  alt="{{ product.image.name }}"
                 />
               </a>
               {% else %}

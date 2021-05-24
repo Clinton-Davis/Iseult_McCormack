@@ -2,6 +2,10 @@
 <!-- 1 -->
 {% load static %}
 <!-- 1 -->
+{% load cloudinary %}
+<!-- 1 -->
+
+<!-- 1 -->
 {% block head_title %}| Shop {% endblock head_title %}
 <!-- 1 -->
 {% block content %}
@@ -33,13 +37,15 @@
         {% for item in product %}
         <!-- 1 -->
         {% if item.in_stock %}
+        <!-- 1 -->
+
         <a href="{{ item.get_absolute_url }}" class="a_card">
           <div class="card m-3 p-1 ld ld-power-on" style="width: 18rem">
             {% if item.image %}
             <img
               src="{{ item.image.url }}"
               class="card-img-top"
-              alt="{{ item.name}}"
+              alt="{{ item.image.name }}"
             />
             {% else %}
             <img

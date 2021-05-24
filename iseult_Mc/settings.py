@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -169,7 +171,7 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / "media" 
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -226,3 +228,10 @@ EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 NOTIFY_EMAIL = env('NOTIFY_EMAIL')
 DEFAULT_FROM_EMAIL = env('EMAIL_HOST_USER')
+
+#CLOUDINARY_CONFIG
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': env('CLOUD_NAME'),
+    'API_KEY': env('API_KEY'),
+    'API_SECRET': env('API_SECRET'),
+}

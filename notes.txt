@@ -1,0 +1,6 @@
+Cloudinary.com 
+Abundance@2021
+Cloud-name: iseult-mccormack-creations
+API-Key: 338872523227359
+API Secret: Ol8_Q8Fit8b2VMPdUCO6glg1HU4
+API Environment variable: CLOUDINARY_URL=cloudinary://338872523227359:Ol8_Q8Fit8b2VMPdUCO6glg1HU4@iseult-mccormack-creations
