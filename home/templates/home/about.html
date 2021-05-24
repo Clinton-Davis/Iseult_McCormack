@@ -5,14 +5,47 @@
 {% block head_title %} - About {% endblock head_title %}
 <!-- 1 -->
 {% block content %}
-<section class="nav_gooey">
-  <div class="container outer_container invert_shadow">
-    <div class="inner_div_about invert_shadow">
-      <h1 class="display-3 text-center hfi">Iseult McCormack</h1>
-      <h4 class="text-center hfi">Artest, Mother, Life Lover</h4>
+<!-- <section class="nav_gooey"> -->
+<section class="">
+  <div class="container-fluid">
+    <div class="row inner_div invert_shadow">
+      <h1 class="col-12 display-3 text-center hfi">Iseult McCormack</h1>
+      <h4 class="col-12 text-center hfi">Artest, Mother, Life Lover</h4>
       {% for bio in about %}
-      <p>{{ bio.bio|safe }}</p>
+      <div class="mx-auto">{{ bio.bio|safe }}</div>
       {% endfor %}
+      <br />
+      <hr />
+      <br />
+      <div class="row">
+        <div class="col-6">
+          <h3 class="hfi text-center">My Scarfs</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+            mollitia, molestiae quas vel sint commodi repudiandae consequuntur
+            voluptatum laborum numquam blanditiis harum quisquam eius sed odit
+            fugiat iusto fuga praesentium optio, eaque rerum! Provident
+            similique accusantium nemo autem. Veritatis obcaecati tenetur iure
+            eius earum ut molestias architecto voluptate aliquam nihil, eveniet
+            aliquid culpa officia aut! Impedit sit sunt quaerat, odit, tenetur
+            error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
+          </p>
+        </div>
+        <div class="col-6">
+          <h3 class="hfi text-center">My Paintings</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+            mollitia, molestiae quas vel sint commodi repudiandae consequuntur
+            voluptatum laborum numquam blanditiis harum quisquam eius sed odit
+            fugiat iusto fuga praesentium optio, eaque rerum! Provident
+            similique accusantium nemo autem. Veritatis obcaecati tenetur iure
+            eius earum ut molestias architecto voluptate aliquam nihil, eveniet
+            aliquid culpa officia aut! Impedit sit sunt quaerat, odit, tenetur
+            error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
+          </p>
+        </div>
+      </div>
+      <!-- Add carsil -->
     </div>
   </div>
 </section>

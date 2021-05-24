@@ -20,7 +20,7 @@ class ProductViewAdmin(admin.ModelAdmin):
     list_display = ('user', 'product',)
 
 
-admin.site.register(ProductView, ProductViewAdmin)
+# admin.site.register(ProductView, ProductViewAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(productComment)
+# admin.site.register(productComment)

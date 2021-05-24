@@ -65,6 +65,9 @@ ul {
 li {
   list-style: none;
 }
+p {
+  max-width: 650px
+}
 .hf {
   font-family: var(--garamond);
 }
