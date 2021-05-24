@@ -16,11 +16,16 @@
         <ul>
           <li><a href="about-us.html">About Us</a></li>
           <li><a href="our-team.html">Contact</a></li>
-
-          <li><a href="login-2.html">Login</a></li>
-          <li><a href="login-2.html">Admin</a></li>
-          <li><a href="login-2.html">Log Out</a></li>
+          {% if user.is_authenticated %}
           <li><a href="login-2.html">Dashboard</a></li>
+          <li><a href="login-2.html">Log Out</a></li>
+          {% if user.is_superuser %}
+          <li><a href="/iseult-admin/">Admin</a></li>
+          {% endif %}
+          <!-- 1 -->
+          {% else %}
+          <li><a href="login-2.html">Login</a></li>
+          {% endif %}
         </ul>
       </div>
       <div class="col-md-4 social-icons_container">

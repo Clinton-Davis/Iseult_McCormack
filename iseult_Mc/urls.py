@@ -10,7 +10,7 @@ from home.views import IndexView
 urlpatterns = [
     path('', include('home.urls')),
     path('accounts/', include('allauth.urls')),
-    path('admin/', admin.site.urls),
+    path('iseult-admin/', admin.site.urls),
     path('bag/', include('bag.urls', namespace='bag')),
     path('profiles/', include('profiles.urls', namespace='profiles')),
     path('shop/', include('shop.urls', namespace='shop')),
