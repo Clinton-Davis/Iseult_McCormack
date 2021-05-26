@@ -11,45 +11,50 @@
         /></a>
       </div>
 
-      <div class="col-md-4 text-center text-white my-4">
-        <h4 class="hf">Pages</h4>
-        <ul>
-          <!-- <li><a href="about-us.html">About Us</a></li> -->
-          <li><a href="our-team.html">Contact</a></li>
-          {% if user.is_authenticated %}
-          <li><a href="login-2.html">Dashboard</a></li>
-          <li><a href="login-2.html">Log Out</a></li>
-          {% if user.is_superuser %}
-          <li><a href="/iseult-admin/">Admin</a></li>
-          {% endif %}
-          <!-- 1 -->
-          {% else %}
-          <li><a href="login-2.html">Login</a></li>
-          {% endif %}
-          <li><a href="#">Terms of Use</a></li>
-          <li><a href="#">Privacy</a></li>
-        </ul>
+      <div class="col-md-4 text-white my-4">
+        <div class="footer_pages_list">
+          <h4 class="hf">Pages</h4>
+          <ul>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+            <li><a href="{% url 'gallery' %}">Gallery</a></li>
+            <li><a href="{% url 'shop:shop' %}">Shop</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'profiles:profile' %}">Dashboard</a></li>
+            <li><a href="{% url 'account_logout' %}">Log Out</a></li>
+            {% else %}
+            <li><a href="{% url 'account_login' %}">Login</a></li>
+            {% endif %}
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Privacy</a></li>
+          </ul>
+        </div>
       </div>
       <div class="col-md-4">
         <div class="row">
           <div class="social-icons_container">
-            <a href="#"
+            <a href="https://www.facebook.com/iseultmccormackcreations/"
               ><img
                 class="social_icons"
                 src="/static/img/facebook_colored.svg"
                 alt="Facebook icon"
+                target="_blank"
+                rel="nopener noreferrer"
             /></a>
             <a href="#"
               ><img
                 class="social_icons"
                 src="/static/img/twitter.svg"
                 alt="twitter icon"
+                target="_blank"
+                rel="nopener noreferrer"
             /></a>
             <a href="#"
               ><img
                 class="social_icons"
                 src="/static/img/instagram.svg"
                 alt="Instagram icon"
+                target="_blank"
+                rel="nopener noreferrer"
             /></a>
           </div>
         </div>
@@ -87,7 +92,13 @@
     <div class="row">
       <div class="col-12 text-center mb-sm-30">
         <div class="my-4 text-white">
-          &copy; Copyright 2020 - Iseult McCormack Creations by ClintoDavis.org
+          &copy; Copyright 2020 - Iseult McCormack Creations by
+          <a
+            href="https://www.clintondavis.org/"
+            target="_blank"
+            rel="nopener noreferrer"
+            >ClintoDavis.org
+          </a>
         </div>
       </div>
     </div>

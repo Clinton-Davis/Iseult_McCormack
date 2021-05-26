@@ -6,14 +6,14 @@
 <!-- 1 -->
 {% block content %}
 <!-- <section class="nav_gooey"> -->
-<section class="">
+<section class="gooey">
   <div class="container-fluid">
     <div class="row inner_div invert_shadow">
       <h1 class="col-12 display-3 text-center hfi">Gallery</h1>
       <h4 class="col-12 text-center hfi">
         This Gallery is of my perviours artworks
       </h4>
-      <div class="gallery_container">
+      <div class="gallery_container mb-4">
         {% for image in images %}
         <div class="gallery-img">
           <img
@@ -21,10 +21,11 @@
             class=""
             alt="{{ item.image.name }}"
           />
-          <p class="hf">{{ image.name}}</p>
+          <h5 class="hf">{{ image.name}}</h5>
         </div>
         {% endfor %}
       </div>
+      <hr class="black_hr" />
     </div>
   </div>
 </section>

@@ -35,7 +35,7 @@
         <h2 class="col-12 display-4 text-center hfi">My Art</h2>
         <br />
         <div class="row">
-          <div class="col-6">
+          <div class="col-12 col-md-6 mb-sm-4">
             {% for scarf in scarfs %}
             <h3 class="hfi text-center">{{ scarf.heading }}</h3>
             <hr class="black_hr" />
@@ -43,11 +43,11 @@
             {% endfor %}
             <a
               href="{% url 'shop:shop' %}?category=scarves"
-              class="btn-grad_pink hf w-50"
+              class="btn-grad_pink hf w-mb-50"
               >My Scarf Collection</a
             >
           </div>
-          <div class="col-6">
+          <div class="col-12 col-md-6">
             {% for painting in paintings %}
             <h3 class="hfi text-center">{{ painting.heading }}</h3>
             <hr class="black_hr" />
@@ -55,7 +55,7 @@
             {% endfor %}
             <a
               href="{% url 'shop:shop' %}?category=paintings"
-              class="btn-grad_blue hf w-50"
+              class="btn-grad_blue hf w-md-50"
               >My painting Collection</a
             >
           </div>
