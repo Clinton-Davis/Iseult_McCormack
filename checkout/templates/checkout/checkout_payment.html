@@ -68,7 +68,7 @@
             <br />
             <p class="ml-3 hf">Delivaring To:</p>
             <div class="row text-black hf">
-              <div class="col-7">
+              <div class="col-6">
                 <div class="my-0">{{profile.full_name|title}}</div>
                 <div class="my-0">{{user.email}}</div>
                 <div class="my-0">{{profile.phone_number}}</div>
@@ -84,7 +84,7 @@
                 <p class="my-0">Delivery:</p>
                 <p class="my-0 hfb">Grand Total:</p>
               </div>
-              <div class="col-2">
+              <div class="col-3">
                 <p class="my-0">&euro;{{ bag_total | floatformat:2 }}</p>
                 <p class="my-0">&euro;{{ delivery | floatformat:2 }}</p>
                 <p class="my-0">
@@ -162,7 +162,31 @@
                   name="client_secret"
                 />
               </fieldset>
-
+              <div class="row">
+                <div class="col-12 payment-icons_container">
+                  <img
+                    class="payment_icons ml-1"
+                    src="/static/img/visa-logo-svgrepo-com.svg"
+                    alt="Instagram icon"
+                  /><img
+                    class="payment_icons ml-1"
+                    src="/static/img/mastercard-2-logo-svgrepo-com.svg"
+                    alt="Instagram icon"
+                  /><img
+                    class="payment_icons ml-1"
+                    src="/static/img/american-express-svgrepo-com.svg"
+                    alt="Instagram icon"
+                  /><img
+                    class="payment_icons ml-1"
+                    src="/static/img/maestro-svgrepo-com.svg"
+                    alt="Instagram icon"
+                  /><img
+                    class="payment_icons ml-1"
+                    src="/static/img/jcb-svgrepo-com.svg"
+                    alt="Instagram icon"
+                  />
+                </div>
+              </div>
               <div class="submit-button text-right mt-5 mb-2 hfib">
                 <button id="submit-button" class="btn-grad_blue w-100 hfib">
                   <span class="font-weight-bold mx-2">Complete Order</span>
