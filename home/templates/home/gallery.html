@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+<!-- 1 -->
+{% load static %}
+<!-- 1 -->
+{% block head_title %} | Art Gallery {% endblock head_title %}
+<!-- 1 -->
+{% block content %}
+<!-- <section class="nav_gooey"> -->
+<section class="">
+  <div class="container-fluid">
+    <div class="row inner_div invert_shadow">
+      <h1 class="col-12 display-3 text-center hfi">Gallery</h1>
+      <h4 class="col-12 text-center hfi">
+        This Gallery is of my perviours artworks
+      </h4>
+      <div class="gallery_container">
+        {% for image in images %}
+        <div class="gallery-img">
+          <img
+            src="{{ image.image.url }}"
+            class=""
+            alt="{{ item.image.name }}"
+          />
+          <p class="hf">{{ image.name}}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

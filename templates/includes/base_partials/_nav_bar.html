@@ -10,8 +10,9 @@
   <div class="nav_list">
     <ul class="nav_links">
       <li><a href="{% url 'shop:shop' %}">Shop</a></li>
-      <li><a href="{% url 'about' %}">About</a></li>
+
       <li><a href="{% url 'contact' %}">Contact</a></li>
+      <li><a href="{% url 'gallery' %}">Gallery</a></li>
       {% if request.user.is_authenticated %}
       <li><a href="{% url 'profiles:profile' %}">Dashboard</a></li>
 
