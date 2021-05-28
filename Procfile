@@ -1,0 +1,1 @@
+web: gunicorn iseult_Mc.wsgi:application
