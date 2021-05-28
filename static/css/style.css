@@ -65,6 +65,16 @@ a .a_card:hover {
 .a {
   display: inline;
 }
+.px-15 {
+  padding: 0 1rem;
+}
+
+.center-block {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 section {
   /* height: fit-content; */
   min-height: 100vh;
@@ -198,6 +208,11 @@ p {
   max-width: 1200px;
 }
 
+@media screen and (max-width: 400px) {
+  .inner_div h1 {
+    font-size: 3rem;
+  }
+}
 .inner_div_about {
   background: rgba(61, 61, 61, 0.76);
   padding: 1.5rem;
@@ -221,16 +236,38 @@ p {
     #ee0979 100%
   );
 }
-.btn-grad_red {
-  margin: 1rem 0;
+.btn-grad_pink {
+  border: 1px solid #bd3c81;
+  background-image: linear-gradient(
+    to right,
+    #fbd3e9 0%,
+    #bb377d 51%,
+    #fbd3e9 100%
+  );
+}
+.btn-grad_blue {
+  border: 1px solid #1b3084;
+  background-image: linear-gradient(
+    to right,
+    #1a2980 0%,
+    #26d0ce 51%,
+    #1a2980 100%
+  );
+}
+.btn-grad_pink,
+.btn-grad_red,
+.btn-grad_blue {
+  margin: 0.5rem 0;
   padding: 0.5em 3em;
   text-align: center;
-  text-transform: capitalize;
+  text-transform: uppercase;
   transition: 0.5s;
   background-size: 200% auto;
   color: white;
   box-shadow: 0 0 20px #eee;
   border-radius: 10px;
+  font-size: 1rem;
+  width: 100%;
 }
 
 .btn-grad_red:hover {
@@ -239,54 +276,10 @@ p {
   text-decoration: none;
 }
 
-.btn-grad_pink {
-  background-image: linear-gradient(
-    to right,
-    #fbd3e9 0%,
-    #bb377d 51%,
-    #fbd3e9 100%
-  );
-}
-.btn-grad_pink {
-  margin: 1rem 0;
-  padding: 0.5em 3em;
-  text-align: center;
-  text-transform: capitalize;
-  transition: 0.5s;
-  background-size: 200% auto;
-  color: white;
-  box-shadow: 0 0 20px #eee;
-  border: 1px solid #bd3c81;
-  border-radius: 10px;
-  font-size: 1rem;
-}
-
 .btn-grad_pink:hover {
   background-position: right center; /* change the direction of the change here */
   color: #fff;
   text-decoration: none;
-}
-
-.btn-grad_blue {
-  background-image: linear-gradient(
-    to right,
-    #1a2980 0%,
-    #26d0ce 51%,
-    #1a2980 100%
-  );
-}
-.btn-grad_blue {
-  margin: 1rem 0;
-  padding: 0.5em 3em;
-  text-align: center;
-  text-transform: capitalize;
-  transition: 0.5s;
-  background-size: 200% auto;
-  color: white;
-  box-shadow: 0 0 20px #eee;
-  border: 1px solid #1b3084;
-  border-radius: 10px;
-  font-size: 1rem;
 }
 
 .btn-grad_blue:hover {
@@ -313,7 +306,7 @@ p {
 nav {
   position: relative;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   min-height: 10vh;
   background-color: transparent;
@@ -547,6 +540,42 @@ footer {
 .payment_icons {
   width: 2rem;
 }
+
+.cd_icon {
+  width: 2rem;
+  vertical-align: middle;
+}
+.spinning {
+  animation-name: spin;
+  animation-duration: 20000ms; /* How long lasts 1 turn */
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.sub_footer_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.subfooter {
+  text-align: center;
+}
+.clint_link {
+  color: #3185eb;
+}
+.clint_link:hover {
+  color: #689fe2;
+}
 /**--Index-Page */
 .index_container {
   margin: 0.5rem auto;
@@ -603,9 +632,16 @@ footer {
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
 }
+.card img {
+  background-image: url(/static/img/Curve.svg);
+  background-size: cover;
+  background-position: center center;
+  animation: opening 0.5s ease-in-out;
+  -webkit-animation: opening 0.5s ease-in-out;
+}
 .item_details_list {
   display: flex;
-  justify-content: space-aroundinner_div;
+  justify-content: space-around;
 }
 .shop_catogery_links {
   display: flex;
@@ -808,30 +844,40 @@ select option[value=""] {
 /*? Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
   .outer_container {
-    width: 80%;
+    width: 90%;
   }
   .outer_container-wide {
-    width: 80%;
+    width: 100%;
+  }
+  .btn-grad_blue,
+  .btn-grad_pink,
+  .btn-grad_red {
+    width: 75%;
   }
 }
 
 /*? Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   .outer_container {
-    width: 70%;
+    width: 80%;
   }
   .outer_container-wide {
-    width: 80%;
+    width: 100%;
+  }
+  .btn-grad_blue,
+  .btn-grad_pink,
+  .btn-grad_red {
+    width: 50%;
   }
 }
 
 /*? Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
   .outer_container {
-    width: 60%;
+    width: 70%;
   }
   .outer_container-wide {
-    width: 70%;
+    width: 100%;
   }
 }
 
@@ -842,8 +888,13 @@ select option[value=""] {
     max-width: 55rem;
   }
   .outer_container-wide {
-    width: 60%;
-    max-width: 55rem;
+    width: 80%;
+    max-width: 70rem;
+  }
+  .btn-grad_blue,
+  .btn-grand_pink,
+  .btn-grand_red {
+    width: 50%;
   }
 }
 

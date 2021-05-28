@@ -26,26 +26,26 @@
               <div class="col-7 offset-2">
                 <p class="mb-1 mt-0 small">Items</p>
               </div>
-              <div class="col-3 text-right">
+              <div class="col-3">
                 <p class="mb-1 mt-0 small">Price</p>
               </div>
             </div>
             {% for item in bag_items %}
-            <div class="row">
-              <div class="col-2 mb-1">
+            <div class="row center-block">
+              <div class="col-2 mb-1 d-none d-sm-block">
                 <a
                   href="{% url 'shop:product_detail' item.product.id %}"
                   style="width: 3rem"
                 >
                   {% if item.product.image %}
                   <img
-                    class="w-100"
+                    class=""
                     src="{{ item.product.image.url }}"
                     alt="{{ product.name }}"
                   />
                   {% else %}
                   <img
-                    class="w-100"
+                    class=""
                     src="{{ MEDIA_URL }}no_image.png"
                     alt="{{ product.name }}"
                   />
@@ -187,9 +187,9 @@
                   />
                 </div>
               </div>
-              <div class="submit-button text-right mt-5 mb-2 hfib">
-                <button id="submit-button" class="btn-grad_blue w-100 hfib">
-                  <span class="font-weight-bold mx-2">Complete Order</span>
+              <div class="submit-button text-right mt-3 mb-2">
+                <button id="submit-button" class="btn-grad_blue">
+                  <span class="hfi mx-2">Make Payment</span>
                   <span class="icon">
                     <i class="fas fa-lock"></i>
                   </span>
@@ -198,9 +198,9 @@
                   <span class="icon">
                     <i class="fas fa-arrow-circle-left"></i>
                   </span>
-                  <span class="font-weight-bold mx-1">Adjust Bag</span>
+                  <span class="hfi mx-1">Adjust Bag</span>
                 </a>
-                <p class="small text-danger my-0">
+                <p class="small text-info my-0">
                   <span class="icon">
                     <i class="fas fa-exclamation-circle"></i>
                   </span>
