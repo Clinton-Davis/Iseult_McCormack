@@ -13,7 +13,7 @@
     <div class="inner_div_checkout back_shadow">
       <div class="container">
         <div class="row">
-          <div class="col">
+          <div class="col-12">
             <hr />
             <h2 class="hfib mb-4 text-center">Checkout</h2>
             <hr />
@@ -23,49 +23,43 @@
           <div class="col-12 mb-5">
             <p class="text-muted">Order Summary ({{ product_count }})</p>
             <div class="row">
-              <div class="col-7 offset-2">
-                <p class="mb-1 mt-0 small">Items</p>
+              {% for item in bag_items %}
+              <div class="row checkout_items">
+                <div class="mb-1">
+                  <a
+                    href="{% url 'shop:product_detail' item.product.id %}"
+                    style=""
+                  >
+                    {% if item.product.image %}
+                    <img
+                      class=""
+                      src="{{ item.product.image.url }}"
+                      alt="{{ product.name }}"
+                    />
+                    {% else %}
+                    <img
+                      class=""
+                      src="{{ MEDIA_URL }}no_image.png"
+                      alt="{{ product.name }}"
+                    />
+                    {% endif %}
+                  </a>
+                </div>
+                <div class="">
+                  <p class="my-0">
+                    <strong class="hf">{{ item.product.name }}</strong>
+                  </p>
+                  <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
+                </div>
+                <div class="">
+                  <p class="my-0 small">&euro;{{ item.product.get_price }}</p>
+                </div>
               </div>
-              <div class="col-3">
-                <p class="mb-1 mt-0 small">Price</p>
-              </div>
-            </div>
-            {% for item in bag_items %}
-            <div class="row center-block">
-              <div class="col-2 mb-1 d-none d-sm-block">
-                <a
-                  href="{% url 'shop:product_detail' item.product.id %}"
-                  style="width: 3rem"
-                >
-                  {% if item.product.image %}
-                  <img
-                    class=""
-                    src="{{ item.product.image.url }}"
-                    alt="{{ product.name }}"
-                  />
-                  {% else %}
-                  <img
-                    class=""
-                    src="{{ MEDIA_URL }}no_image.png"
-                    alt="{{ product.name }}"
-                  />
-                  {% endif %}
-                </a>
-              </div>
-              <div class="col-7">
-                <p class="my-0">
-                  <strong class="hf">{{ item.product.name }}</strong>
-                </p>
-                <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
-              </div>
-              <div class="col-3 text-right">
-                <p class="my-0 small">&euro;{{ item.product.get_price }}</p>
-              </div>
-            </div>
-            {% endfor %}
 
-            <hr class="my-0" />
-            <br />
+              {% endfor %}
+            </div>
+            <hr class="my-4" />
+            <br  />
             <p class="ml-3 hf">Delivaring To:</p>
             <div class="row text-black hf">
               <div class="col-6">

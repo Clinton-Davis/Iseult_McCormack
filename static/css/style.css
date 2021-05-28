@@ -69,11 +69,7 @@ a .a_card:hover {
   padding: 0 1rem;
 }
 
-.center-block {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
+
 
 section {
   /* height: fit-content; */
@@ -746,6 +742,16 @@ footer {
   width: 100%;
 }
 
+.checkout_items {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+.checkout_items img {
+  width: 5rem;
+}
+
 .invert_shadow {
   box-shadow: 0px 2px 21px -1px rgba(0, 0, 0, 1),
     0px 2px 15px -1px rgba(0, 0, 0, 1) inset;
@@ -829,6 +835,8 @@ select option[value=""] {
 .checkout_success_inner {
   max-width: 35rem;
 }
+
+
 /** ABOUT  */
 
 .about_inner_div {
