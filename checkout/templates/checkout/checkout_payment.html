@@ -26,10 +26,7 @@
               {% for item in bag_items %}
               <div class="row checkout_items">
                 <div class="mb-1">
-                  <a
-                    href="{% url 'shop:product_detail' item.product.id %}"
-                    style=""
-                  >
+                  <a href="{% url 'shop:product_detail' item.product.id %}">
                     {% if item.product.image %}
                     <img
                       class=""
@@ -59,7 +56,7 @@
               {% endfor %}
             </div>
             <hr class="my-4" />
-            <br  />
+            <br />
             <p class="ml-3 hf">Delivaring To:</p>
             <div class="row text-black hf">
               <div class="col-6">
