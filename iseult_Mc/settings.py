@@ -12,7 +12,7 @@ environ.Env.read_env()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-DEBUG = True
+DEBUG = False
 
 if DEBUG:
     SECRET_KEY = env('SECRET_KEY')
@@ -22,7 +22,7 @@ else:
 if DEBUG:
     ALLOWED_HOSTS = ['*']
 else:
-    ALLOWED_HOSTS = ['*']
+    ALLOWED_HOSTS = ['iseult-mccormack-shop.herokuapp.com']
     
 
 
