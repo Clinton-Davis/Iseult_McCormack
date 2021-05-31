@@ -27,7 +27,7 @@ def bag_contents(request):
     if request.user.is_authenticated:
             profile = UserProfile.objects.get(user=request.user)
             if profile.country == "":
-                code = Delivary.objects.get(pk="251")
+                code = get_object_or_404(Delivary, pk="251")
                 code_packet_price = code.packet_price /100
                 code_parcel_price = code.parcel_price /100
             else:
@@ -37,7 +37,7 @@ def bag_contents(request):
                 code_parcel_price = code.parcel_price /100
 
     else:
-        code = Delivary.objects.get(pk="251")
+        code = get_object_or_404(Delivary, pk="251")
         code_packet_price = code.packet_price /100
         code_parcel_price = code.parcel_price /100
         
