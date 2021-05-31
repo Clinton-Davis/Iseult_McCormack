@@ -220,10 +220,10 @@ EMAIL_HOST = 'smtp.gmail.com'
 
 # if DEBUG:
     # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    # EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-    # EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-    # NOTIFY_EMAIL = env('NOTIFY_EMAIL')
-    # DEFAULT_FROM_EMAIL = env('EMAIL_HOST_USER')
+# EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+# NOTIFY_EMAIL = env('NOTIFY_EMAIL')
+# DEFAULT_FROM_EMAIL = env('EMAIL_HOST_USER')
 
 # else:
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
