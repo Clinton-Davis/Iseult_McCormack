@@ -88,8 +88,8 @@ class StripeWH_Handler:
             order.stripe_receipt = stripe_receipt
             order.save()
             
-            self._shopping_confirmation_email(order)
-            self._email_order(order)
+            # self._shopping_confirmation_email(order)
+            # self._email_order(order)
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | SUCCESS: Verified in database',
                 status=200)
