@@ -239,15 +239,14 @@ DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
 # CLOUDINARY_CONFIG
 # if DEBUG:
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': env('CLOUD_NAME'),
-    'API_KEY': env('API_KEY'),
-    'API_SECRET': env('API_SECRET'),
-}
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME': env('CLOUD_NAME'),
+#     'API_KEY': env('API_KEY'),
+#     'API_SECRET': env('API_SECRET'),
+# }
 # else:
-#     CLOUDINARY_STORAGE = {
-#             'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
-#             'API_KEY': os.environ.get('API_KEY'),
-#             'API_SECRET': os.environ.get('API_SECRET'),
-#         }
-    
+CLOUDINARY_STORAGE = {
+        'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
+        'API_KEY': os.environ.get('API_KEY'),
+        'API_SECRET': os.environ.get('API_SECRET'),
+    }
