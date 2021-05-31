@@ -4,20 +4,22 @@ Order Date:   {{ order.date }}
 
 items:
 {% for item in order.lineitems.all %}
-{{ item.quantity }} {{ item.product.name }} {{ item.product.code }}
+    {{ item.quantity }} x {{ item.product.name }} Code: {{ item.product.code }}
 {% endfor %}
 Client:
-Name:  {{ order.full_name }}
-Phone: {{ order.phone_number }}
-Email: {{ order.email }}
+
+    Name:  {{ order.full_name }}
+    Phone: {{ order.phone_number }}
+    Email: {{ order.email }}
 
 Shipped to: 
-{{ order.street_address1 }}
-{{ order.street_address2 }}
-{{ order.county }}
-{{ order.town_or_city }}
-{{ order.postcode }}
-{{ order.country_name }}
+
+    {{ order.street_address1 }}
+    {{ order.street_address2 }}
+    {{ order.county }}
+    {{ order.town_or_city }}
+    {{ order.postcode }}
+    {{ order.country_name }}
 
 Have a Great Day Sister :)
 

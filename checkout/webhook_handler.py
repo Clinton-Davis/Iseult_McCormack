@@ -37,6 +37,7 @@ class StripeWH_Handler:
             fail_silently=False,
         )
         
+        
     def _email_order(self, order):
         """Send a confirmation email"""
         body = render_to_string(
@@ -89,7 +90,7 @@ class StripeWH_Handler:
             order.save()
             
             self._shopping_confirmation_email(order)
-            # self._email_order(order)
+            self._email_order(order)
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | SUCCESS: Verified in database',
                 status=200)

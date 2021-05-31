@@ -2,6 +2,8 @@
 <!-- 1 -->
 {% load static %}
 <!-- 1 -->
+{% load mathfilters %}
+<!-- 1 -->
 {% block head_title %} - Profile {% endblock head_title %}
 <!-- 1 -->
 {% block content %}
@@ -44,7 +46,7 @@
             <tr>
               <th class="hf">Order Number</th>
               <th class="text-center hf">Date</th>
-              <th class="text-right hf">Order Total</th>
+              <th class="text-right hf">Grand Total</th>
             </tr>
           </thead>
           <tbody>
@@ -60,7 +62,9 @@
               </td>
               <td class="text-center">{{ order.date|date:"d/m/Y" }}</td>
 
-              <td class="text-right">&euro;{{ order.get_grand_total }}</td>
+              <td class="text-right">
+                &euro;{{ order.grand_total|div:100|floatformat:2 }}
+              </td>
             </tr>
             {% endfor %}
           </tbody>

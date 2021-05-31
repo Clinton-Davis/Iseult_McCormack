@@ -152,7 +152,7 @@ p {
   background-size: cover;
 }
 
-.flyerss {
+.flyers {
   background-image: url(/static/img/LiveBackGround.svg);
   background-size: cover;
   background-position: center center;
@@ -162,7 +162,7 @@ p {
   background-size: cover;
   background-position: center center;
 }
-.rains {
+.rain {
   background-image: url(/static/img/Raindrop.svg);
   background-size: cover;
   background-position: center center;
@@ -179,11 +179,11 @@ p {
   background-position: center center;
 }
 
-.nav_Raindrops {
+/* .nav_Raindrops {
   background-image: url(/static/img/Raindrop_deep.svg);
   background-size: cover;
   background-position: center center;
-}
+} */
 
 .outer_container {
   padding: 1rem;

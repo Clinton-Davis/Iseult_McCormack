@@ -2,6 +2,8 @@
 <!-- 1s -->
 {% load static %}
 <!-- 1 -->
+{% load mathfilters %}
+<!-- 1 -->
 {% block content %}
 <section class="flyers">
   <div class="container outer_container-wide rain invert_shadow">
@@ -157,7 +159,9 @@
               <p class="mb-0 text-black font-weight-bold">Order Total</p>
             </div>
             <div class="col-12 col-md-8 text-md-right">
-              <p class="mb-0 text-right">&euro;{{ order.get_order_total }}</p>
+              <p class="mb-0 text-right">
+                &euro;{{ order.order_total|div:100|floatformat:2 }}
+              </p>
             </div>
           </div>
 
@@ -166,7 +170,9 @@
               <p class="mb-0 text-black font-weight-bold">Delivery</p>
             </div>
             <div class="col-12 col-md-8 text-md-right">
-              <p class="mb-0 text-right">&euro;{{ order.get_delivery_cost }}</p>
+              <p class="mb-0 text-right">
+                &euro;{{ order.delivery_cost|div:100|floatformat:2 }}
+              </p>
             </div>
           </div>
 
@@ -175,7 +181,9 @@
               <p class="mb-0 text-black font-weight-bold">Grand Total</p>
             </div>
             <div class="col-12 col-md-8 text-md-right">
-              <p class="mb-0 text-right">&euro;{{ order.get_grand_total }}</p>
+              <p class="mb-0 text-right">
+                &euro;{{ order.grand_total|div:100|floatformat:2 }}
+              </p>
             </div>
           </div>
           {% if order.stripe_receipt %}
