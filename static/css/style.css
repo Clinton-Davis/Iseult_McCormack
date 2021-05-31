@@ -69,8 +69,6 @@ a .a_card:hover {
   padding: 0 1rem;
 }
 
-
-
 section {
   /* height: fit-content; */
   min-height: 100vh;
@@ -154,7 +152,7 @@ p {
   background-size: cover;
 }
 
-.flyers {
+.flyerss {
   background-image: url(/static/img/LiveBackGround.svg);
   background-size: cover;
   background-position: center center;
@@ -164,13 +162,13 @@ p {
   background-size: cover;
   background-position: center center;
 }
-.rain {
+.rains {
   background-image: url(/static/img/Raindrop.svg);
   background-size: cover;
   background-position: center center;
 }
 
-.gooey {
+.gooeys {
   background-image: url(/static/img/nav_gooey.svg);
   background-size: cover;
   background-position: center center;
@@ -835,7 +833,6 @@ select option[value=""] {
 .checkout_success_inner {
   max-width: 35rem;
 }
-
 
 /** ABOUT  */
 

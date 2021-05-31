@@ -22,7 +22,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # if DEBUG:
 #     ALLOWED_HOSTS = ['*']
 # else:
-ALLOWED_HOSTS = ['iseult-mccormack-shop.herokuapp.com']
+ALLOWED_HOSTS = ['iseult-mccormack-shop.herokuapp.com', '127.0.0.1', '11516d4810cb.ngrok.io']
     
 
 
@@ -122,18 +122,18 @@ WSGI_APPLICATION = 'iseult_Mc.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# if DEBUG:
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': BASE_DIR / 'db.sqlite3',
-#         }
-#     }
-# else:
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
     
-DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-}
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -204,13 +204,13 @@ STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET')
 
-SESSION_COOKIE_SECURE = True
-SECURE_BROWSER_XSS_FILTER = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
-SECURE_HSTS_SECONDS = 3153600
-SECURE_REDIRECT_EXEMPT = []
-SECURE_SSL_REDIRECT = False
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    # SESSION_COOKIE_SECURE = True
+    # SECURE_BROWSER_XSS_FILTER = True
+    # SECURE_CONTENT_TYPE_NOSNIFF = True
+    # SECURE_HSTS_SECONDS = 3153600
+    # SECURE_REDIRECT_EXEMPT = []
+    # SECURE_SSL_REDIRECT = False
+    # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 # EMAIL
@@ -219,11 +219,11 @@ EMAIL_PORT = 587
 EMAIL_HOST = 'smtp.gmail.com'
 
 # if DEBUG:
-#     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-#     EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-#     EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-#     NOTIFY_EMAIL = env('NOTIFY_EMAIL')
-#     DEFAULT_FROM_EMAIL = env('EMAIL_HOST_USER')
+    # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    # EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+    # EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+    # NOTIFY_EMAIL = env('NOTIFY_EMAIL')
+    # DEFAULT_FROM_EMAIL = env('EMAIL_HOST_USER')
 
 # else:
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
