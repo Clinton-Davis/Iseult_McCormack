@@ -20,9 +20,9 @@ DEBUG = True
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # if DEBUG:
-ALLOWED_HOSTS = ['iseult-mccormack-shop.herokuapp.com', '127.0.0.1', '*']
+# ALLOWED_HOSTS = ['*']
 # else:
-#     ALLOWED_HOSTS = ['iseult-mccormack-shop.herokuapp.com']
+ALLOWED_HOSTS = ['iseult-mccormack-shop.herokuapp.com']
     
 
 
@@ -205,29 +205,31 @@ STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET')
 
-SESSION_COOKIE_SECURE = True
-SECURE_BROWSER_XSS_FILTER = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
-SECURE_HSTS_SECONDS = 3153600
-SECURE_REDIRECT_EXEMPT = []
-SECURE_SSL_REDIRECT = False
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SESSION_COOKIE_SECURE = True
+# SECURE_BROWSER_XSS_FILTER = True
+# SECURE_CONTENT_TYPE_NOSNIFF = True
+# SECURE_HSTS_SECONDS = 3153600
+# SECURE_REDIRECT_EXEMPT = []
+# SECURE_SSL_REDIRECT = False
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 # EMAIL
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST = 'smtp.gmail.com'
 
 # if DEBUG:
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_USE_TLS = True
+# EMAIL_PORT = 587
+# EMAIL_HOST = 'smtp.gmail.com'
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 # EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 # NOTIFY_EMAIL = env('NOTIFY_EMAIL')
 # DEFAULT_FROM_EMAIL = env('EMAIL_HOST_USER')
 
-# else:
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
@@ -239,14 +241,14 @@ DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
 # CLOUDINARY_CONFIG
 # if DEBUG:
-# CLOUDINARY_STORAGE = {
-#     'CLOUD_NAME': env('CLOUD_NAME'),
-#     'API_KEY': env('API_KEY'),
-#     'API_SECRET': env('API_SECRET'),
-# }
-# else:
 CLOUDINARY_STORAGE = {
-        'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
-        'API_KEY': os.environ.get('API_KEY'),
-        'API_SECRET': os.environ.get('API_SECRET'),
-    }
+    'CLOUD_NAME': env('CLOUD_NAME'),
+    'API_KEY': env('API_KEY'),
+    'API_SECRET': env('API_SECRET'),
+}
+# else:
+# CLOUDINARY_STORAGE = {
+#         'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
+#         'API_KEY': os.environ.get('API_KEY'),
+#         'API_SECRET': os.environ.get('API_SECRET'),
+#     }

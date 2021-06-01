@@ -9,7 +9,7 @@ Order Number: {{ order.order_number }}
 Order Date:   {{ order.date }}
 
 {% for item in order.lineitems.all %}
-{{ item.quantity }} {{ item.product.name }} @ €{{ item.product.price|div:100|floatformat:2 }} each          
+{{ item.quantity }} {{ item.product.name|safe }} @ €{{ item.product.price|div:100|floatformat:2 }}        
 {% endfor %}
 
 You Paid:

@@ -4,7 +4,7 @@ Order Date:   {{ order.date }}
 
 items:
 {% for item in order.lineitems.all %}
-    {{ item.quantity }} x {{ item.product.name }} Code: {{ item.product.code }}
+    {{ item.quantity }} x {{ item.product.name|safe }} - Code: {{ item.product.code }}
 {% endfor %}
 Client:
     Name:  {{ order.full_name }}
