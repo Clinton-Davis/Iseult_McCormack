@@ -15,12 +15,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = True
 
 # if DEBUG:
-#     SECRET_KEY = env('SECRET_KEY')
+# SECRET_KEY = env('SECRET_KEY')
 # else:
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # if DEBUG:
-ALLOWED_HOSTS = ['iseult-mccormack-shop.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['iseult-mccormack-shop.herokuapp.com', '127.0.0.1', '*']
 # else:
 #     ALLOWED_HOSTS = ['iseult-mccormack-shop.herokuapp.com']
     
@@ -205,13 +205,13 @@ STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET')
 
-#     SESSION_COOKIE_SECURE = True
-#     SECURE_BROWSER_XSS_FILTER = True
-#     SECURE_CONTENT_TYPE_NOSNIFF = True
-#     SECURE_HSTS_SECONDS = 3153600
-#     SECURE_REDIRECT_EXEMPT = []
-#     SECURE_SSL_REDIRECT = False
-#     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = True
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_HSTS_SECONDS = 3153600
+SECURE_REDIRECT_EXEMPT = []
+SECURE_SSL_REDIRECT = False
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 # EMAIL
@@ -234,7 +234,7 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 NOTIFY_EMAIL = os.environ.get('NOTIFY_EMAIL')
 DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
     
-    
+
    
 
 # CLOUDINARY_CONFIG
