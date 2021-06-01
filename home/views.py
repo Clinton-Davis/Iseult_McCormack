@@ -8,10 +8,14 @@ from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 from .forms import ContactForm
 from shop.models import Product
-from .models import About, Scarfs, Paintings, ImageGallery
+from .models import About, Scarfs, Paintings, ImageGallery, Home
 
+class IndexView(ListView):
+     model = Home
+     template_name = "home/index.html"
+     context_object_name = "home"
 
-def IndexView(request):
+def About(request):
     feat_item = Product.objects.filter(feat_item=True)
     about = About.objects.all()
     scarfs = Scarfs.objects.all()
@@ -22,7 +26,7 @@ def IndexView(request):
         'scarfs':scarfs,
         'paintings':paintings,
     }
-    return render(request, "home/index.html", context)
+    return render(request, "home/about.html", context)
 
 
 class GalleryView(ListView):

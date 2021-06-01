@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+<!-- 1 -->
+{% load static %}
+<!-- 1 -->
+{% block head_title %} | Home {% endblock head_title %}
+<!-- 1 -->
+{% block content %}
+<section class="">
+  <div class="container-fluid">
+    <div class="row inner_div invert_shadow">
+      <h1 class="col-12 display-3 text-center hfi">Iseult McCormack</h1>
+      <h4 class="col-12 text-center hfi">Artest, Mother, Life Lover</h4>
+      {% for bio in about %}
+      <div class="mx-auto">{{ bio.bio|safe }}</div>
+      {% endfor %}
+      <br />
+      <hr class="black_hr" />
+      <h2 class="col-12 display-4 text-center hfi">My Art</h2>
+      <br />
+      <div class="row">
+        <div class="col-12 col-md-6 mb-sm-4">
+          {% for scarf in scarfs %}
+          <h3 class="hfi text-center">{{ scarf.heading }}</h3>
+          <hr class="black_hr" />
+          <p>{{ scarf.discription|safe}}</p>
+          {% endfor %}
+          <a
+            href="{% url 'shop:shop' %}?category=scarves"
+            class="btn-grad_pink hf w-mb-50"
+            >My Scarf Collection</a
+          >
+        </div>
+        <div class="col-12 col-md-6">
+          {% for painting in paintings %}
+          <h3 class="hfi text-center">{{ painting.heading }}</h3>
+          <hr class="black_hr" />
+          <p>{{ painting.discription|safe }}</p>
+          {% endfor %}
+          <a
+            href="{% url 'shop:shop' %}?category=paintings"
+            class="btn-grad_blue hf w-md-50"
+            >My painting Collection</a
+          >
+        </div>
+      </div>
+      <!-- Add carsil -->
+    </div>
+  </div>
+</section>
+{% endblock %}

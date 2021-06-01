@@ -1,6 +1,16 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 
+class Home(models.Model):
+      class Meta:
+        verbose_name_plural = 'Home'
+      heading = models.CharField(max_length=254)
+      bio = RichTextField(blank=True, null=True)
+    
+      def __str__(self):
+        return self.heading
+      
+      
 class About(models.Model):
       heading = models.CharField(max_length=254)
       bio = RichTextField(blank=True, null=True)

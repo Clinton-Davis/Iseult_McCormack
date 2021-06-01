@@ -572,12 +572,28 @@ footer {
 }
 /**--Index-Page */
 .index_container {
+  display: flex;
+  margin: 0.5rem auto;
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px;
+}
+
+.index_image {
+  display: flex;
+  margin: 0.5rem auto;
+  justify-content: center;
+  align-items: center;
+  /* max-width: 30rem; */
+}
+.index_heading {
+  max-width: 560px;
+  display: flex;
   margin: 0.5rem auto;
   justify-content: center;
   align-items: center;
   max-width: 30rem;
 }
-
 /**--Shop */
 
 .shop_container {
