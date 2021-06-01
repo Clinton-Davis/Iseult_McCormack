@@ -24,7 +24,7 @@ class StripeWH_Handler:
         
         customer_email = order.email
         body = render_to_string(
-            'checkout\emails\shopping_email_body.txt',
+            'checkout/emails/shopping_email_body.txt',
             {'order': order,
              'lineitems': OrderLineItem,
              'contact_email': settings.DEFAULT_FROM_EMAIL,
@@ -41,7 +41,7 @@ class StripeWH_Handler:
     def _email_order(self, order):
         """Send a confirmation email"""
         body = render_to_string(
-            'checkout\emails\order_emails.txt',
+            'checkout/emails/order_emails.txt',
             {'order': order,
              'lineitems': OrderLineItem,
              'contact_email': settings.DEFAULT_FROM_EMAIL,
