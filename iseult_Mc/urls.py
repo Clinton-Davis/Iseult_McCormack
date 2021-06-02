@@ -17,7 +17,7 @@ urlpatterns = [
     path('checkout/', include('checkout.urls', namespace='checkout')),
     path('favicon.ico', RedirectView.as_view(
         url=staticfiles_storage.url('img/favicon.ico'))),
-    url(r'^.*/$', IndexView, name='home'),
+    url(r'^.*/$', IndexView.as_view(), name='home'),
 ]
 
 if settings.DEBUG:

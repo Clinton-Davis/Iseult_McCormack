@@ -5,13 +5,22 @@
 {% block head_title %}{% trans "Sign Out" %}{% endblock %}
 <!-- 1 -->
 {% block content %}
-<section class="flyers">
-  <div class="container data_container about invert_shadow">
+<section class="center_page">
+  <div
+    class="container data_container gooeys invert_shadow"
+    style="margin-top: -10vh"
+  >
     <div class="inner_div back_shadow">
       <h1 class="hfib text-center">{% trans "Sign Out" %}</h1>
-      <p>{% trans 'Are you sure you want to sign out?' %}</p>
+      <p class="text-center">
+        {% trans 'Are you sure you want to sign out?' %}
+      </p>
 
-      <form method="post" action="{% url 'account_logout' %}">
+      <form
+        class="display_center"
+        method="post"
+        action="{% url 'account_logout' %}"
+      >
         {% csrf_token %}
         <!-- 1 -->
         {% if redirect_field_value %}
@@ -23,7 +32,7 @@
         <!-- 1 -->
         {% endif %}
         <!-- 1 -->
-        <button type="submit" class="btn-grad_red w-100">
+        <button type="submit" class="mx-auto btn-grad_red">
           {% trans 'Sign Out' %}
         </button>
       </form>

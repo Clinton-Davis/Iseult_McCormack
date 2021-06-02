@@ -68,10 +68,20 @@ a .a_card:hover {
 .px-15 {
   padding: 0 1rem;
 }
-
+.mt-10vh {
+  margin-top: -10vh;
+}
+.center_page {
+  display: flex;
+  align-items: center;
+}
+.display_center {
+  display: flex;
+  justify-content: center;
+}
 section {
   /* height: fit-content; */
-  min-height: 100vh;
+  min-height: 90vh;
 }
 img {
   width: 100%;
@@ -169,12 +179,17 @@ p {
 }
 
 .gooeys {
-  background-image: url(/static/img/nav_gooey.svg);
+  background-image: url(/static/img/Gooey-4.svg);
   background-size: cover;
   background-position: center center;
 }
-.nav_gooey {
-  background-image: url(/static/img/nav_gooey.svg);
+.gooey3 {
+  background-image: url(/static/img/Gooey-3.svg);
+  background-size: cover;
+  background-position: center center;
+}
+.gooey2 {
+  background-image: url(/static/img/Gooey2.svg);
   background-size: cover;
   background-position: center center;
 }

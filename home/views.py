@@ -15,7 +15,7 @@ class IndexView(ListView):
      template_name = "home/index.html"
      context_object_name = "home"
 
-def About(request):
+def aboutview(request):
     feat_item = Product.objects.filter(feat_item=True)
     about = About.objects.all()
     scarfs = Scarfs.objects.all()

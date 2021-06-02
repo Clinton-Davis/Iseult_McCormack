@@ -8,8 +8,8 @@
 {% block head_title %} | Checkout {% endblock head_title %}
 <!-- 1 -->
 {% block content %}
-<section class="flyers">
-  <div class="container data_container invert_shadow">
+<section class="">
+  <div class="container data_container gooeys invert_shadow">
     <div class="inner_div_checkout back_shadow">
       <div class="container">
         <div class="row">
@@ -64,7 +64,9 @@
                 <div class="my-0">{{user.email}}</div>
                 <div class="my-0">{{profile.phone_number}}</div>
                 <div class="my-0">{{profile.street_address1}}</div>
+                {% if not profile.street_address2 == 'None' %}
                 <div class="my-0">{{profile.street_address2}}</div>
+                {% else %} {% endif %}
                 <div class="my-0">{{profile.town_or_city}}</div>
                 <div class="my-0">{{profile.postcode}}</div>
                 <div class="my-0">{{profile.county}}</div>
