@@ -29,26 +29,26 @@
       {% if user.is_authenticated %}
       <!-- 1 -->
       {% if user.is_superuser %}
-      <li>
-        <a href="/iseult-admin/" title="Admin Login"
+      <li class="mobile_icons">
+        <a href="/iseult-admin/" title="Admin Login" 
           ><i class="fas fa-user-cog"></i
         ></a>
       </li>
       {% endif %}
-      <li>
-        <a href="{% url 'account_logout' %}" title="Logout"
+      <li class="mobile_icons">
+        <a href="{% url 'account_logout' %}" title="Logout" 
           ><i class="fas fa-sign-out-alt"></i
         ></a>
-      </li>
+      </li class="mobile_icons">
       {% else %}
-      <li>
+      <li class="mobile_icons">
         <a href="{% url 'account_login' %}" title="Login"
           ><i class="fas fa-sign-in-alt"></i
         ></a>
       </li>
       {% endif %}
 
-      <li>
+      <li class="mobile_icons">
         <a href="{% url 'bag:bag_view' %}" title="Go to you Bag"
           ><i class="fas fa-shopping-bag"
             ><span class="count">{{ product_count }}</span>

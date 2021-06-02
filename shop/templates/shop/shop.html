@@ -40,11 +40,9 @@
         <!-- 1 -->
 
         <a href="{{ item.get_absolute_url }}" class="a_card">
-          <div class="card m-3 p-1 ld ld-power-on" style="width: 18rem">
+          <div class="card m-3 p-1">
             {% if item.image %}
             <img
-              width="300"
-              height="400"
               src="{{ item.image.url }}"
               class="card-img-top"
               alt="{{ item.image.name }}"

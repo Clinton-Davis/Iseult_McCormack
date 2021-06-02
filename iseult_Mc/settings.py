@@ -11,18 +11,20 @@ environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+# if "DEV" in os.environ:
 DEBUG = True
+# else: 
+#     DEBUG = False
 
-# if DEBUG:
-# SECRET_KEY = env('SECRET_KEY')
-# else:
-SECRET_KEY = os.environ.get('SECRET_KEY')
+if "DEV" in os.environ:
+    SECRET_KEY = env('SECRET_KEY')
+else:
+    SECRET_KEY = os.environ.get('SECRET_KEY')
 
-# if DEBUG:
-# ALLOWED_HOSTS = ['*']
-# else:
-ALLOWED_HOSTS = ['iseult-mccormack-shop.herokuapp.com']
+if "DEV" in os.environ:
+    ALLOWED_HOSTS = ['*']
+else:
+    ALLOWED_HOSTS = ['iseult-mccormack-shop.herokuapp.com', '127.0.0.1']
     
 
 
@@ -123,18 +125,17 @@ WSGI_APPLICATION = 'iseult_Mc.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# if DEBUG:
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-# else:
-    
-DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-}
+if "DEV" in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -195,15 +196,15 @@ CKEDITOR_CONFIGS = {
 }
 # STRIPE
 STRIPE_CURRENCY = 'eur'
-# if DEBUG:
-# STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY')
-# STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
-# STRIPE_WH_SECRET = env('STRIPE_WH_SECRET')
+if "DEV" in os.environ:
+    STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY')
+    STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
+    STRIPE_WH_SECRET = env('STRIPE_WH_SECRET')
     
-# else:
-STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
-STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
-STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET')
+else:
+    STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
+    STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+    STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET')
 
 # SESSION_COOKIE_SECURE = True
 # SECURE_BROWSER_XSS_FILTER = True
@@ -216,39 +217,39 @@ STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET')
 
 # EMAIL
 
-# if DEBUG:
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# EMAIL_USE_TLS = True
-# EMAIL_PORT = 587
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-# EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-# NOTIFY_EMAIL = env('NOTIFY_EMAIL')
-# DEFAULT_FROM_EMAIL = env('EMAIL_HOST_USER')
-
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-NOTIFY_EMAIL = os.environ.get('NOTIFY_EMAIL')
-DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+if "DEV" in os.environ:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    EMAIL_USE_TLS = True
+    EMAIL_PORT = 587
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+    NOTIFY_EMAIL = env('NOTIFY_EMAIL')
+    DEFAULT_FROM_EMAIL = env('EMAIL_HOST_USER')
+else:
+    EMAIL_USE_TLS = True
+    EMAIL_PORT = 587
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+    NOTIFY_EMAIL = os.environ.get('NOTIFY_EMAIL')
+    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
     
 
    
 
 # CLOUDINARY_CONFIG
-# if DEBUG:
-# CLOUDINARY_STORAGE = {
-#     'CLOUD_NAME': env('CLOUD_NAME'),
-#     'API_KEY': env('API_KEY'),
-#     'API_SECRET': env('API_SECRET'),
-# }
-# else:
-CLOUDINARY_STORAGE = {
-        'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
-        'API_KEY': os.environ.get('API_KEY'),
-        'API_SECRET': os.environ.get('API_SECRET'),
+if "DEV" in os.environ:
+    CLOUDINARY_STORAGE = {
+        'CLOUD_NAME': env('CLOUD_NAME'),
+        'API_KEY': env('API_KEY'),
+        'API_SECRET': env('API_SECRET'),
     }
+else:
+    CLOUDINARY_STORAGE = {
+            'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
+            'API_KEY': os.environ.get('API_KEY'),
+            'API_SECRET': os.environ.get('API_SECRET'),
+        }
