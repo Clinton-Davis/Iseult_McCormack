@@ -1,12 +1,14 @@
 {% load mathfilters %}
-Hello {{ order.get_first_name }}!
+Iseult McCormack Creations
 
-Thank you for shopping with us.
+Hello {{ order.get_first_name }}.
 
-This is your confirmation of your order from Iseult McCormack Creations. 
+We thank you for choosing my shop.
 
-Order Number: {{ order.order_number }}
+It is my pleasure to confirm your order for the date specified below. 
+
 Order Date:   {{ order.date }}
+Order Number: {{ order.order_number }}
 
 {% for item in order.lineitems.all %}
 {{ item.quantity }} {{ item.product.name|safe }} @ €{{ item.product.price|div:100|floatformat:2 }}        
@@ -26,14 +28,15 @@ Your order will be shipped to:
     {{ order.county }}
     {{ order.country_name }}
 
-We've got your phone number on file as {{ order.phone_number }}.
+We have your number as {{ order.phone_number }}.
 
-If you have any questions, feel free to contact us at {{ contact_email }}.
+I can be reached at {{ contact_email }} if you have questions.
 
 Hope to see you again soon.
 
-Greatfully
+My sincere gratitude
+Iseult
 
-Iseult McCormack Creations
 
-Stripe receipt: {{ order.stripe_receipt}}
+
+Your payment receipt: {{ order.stripe_receipt}}
