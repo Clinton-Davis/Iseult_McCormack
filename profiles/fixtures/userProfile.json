@@ -1,0 +1,17 @@
+[
+  {
+    "model": "profiles.userprofile",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "full_name": "Admin superuser",
+      "phone_number": "555-555-5555",
+      "street_address1": "56 Glen Road",
+      "street_address2": "Glen Cairn",
+      "town_or_city": "Simson Town",
+      "postcode": "7975",
+      "county": "Cape Town",
+      "country": "ZA"
+    }
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "model": "checkout.order",
+    "pk": 1,
+    "fields": {
+      "order_number": "202104298PY",
+      "user_profile": 1,
+      "full_name": "Admin superuser",
+      "email": "admin@admin.com",
+      "phone_number": "555-555-5555",
+      "street_address1": "56 Glen Road",
+      "street_address2": "Glen Cairn",
+      "town_or_city": "Simson Town",
+      "postcode": "7975",
+      "county": "Cape Town",
+      "country": "ZA",
+      "country_name": null,
+      "date": "2021-04-29T11:07:01.312Z",
+      "delivery_cost": 2900,
+      "order_total": 17000,
+      "grand_total": 17000,
+      "original_bag": "{\"6\": 1}",
+      "stripe_pid": "pi_1IlXhUCyfItU7kk5v0jevps9",
+      "stripe_receipt": ""
+    }
+  }
+]

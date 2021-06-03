@@ -4,33 +4,15 @@
     "pk": 1,
     "fields": {
       "password": "12345",
-      "last_login": "2021-06-02T13:37:48.082Z",
+      "last_login": "2021-06-03T14:19:15Z",
       "is_superuser": true,
       "username": "admin",
-      "first_name": "",
-      "last_name": "",
-      "email": "admin@admin.com",
+      "first_name": "Admin",
+      "last_name": "Superuser",
+      "email": "admin@gmail.com",
       "is_staff": true,
       "is_active": true,
-      "date_joined": "2021-04-29T10:59:12.953Z",
-      "groups": [],
-      "user_permissions": []
-    }
-  },
-  {
-    "model": "auth.user",
-    "pk": 2,
-    "fields": {
-      "password": "12345",
-      "last_login": null,
-      "is_superuser": true,
-      "username": "Clint",
-      "first_name": "",
-      "last_name": "",
-      "email": "clint@gmail.com",
-      "is_staff": false,
-      "is_active": true,
-      "date_joined": "2021-06-02T13:35:09.081Z",
+      "date_joined": "2021-04-29T10:59:12Z",
       "groups": [],
       "user_permissions": []
     }

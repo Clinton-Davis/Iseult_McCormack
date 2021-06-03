@@ -53,17 +53,23 @@ def cache_checkout_data(request):
         messages.error(request, 'Sorry, your payment cannot be \
             processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
+    
 @login_required()
 def checkout_address(request):
     template = "checkout/checkout_address.html"
     profile = get_object_or_404(UserProfile, user=request.user)
-    
+    user = get_object_or_404(User, username=profile.user)
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
-            
             form.save()
+            #Adding userprofiles full name to User first and lastname
+            user.first_name = profile.full_name.split()[0].capitalize()
+            user.last_name = profile.full_name.split()[1].capitalize()
+            user.save()
+            print(user.first_name, user.last_name)
             messages.success(request, 'Profile updated successfully')
+            
             return redirect(reverse('checkout:checkout_payment'))
         else:
             messages.error(
@@ -77,7 +83,7 @@ def checkout_address(request):
     return render(request, template, context)        
 
 
-
+@login_required()
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
