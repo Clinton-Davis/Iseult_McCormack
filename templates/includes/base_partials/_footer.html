@@ -17,17 +17,17 @@
           <ul>
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'about' %}">About</a></li>
-            <li><a href="{% url 'contact' %}">Contact</a></li>
+            <li><a href="{% url 'contact' %}">Contact Me</a></li>
             <li><a href="{% url 'gallery' %}">Gallery</a></li>
-            <li><a href="{% url 'shop:shop' %}">Shop</a></li>
+            <li><a href="{% url 'shop:shop' %}">Iseults Shop</a></li>
             {% if user.is_authenticated %}
             <li><a href="{% url 'profiles:profile' %}">Dashboard</a></li>
             <li><a href="{% url 'account_logout' %}">Log Out</a></li>
             {% else %}
             <li><a href="{% url 'account_login' %}">Login</a></li>
             {% endif %}
-            <li><a href="#">Terms of Use</a></li>
-            <li><a href="#">Privacy</a></li>
+            <li><a href="{% url 'terms' %}">Terms of Use</a></li>
+            <li><a href="{% url 'privacy' %}">Privacy Policy</a></li>
           </ul>
         </div>
       </div>
@@ -87,28 +87,24 @@
               alt="Instagram icon"
             />
           </div>
+          <div class="col-12 subfooter mt-3 text-white">
+            &copy; Iseult McCormack Creations 2021
+          </div>
+          <div class="col-12 mt-1 subfooter">
+            <a
+              class="clint_link"
+              href="http://www.clintondavis.org"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <strong>ClintonDavis.org</strong>
+              <img
+                class="cd_icon icons spinning"
+                src="/static/img/CD_logo_plain.svg"
+                alt="ClintonDavis.org icon"
+            /></a>
+          </div>
         </div>
-      </div>
-    </div>
-
-    <div class="row sub_footer_container mb-2">
-      <div class="col-12 col-md-4 subfooter text-white">
-        &copy; Iseult McCormack Creations 2021
-      </div>
-      <div class="col-md-4"></div>
-      <div class="col-12 col-md-4 subfooter">
-        <a
-          class="clint_link"
-          href="http://www.clintondavis.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <strong>ClintonDavis.org</strong>
-          <img
-            class="cd_icon icons spinning"
-            src="/static/img/CD_logo_plain.svg"
-            alt="ClintonDavis.org icon"
-        /></a>
       </div>
     </div>
   </div>

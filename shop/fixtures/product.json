@@ -1,0 +1,138 @@
+[
+  {
+    "model": "shop.product",
+    "pk": 1,
+    "fields": {
+      "category": 1,
+      "name": "Blue Pink Orange",
+      "description": "Product test description",
+      "has_sizes": false,
+      "price": 6500,
+      "image": "media/images/orangpurpleblue_blwexi",
+      "in_stock": true,
+      "sales_items": false,
+      "feat_item": false,
+      "code": "s1",
+      "inventory": 1
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 2,
+    "fields": {
+      "category": 1,
+      "name": "Gray White",
+      "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam</p>",
+      "has_sizes": false,
+      "price": 6500,
+      "image": "media/images/yelloworangeblue_a8qr7x",
+      "in_stock": true,
+      "sales_items": false,
+      "feat_item": false,
+      "code": "s2",
+      "inventory": 1
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 3,
+    "fields": {
+      "category": 1,
+      "name": "Blue Day",
+      "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,</p>",
+      "has_sizes": false,
+      "price": 6500,
+      "image": "media/images/purpleblue_small_t2m9cj",
+      "in_stock": true,
+      "sales_items": false,
+      "feat_item": false,
+      "code": "s3",
+      "inventory": 1
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 4,
+    "fields": {
+      "category": 1,
+      "name": "Winter's Moring",
+      "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,</p>",
+      "has_sizes": false,
+      "price": 6500,
+      "image": "media/images/orangpurpleblue_irek7g",
+      "in_stock": true,
+      "sales_items": false,
+      "feat_item": false,
+      "code": "s4",
+      "inventory": 1
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 5,
+    "fields": {
+      "category": 2,
+      "name": "Big picture",
+      "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,</p>",
+      "has_sizes": false,
+      "price": 16500,
+      "image": "media/images/big_Picture_uzeqzd",
+      "in_stock": true,
+      "sales_items": false,
+      "feat_item": false,
+      "code": "p1",
+      "inventory": 1
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 6,
+    "fields": {
+      "category": 2,
+      "name": "The Green One",
+      "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,</p>",
+      "has_sizes": false,
+      "price": 17000,
+      "image": "media/images/greenBlue_abzxzi",
+      "in_stock": true,
+      "sales_items": false,
+      "feat_item": false,
+      "code": "p2",
+      "inventory": 1
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 7,
+    "fields": {
+      "category": 1,
+      "name": "Autum Morning",
+      "description": "<p>The colours of this scarf remind me of the autumn Morning walking the trees where the leaves have fallen and the colours of the lands are saturated with beautiful soft oranges browns and yellowsd.</p>",
+      "has_sizes": false,
+      "price": 6700,
+      "image": "media/images/autumn1_iqkjkk",
+      "in_stock": true,
+      "sales_items": false,
+      "feat_item": false,
+      "code": "s5",
+      "inventory": 1
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 8,
+    "fields": {
+      "category": 2,
+      "name": "Winter storm",
+      "description": "<p>hshshshsbjsfdsfs dsdf ds dsjfdksjds fs</p>",
+      "has_sizes": false,
+      "price": 17000,
+      "image": "media/images/big_Picture_zvhqcj",
+      "in_stock": true,
+      "sales_items": false,
+      "feat_item": false,
+      "code": "p-6",
+      "inventory": 1
+    }
+  }
+]
