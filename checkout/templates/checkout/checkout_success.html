@@ -4,9 +4,11 @@
 <!-- 1 -->
 {% load mathfilters %}
 <!-- 1 -->
+{% block head_title %} | Order Statment {% endblock head_title %}
+<!-- 1 -->
 {% block content %}
 <section class="gooey3">
-  <div class="container outer_container-wide rain invert_shadow">
+  <div class="container outer_container-wide bg-light invert_shadow">
     <div class="row inner_div">
       <div class="col-12">
         <div class="order-confirmation-wrapper p-2 border">
@@ -14,7 +16,7 @@
             <div class="col">
               <h1 class="display-3 hf text-center mb-2">Thank You</h1>
               <hr />
-              <p class="text-black text-center">
+              <p class="col-12 text-black text-center">
                 Your order information is below. A confirmation email will be
                 sent to
                 <strong>{{ order.email }}</strong>.

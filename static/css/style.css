@@ -79,6 +79,7 @@ a .a_card:hover {
   display: flex;
   justify-content: center;
 }
+
 section {
   /* height: fit-content; */
   min-height: 90vh;
