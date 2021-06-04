@@ -153,53 +153,23 @@ p {
   color: black;
   width: 50%;
 }
-.about {
-  background-image: url(/static/img/darkOne.jpg);
-  background-size: cover;
-  background-position: center center;
-}
-.signup {
-  background-image: url(/static/img/greenBlue.jpeg);
-  background-size: cover;
-}
-
+/**--Back-Grounds--*/
 .flyers {
-  background-image: url(/static/img/LiveBackGround.svg);
-  background-size: cover;
-  background-position: center center;
-}
-.stripes {
-  background-image: url(/static/img/Stripes.svg);
-  background-size: cover;
-  background-position: center center;
-}
-.rain {
-  background-image: url(/static/img/Raindrop.svg);
+  background-image: url(/static/img/backgrounds/LiveBackGround.svg);
   background-size: cover;
   background-position: center center;
 }
 
 .gooeys {
-  background-image: url(/static/img/Gooey-4.svg);
+  background-image: url(/static/img/backgrounds/Gooey-4.svg);
   background-size: cover;
   background-position: center center;
 }
 .gooey3 {
-  background-image: url(/static/img/Gooey-3.svg);
+  background-image: url(/static/img/backgrounds/Gooey-3.svg);
   background-size: cover;
   background-position: center center;
 }
-.gooey2 {
-  background-image: url(/static/img/Gooey2.svg);
-  background-size: cover;
-  background-position: center center;
-}
-
-/* .nav_Raindrops {
-  background-image: url(/static/img/Raindrop_deep.svg);
-  background-size: cover;
-  background-position: center center;
-} */
 
 .outer_container {
   padding: 1rem;
