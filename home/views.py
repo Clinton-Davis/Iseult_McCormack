@@ -8,7 +8,9 @@ from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 from .forms import ContactForm
 from shop.models import Product
-from .models import About, Scarfs, Paintings, ImageGallery, Home
+from .models import ( About, Scarfs, Paintings, 
+                     ImageGallery, Home, PrivacyPolicy,
+                     TermsConditions )
 
 class IndexView(ListView):
      model = Home
@@ -35,12 +37,16 @@ class GalleryView(ListView):
      context_object_name = "images"
 
 
-class TermsView(TemplateView):
+class TermsView(ListView):
+    model = TermsConditions
     template_name = "home/terms.html"
+    context_object_name = "terms"
 
 
-class PrivacyView(TemplateView):
+class PrivacyView(ListView):
+    model = PrivacyPolicy
     template_name = "home/privacy.html"
+    context_object_name = "policys"
 
 
 class ContactView(generic.FormView):

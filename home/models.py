@@ -47,3 +47,24 @@ class ImageGallery(models.Model):
       def __str__(self):
         return self.name
         
+class PrivacyPolicy(models.Model):
+      class Meta:
+            verbose_name_plural = 'Privacy Policy'
+            
+      name = models.CharField(max_length=150)
+      policy = RichTextField(blank=True, null=True)
+      update = models.DateTimeField(auto_now_add=True)
+      
+      def __str__(self):
+        return self.name
+      
+class TermsConditions(models.Model):
+      class Meta:
+            verbose_name_plural = 'Terms & Conditions'
+            
+      name = models.CharField(max_length=150)
+      terms = RichTextField(blank=True, null=True)
+      update = models.DateTimeField(auto_now_add=True)
+      
+      def __str__(self):
+        return self.name
