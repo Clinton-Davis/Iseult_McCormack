@@ -509,7 +509,7 @@ footer {
 }
 
 .footer_logo {
-  max-width: 15rem;
+  max-width: 18rem;
 }
 .inner_footer {
   margin: 1rem 2rem;
@@ -534,7 +534,9 @@ footer {
 .payment_icons {
   width: 2rem;
 }
-
+.DW_icons {
+  width: 5rem;
+}
 .cd_icon {
   width: 2rem;
   vertical-align: middle;
