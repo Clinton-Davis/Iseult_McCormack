@@ -13,7 +13,7 @@ static_root
 # Python # 
 *.py[cod] 
 *$py.class 
-
+notes.txt
 # Distribution / packaging 
 .Python build/ 
 develop-eggs/ 
