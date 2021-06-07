@@ -2,9 +2,13 @@
 
 Iseult McCormack Creations is an online store where she can sell her art.
 
-[Iseult McCormack Creations](https://iseult-mccormack-shop.herokuapp.com/)
+Website Links : [Iseult McCormack Creations](https://iseult-mccormack-shop.herokuapp.com/)
 
 ---
+
+---
+
+## Authors
 
 ## Technologies
 
@@ -31,14 +35,38 @@ Iseult McCormack Creations is an online store where she can sell her art.
 
 ## Features
 
-- User Reg & login
-- User Dashboard with Order history
-- Postal Charges based on Location
-- Stock Control
-- Adminstration area
-- About bio, and Products description editable
-- Stripe payment system
-- Confirmation email sent on payment recieced.
+- User Reg & login: Using 3rd party [Django-Alluth](https://django-allauth.readthedocs.io/en/latest/#) Is used to manage the registration and login process. In order to ensure the security of costume details, every precaution must be taken.
+
+- Postal Charges: Considering that the products vary in size, the postage will have to be adjusted accordingly, considering the products and location.
+- Stock Control: The product is unique, so the stock control must be accurate. Upon the payment of an item and the completion of an order, the quantity is deducted from the inventory and the item is placed into inventory.
+- Administration area: A web application's Administration area serves as its control centre. Here, you may change the product details, user status, user details, orders, and stock levels. You may only access this if you are authorised.
+- The About bio and product general information can be edited in the administration area. Here you can edit the information independently as the products evolve.
+- STRIPE payment system: Fully integrated STRIPE API, using all of the internal security features
+- Confirmation email: Following the completion of a STRIPE payment. The customer receives a confirmation email and a second email with the details of the order is sent to the store administrator.
+- User Dashboard with Order history: When a user registers and logs in, he or she is automatically given a dashboard. Here you will be able to access previous orders, including the STRIPE receipt associated with that order.
+  It is possible for users to change their shipping information here.
+
+---
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+| Key                 |      Value      |
+| ------------------- | :-------------: |
+| SECRET_KEY          | < Your Values > |
+| EMAIL_HOST_PASS     | < Your Values > |
+| EMAIL_HOST_USER     | < Your Values > |
+| NOTIFY_EMAIL        | < Your Values > |
+| DEFAULT_FROM_EMAIL  | < Your Values > |
+| STRIPE_PUBLIC_KEY   | < Your Values > |
+| STRIPE_SECRET_KEY   | < Your Values > |
+| STRIPE_SECSTRIPE_WH | < Your Values > |
+| CLOUD_NAME          | < Your Values > |
+| API_KEY             | < Your Values > |
+| API_SECRET          | < Your Values > |
+
+---
 
 ## Acknowledgements
 
