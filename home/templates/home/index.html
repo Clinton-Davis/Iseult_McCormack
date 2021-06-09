@@ -9,13 +9,13 @@
   <section>
     <div class="container">
       <div class=" row index_container">
-        <div class="col-12 col-md-6 index_image">
+        <div class="col-12 index_image">
           <img
             src="{% static 'img/logos/Logo-words-black-trans.png' %}"
             alt="hero_logo"
           />
         </div>
-        <div class="col-12 col-md-6 index_heading">
+        <div class="col-12 index_heading">
           {% for bio in home  %}
           <h5 class="text-center">
             {{bio.bio|safe}}

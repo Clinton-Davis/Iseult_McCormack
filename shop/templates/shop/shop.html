@@ -41,19 +41,11 @@
 
         <a href="{{ item.get_absolute_url }}" class="a_card">
           <div class="card m-3 p-1">
-            {% if item.image %}
             <img
               src="{{ item.image.url }}"
               class="card-img-top"
-              alt="{{ item.image.name }}"
+              alt="{{ item.name }}"
             />
-            {% else %}
-            <img
-              src="{{ MEDIA_URL }}no_image.png"
-              class="card-img-top"
-              alt="{{ item.name}}"
-            />
-            {% endif %}
             <h5 class="hf text-center">{{ item.name}}</h5>
             <ul class="item_details_list">
               <li class="text-muted">

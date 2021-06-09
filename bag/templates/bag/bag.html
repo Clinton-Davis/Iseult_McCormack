@@ -31,68 +31,65 @@
             {% if bag_items %}
             <div class="d-block d-md-none">
               <div class="row">
-                <div class="col">
-                  <h5 class="hfi">
-                    <strong
-                      >Bag Total: &euro;{{ bag_total|floatformat:2 }}</strong
-                    >
-                  </h5>
-                  {% if selected_location == "None" %}
-                  <p>
-                    <small
-                      >Delivary price will be will be caluclated <br />
-                      when you address is know.</small
-                    >
-                  </p>
-                  {% else %} {% if product.category == "painting" %}
-                  <h5 class="hfi">
-                    Delivary: &euro;{{code_parcel_price|floatformat:2 }}
-                  </h5>
-                  <small>(To {{code}})</small>
-                  {% else %}
-                  <h5 class="hfi">
-                    Delivary: &euro;{{ code_packet_price|floatformat:2 }}
-                  </h5>
-                  <small>(To {{selected_location}})</small>
-                  {% endif %} {% endif %}
-
-                  <h4 class="mt-4">
-                    <strong class="hf"
-                      >Grand Total:
-                      <span class="hf">&euro;</span>
-                      {{grand_total|floatformat:2}}</strong
-                    >
-                  </h4>
-                  {% if free_delivery_delta > 0 %}
-                  <p class="mb-1 text-danger">
-                    You could get free delivery by spending just
-                    <strong
-                      ><span class="hfib">&euro;</span>{{ free_delivery_delta
-                      }}</strong
-                    >
-                    more!
-                  </p>
-                  {% endif %}
+                <div class="col-6">
+                  <strong>Bag Total: </strong>
+                </div>
+                <div class="col-6 my-1">
+                  <strong>&euro; {{ bag_total|floatformat:2 }}</strong>
                 </div>
               </div>
               <div class="row">
+                <div class="col-6 my-1">
+                  <strong>Delivary: </strong>
+                </div>
+                {% if selected_location == "None" %}
+                <div class="col-6 my-1">
+                  <a href="{% url 'checkout:address' %}"
+                    ><small>Add Shipping Address</small></a
+                  >
+                </div>
+                {% else %}
+                <!-- 1 -->
+                <div class="col-6 my-1 float-right">
+                  <h5>
+                    {% if product.category == "painting" %}
+                    &euro;{{code_parcel_price|floatformat:2 }} {% else %}
+                    &euro;{{ code_packet_price|floatformat:2 }} {% endif %}
+                  </h5>
+                  <small>(To {{ selected_location }})</small>
+                </div>
+                {% endif %}
+              </div>
+              <div class="row">
+                <div class="col-6 my-1">
+                  <strong>Grand Total: </strong>
+                </div>
+                <div class="col-6 my-1">
+                  <strong>&euro; {{grand_total|floatformat:2}}</strong>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
                 <div class="col">
-                  <a href="{% url 'shop:shop' %}" class="hfi btn-grad_pink">
-                    <span class="icon">
-                      <i class="fas fa-arrow-circle-left"></i>
-                    </span>
-                    <span class="text-uppercase mx-1">Keep Shopping</span>
-                  </a>
                   <a
                     href="{% url 'checkout:address' %}"
-                    class="hfi btn-grad_blue"
+                    class="hfi btn-grad_blue mb-4"
                   >
                     <span class="text-uppercase mx-2">Checkout</span>
                     <span class="icon">
                       <i class="fas fa-lock"></i>
                     </span>
                   </a>
-
+                  <a
+                    href="{% url 'shop:shop' %}"
+                    class="hfi btn-grad_pink mb-4"
+                  >
+                    <span class="icon">
+                      <i class="fas fa-arrow-circle-left"></i>
+                    </span>
+                    <span class="text-uppercase mx-1">Keep Shopping</span>
+                  </a>
+                  <hr />
                   <p class="text-muted mb-5">
                     A summary of your bag contents is below
                   </p>
@@ -101,21 +98,12 @@
               {% for item in bag_items %}
               <div class="row">
                 <div class="col-6 mb-2">
-                  {% if item.product.image %}
                   <img
                     class="img-fluid rounded"
                     src="{{ item.product.image.url }}"
-                    alt="{{ item.product.name }}"
+                    alt="Image of {{ item.product.name }}"
                     style="width: 8rem"
                   />
-                  {% else %}
-                  <img
-                    class="img-fluid rounded"
-                    src="{{ MEDIA_URL }}no_image.png"
-                    alt="{{ item.product.name }}"
-                    style="width: 8rem"
-                  />
-                  {% endif %}
                 </div>
                 <div class="col-6 mb-2">
                   <p class="my-0 text-center">{{ item.product.name}}</p>

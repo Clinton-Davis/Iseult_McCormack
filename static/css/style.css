@@ -82,7 +82,7 @@ a .a_card:hover {
 
 section {
   /* height: fit-content; */
-  min-height: 90vh;
+  min-height: 65vh;
 }
 img {
   width: 100%;
@@ -587,6 +587,7 @@ footer {
   margin: 0.5rem auto;
   justify-content: center;
   align-items: center;
+  max-width: 40rem;
   /* max-width: 30rem; */
 }
 .index_heading {
@@ -717,7 +718,10 @@ footer {
 }
 @media screen and (max-width: 450px) {
 }
-
+/** BAG */
+.mobile_bag_totals {
+  display: flex;
+}
 /** Gallery Page */
 
 .gallery-img {
