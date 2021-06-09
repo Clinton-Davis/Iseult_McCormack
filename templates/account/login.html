@@ -18,8 +18,11 @@
       <p>
         {% blocktrans with site.name as site_name %}Please Login with one of
         your existing third party accounts. Or,
-        <a href="{{ signup_url }}">sign up</a> for a {{ site_name }} account and
-        sign in below:{% endblocktrans %}
+        <a href="{{ signup_url }}"
+          ><span class="aqua">Sign&nbsp;</span>
+          <span class="purpel">up</span></a
+        >
+        for a {{ site_name }} account and sign in below:{% endblocktrans %}
       </p>
 
       <div class="socialaccount_ballot">
@@ -36,7 +39,11 @@
       {% else %}
       <p class="center-text">
         {% blocktrans %}If you have not created an account yet, then please
-        <a href="{{ signup_url }}">Sign Up.</a>{%endblocktrans %}
+        <a href="{{ signup_url }}"
+          ><span class="aqua bold"><strong>Sign</strong></span>
+          <span class="purpel"><strong>Up</strong></span
+          >.</a
+        >{%endblocktrans %}
       </p>
       {% endif %}
 

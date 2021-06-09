@@ -116,6 +116,10 @@
     <!--footer-->
     {% include "includes/base_partials/_footer.html" %}
     <!-- 1 -->
+    {% block extra_body %}
+    <!-- 1 -->
+    {% endblock extra_body %}
+    <!-- 1 -->
     {% block postloadjs %}
     <script type="text/javascript">
       $(".toast").toast("show");

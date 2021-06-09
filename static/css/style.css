@@ -649,6 +649,7 @@ footer {
   -o-border-radius: 15px;
 }
 .card img {
+  min-height: 23rem;
   background-image: url(/static/img/Curve.svg);
   background-size: cover;
   background-position: center center;
