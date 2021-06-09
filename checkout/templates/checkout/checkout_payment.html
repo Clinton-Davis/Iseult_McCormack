@@ -27,19 +27,11 @@
               <div class="row checkout_items">
                 <div class="mb-1">
                   <a href="{% url 'shop:product_detail' item.product.id %}">
-                    {% if item.product.image %}
                     <img
                       class=""
                       src="{{ item.product.image.url }}"
-                      alt="{{ product.name }}"
+                      alt="{{ item.product.name }}"
                     />
-                    {% else %}
-                    <img
-                      class=""
-                      src="{{ MEDIA_URL }}no_image.png"
-                      alt="{{ product.name }}"
-                    />
-                    {% endif %}
                   </a>
                 </div>
                 <div class="">
@@ -49,7 +41,7 @@
                   <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
                 </div>
                 <div class="">
-                  <p class="my-0 small">&euro;{{ item.product.get_price }}</p>
+                  <p class="my-0 small">&euro; {{ item.product.get_price }}</p>
                 </div>
               </div>
 
@@ -73,7 +65,13 @@
               </div>
               <div class="col-6">
                 <p class="my-0 float-right">
-                  &euro; {{ delivery | floatformat:2 }}
+                  {% if free_delivery_delta == 0 %}
+                  <!-- 1 -->
+                  Free Delivery
+                  <!-- 1 -->
+                  {% else %}
+                  <!-- 1 -->
+                  &euro; {{ delivery | floatformat:2 }} {% endif %}
                 </p>
               </div>
             </div>
