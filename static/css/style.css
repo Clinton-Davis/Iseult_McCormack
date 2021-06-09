@@ -158,17 +158,20 @@ p {
   background-image: url(/static/img/backgrounds/LiveBackGround.svg);
   background-size: cover;
   background-position: center center;
+  background-attachment: fixed;
 }
 
 .gooeys {
   background-image: url(/static/img/backgrounds/Gooey-4.svg);
   background-size: cover;
   background-position: center center;
+  background-attachment: fixed;
 }
 .gooey3 {
   background-image: url(/static/img/backgrounds/Gooey-3.svg);
   background-size: cover;
   background-position: center center;
+  background-attachment: fixed;
 }
 
 .outer_container {
