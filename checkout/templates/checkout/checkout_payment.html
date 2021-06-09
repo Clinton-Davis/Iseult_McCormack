@@ -57,6 +57,40 @@
             </div>
             <hr class="my-4" />
             <br />
+            <div class="row text-black hf">
+              <div class="col-6">
+                <p class="my-0">Items:</p>
+              </div>
+              <div class="col-6">
+                <p class="my-0 float-right">
+                  &euro; {{ bag_total | floatformat:2 }}
+                </p>
+              </div>
+            </div>
+            <div class="row text-black hf">
+              <div class="col-6">
+                <p class="my-0">Delivery:</p>
+              </div>
+              <div class="col-6">
+                <p class="my-0 float-right">
+                  &euro; {{ delivery | floatformat:2 }}
+                </p>
+              </div>
+            </div>
+            <div class="row text-black hf">
+              <div class="col-6">
+                <p class="my-0 hfb">Grand Total:</p>
+              </div>
+              <div class="col-6">
+                <p class="my-0">
+                  <strong class="float-right"
+                    >&euro; {{ grand_total | floatformat:2 }}</strong
+                  >
+                </p>
+              </div>
+            </div>
+            <hr class="my-4" />
+            <br />
             <p class="ml-3 hf">Delivaring To:</p>
             <div class="row text-black hf">
               <div class="col-6">
@@ -72,23 +106,10 @@
                 <div class="my-0">{{profile.county}}</div>
                 <div class="my-0">{{profile.country}}</div>
               </div>
-              <div class="col-3">
-                <p class="my-0">Order Total:</p>
-                <p class="my-0">Delivery:</p>
-                <p class="my-0 hfb">Grand Total:</p>
-              </div>
-              <div class="col-3">
-                <p class="my-0">&euro;{{ bag_total | floatformat:2 }}</p>
-                <p class="my-0">&euro;{{ delivery | floatformat:2 }}</p>
-                <p class="my-0">
-                  <strong class=""
-                    >&euro;{{ grand_total | floatformat:2 }}</strong
-                  >
-                </p>
-              </div>
             </div>
           </div>
         </div>
+        <hr class="mb-3" />
         <div class="row">
           <div class="col-12">
             <form
@@ -155,7 +176,8 @@
                   name="client_secret"
                 />
               </fieldset>
-              <div class="row">
+
+              <div class="row mb-4">
                 <div class="col-12 payment-icons_container">
                   <img
                     class="payment_icons ml-1"
@@ -180,6 +202,15 @@
                   />
                 </div>
               </div>
+              <p class="small text-info my-1 text-center">
+                <span class="icon">
+                  <i class="fas fa-exclamation-circle"></i>
+                </span>
+                <span
+                  >Your card will be charged
+                  <strong>&euro;{{ grand_total|floatformat:2 }}</strong></span
+                >
+              </p>
               <div class="submit-button text-right mt-3 mb-2">
                 <button id="submit-button" class="btn-grad_blue">
                   <span class="hfi mx-2">Make Payment</span>
@@ -187,21 +218,12 @@
                     <i class="fas fa-lock"></i>
                   </span>
                 </button>
-                <a href="{% url 'bag:bag_view' %}" class="btn-grad_pink">
+                <a href="{% url 'bag:bag_view' %}" class="btn-grad_pink mb-3">
                   <span class="icon">
                     <i class="fas fa-arrow-circle-left"></i>
                   </span>
                   <span class="hfi mx-1">Adjust Bag</span>
                 </a>
-                <p class="small text-info my-0">
-                  <span class="icon">
-                    <i class="fas fa-exclamation-circle"></i>
-                  </span>
-                  <span
-                    >Your card will be charged
-                    <strong>&euro;{{ grand_total|floatformat:2 }}</strong></span
-                  >
-                </p>
               </div>
             </form>
           </div>
