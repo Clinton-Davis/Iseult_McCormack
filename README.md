@@ -1,5 +1,7 @@
 # Iseult McCormack Creations
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d6c190159b364367816d8ee2ca2cce30)](https://app.codacy.com/gh/Clinton-Davis/Iseult_McCormack?utm_source=github.com&utm_medium=referral&utm_content=Clinton-Davis/Iseult_McCormack&utm_campaign=Badge_Grade_Settings)
+
 Iseult McCormack Creations is an online store where she can sell her art.
 
 Website Links : [Iseult McCormack Creations](https://www.iseultmccormackcreations.eu/)
