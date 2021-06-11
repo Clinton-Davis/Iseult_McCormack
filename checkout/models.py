@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.db import models
 from django.db.models import Sum
 from django_countries.fields import CountryField
@@ -29,7 +28,6 @@ class Order(models.Model):
     country_name = models.CharField(max_length=150, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
     delivery_cost = models.IntegerField(null=False, default=0)
-    
     order_total = models.IntegerField(null=False, default=0)
     grand_total = models.IntegerField(null=False, default=0)
     original_bag = models.TextField(null=False, blank=False, default='')
@@ -54,9 +52,7 @@ class Order(models.Model):
     
 
     def _generate_order_number(self):
-        """
-        Generate a order number using date of creation and short uuid code.
-        """
+        """Generate a order number using date of creation and short uuid code."""
         u = uuid.uuid4()
         s = shortuuid.encode(u)
         shortuuid.decode(s) == u
@@ -66,7 +62,6 @@ class Order(models.Model):
         return date_code + short.upper()
     
     def update_total(self):
-       
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))[
             'lineitem_total__sum'] or 0
         self.delivery_cost = self.delivery_cost

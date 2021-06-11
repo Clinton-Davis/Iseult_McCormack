@@ -1,5 +1,4 @@
 from django import forms
-from django.forms import HiddenInput
 from profiles.models import UserProfile
 from .models import Order
 
@@ -11,7 +10,3 @@ class OrderForm(forms.ModelForm):
                   'street_address1', 'street_address2',
                   'town_or_city', 'postcode', 'country',
                   'county',)
-
-
-
-        

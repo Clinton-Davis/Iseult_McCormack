@@ -1,6 +1,4 @@
-
 from django.db import models
-from django.db.models.signals import post_save
 from django.shortcuts import reverse
 from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
@@ -65,8 +63,8 @@ class Product(models.Model):
     def view_count(self):
         return self.productview_set.all().count()
     
-    
 class productComment(models.Model):
+    
     """To be able to comment on a Product"""
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name_product = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -79,6 +77,7 @@ class productComment(models.Model):
 
 
 class ProductView(models.Model):
+    
     """Keeps track of views """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)

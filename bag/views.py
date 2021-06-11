@@ -1,13 +1,9 @@
-from django.conf import settings
-from django_countries import countries
 from django.shortcuts import redirect, reverse, HttpResponse, get_object_or_404, render
-from django.views.generic import TemplateView
-from django.views.generic.edit import FormView
 from django.contrib import messages
 from shop.models import Product
 from checkout.models import Delivary
 from profiles.models import UserProfile
-from checkout.views import get_delivary_price
+
 
 
 #? If in the future size becomes a avaiable, Use the Blue Code(?)
@@ -15,7 +11,6 @@ from checkout.views import get_delivary_price
 
 def bag_view(request):
     template = 'bag/bag.html'
-    
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
         
@@ -72,11 +67,9 @@ def bag_view(request):
 
 def add_to_bag(request, item_id):
     """ Adds quantity 1 to the bag as each item 
-    is unquie gets the session and adds bag to it
+        is unquie gets the session and adds bag to it
     """
-
     product = get_object_or_404(Product, pk=item_id)
-    product_cat_id = str(product.category_id)
     redirect_url = "bag:bag_view"
     size = None
     quantity = 1

@@ -18,13 +18,6 @@ def update_on_delete(sender, instance, **kwargs):
     Update order total on lineitem delete
     """
     instance.order.update_total()
-    
-# @receiver(post_save, sender=OrderLineItem)
-# def update_inventory_on_success(sender, instance, **kwargs):
-#     """
-#     Update order total on lineitem delete
-#     """
-#     instance.shop.update_inventory()
 
 
     

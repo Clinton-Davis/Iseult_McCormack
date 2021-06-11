@@ -55,9 +55,6 @@ class All_Products(View):
             'sorting': sorting,
         }
         return render(request, 'shop/shop.html', context)
-
-
-    
     
 class ProductDetailView(DetailView):
     model = Product

@@ -21,7 +21,6 @@ class StripeWH_Handler:
 
     def _shopping_confirmation_email(self, order):
         """Send a confirmation email"""
-        
         customer_email = order.email
         body = render_to_string(
             'checkout/emails/shopping_email_body.txt',
@@ -63,9 +62,7 @@ class StripeWH_Handler:
 
 
     def handle_payment_intent_succeeded(self, event):
-        """
-        Handle the payment_intent.succeeded webhook from Stripe
-        """
+        """Handle the payment_intent.succeeded webhook from Stripe."""
         intent = event.data.object
         pid = intent.id
         bag = intent.metadata.bag
@@ -96,7 +93,7 @@ class StripeWH_Handler:
                 status=200)
         
     def handle_payment_intent_payment_failed(self, event):
-        """ Handles payment failing events"""
+        """Handles payment failing events"""
         return HttpResponse(
             content=f'Webhook failed revieved: {event["type"]}',
             status=200
