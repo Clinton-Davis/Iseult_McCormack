@@ -9,6 +9,7 @@ notes.txt
 static_root
 # Backup files # 
 *.bak 
+.well-known
 
 # Python # 
 *.py[cod] 
