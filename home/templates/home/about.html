@@ -5,14 +5,27 @@
 {% block head_title %} | About Iseult {% endblock head_title %}
 <!-- 1 -->
 {% block content %}
-<section class="gooey3">
+<!-- <section class="gooey3"> -->
+<section class="">
   <div class="container-fluid">
     <div class="row inner_div invert_shadow">
-      <h1 class="col-12 display-3 text-center hfi">Iseult McCormack</h1>
-      <h4 class="col-12 text-center hfi">Artest, Mother, Life Lover</h4>
-      {% for bio in about %}
-      <div class="mx-auto">{{ bio.bio|safe }}</div>
-      {% endfor %}
+      <h1 class="col-12 display-3 text-center mb-4 hfi">Iseult McCormack</h1>
+      <br />
+      <div class="row bio-block">
+        <div class="col-12 col-md-6 bio-block">
+          <img
+            class="artist_pic back_shadow_light"
+            src="/static/img/pics/iseult_pic.jpg"
+            alt="iseult_pic"
+          />
+        </div>
+        <div class="col-12 col-md-6">
+          <h4 class="text-center hfi">Artest, Mother, Life Lover</h4>
+          {% for bio in about %}
+          <div class="mx-auto">{{ bio.bio|safe }}</div>
+          {% endfor %}
+        </div>
+      </div>
       <br />
       <hr class="black_hr" />
       <h2 class="col-12 display-4 text-center hfi">My Art</h2>
