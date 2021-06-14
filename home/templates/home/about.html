@@ -19,7 +19,7 @@
             alt="iseult_pic"
           />
         </div>
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-6 mt-3">
           <h4 class="text-center hfi">Artest, Mother, Life Lover</h4>
           {% for bio in about %}
           <div class="mx-auto">{{ bio.bio|safe }}</div>
@@ -29,24 +29,25 @@
       <br />
       <hr class="black_hr" />
       <h2 class="col-12 display-4 text-center hfi">My Art</h2>
+      <hr class="black_hr" />
       <br />
       <div class="row">
         <div class="col-12 col-md-6 mb-sm-4">
           {% for scarf in scarfs %}
           <h3 class="hfi text-center">{{ scarf.heading }}</h3>
-          <hr class="black_hr" />
+
           <p>{{ scarf.discription|safe}}</p>
           {% endfor %}
           <a
             href="{% url 'shop:shop' %}?category=scarves"
-            class="btn-grad_pink hf w-mb-75"
+            class="btn-grad_pink hf"
             >View Collection</a
           >
         </div>
         <div class="col-12 col-md-6">
           {% for painting in paintings %}
           <h3 class="hfi text-center">{{ painting.heading }}</h3>
-          <hr class="black_hr" />
+
           <p>{{ painting.discription|safe }}</p>
           {% endfor %}
           <a
