@@ -5,6 +5,8 @@
   --montserrat: "Montserrat", sans-serif;
   --aqua: #29b7b7;
   --lightPurpal: #be55d1;
+  --Header_Black: #000000;
+  --P_black: #3d3d3d;
 }
 
 .small_svg {
@@ -108,7 +110,8 @@ li {
 }
 
 p {
-  max-width: 650px;
+  max-width: 60ch;
+  color: var(--P_black);
 }
 
 .hf {
@@ -118,12 +121,14 @@ p {
 .hfi {
   font-family: var(--garamond);
   font-style: italic;
+  color: var(--Header_Black);
 }
 
 .hfib {
   font-family: var(--garamond);
   font-style: italic;
   font-weight: bold;
+  color: var(--Header_Black);
 }
 
 .aqua {
@@ -630,12 +635,8 @@ footer {
   text-align: center;
 }
 
-.clint_link {
-  color: #3185eb;
-}
-
-.clint_link:hover {
-  color: #689fe2;
+.social_icons_row {
+  height: 9rem;
 }
 
 /**--Index-Page */
@@ -654,7 +655,6 @@ footer {
   justify-content: center;
   align-items: center;
   max-width: 40rem;
-  /* max-width: 30rem; */
 }
 
 .index_heading {
