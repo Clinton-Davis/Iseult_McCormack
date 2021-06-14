@@ -783,6 +783,9 @@ footer {
   backdrop-filter: blur(5px);
   width: 90%;
 }
+.detail_form {
+  width: 100%;
+}
 
 @media screen and (max-width: 767px) {
   .inner_div_checkout {
