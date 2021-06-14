@@ -5,8 +5,7 @@
 {% block head_title %} | About Iseult {% endblock head_title %}
 <!-- 1 -->
 {% block content %}
-<!-- <section class="gooey3"> -->
-<section class="">
+<section lang="en" class="gooey3">
   <div class="container-fluid">
     <div class="row inner_div invert_shadow">
       <h1 class="col-12 display-3 text-center mb-4 hfi">Iseult McCormack</h1>
@@ -20,7 +19,7 @@
           />
         </div>
         <div class="col-12 col-md-6 mt-3">
-          <h4 class="text-center hfi">Artest, Mother, Life Lover</h4>
+          <h2 class="text-center hfi">Artest, Mother, Life Lover</h2>
           {% for bio in about %}
           <div class="mx-auto">{{ bio.bio|safe }}</div>
           {% endfor %}
@@ -41,6 +40,8 @@
           <a
             href="{% url 'shop:shop' %}?category=scarves"
             class="btn-grad_pink hf"
+            aria-label="link to scarves boutique"
+            accesskey="s"
             >View Collection</a
           >
         </div>
@@ -52,7 +53,9 @@
           {% endfor %}
           <a
             href="{% url 'shop:shop' %}?category=paintings"
-            class="btn-grad_blue hf w-md-50"
+            class="btn-grad_blue hf"
+            aria-label="link to paintings boutique"
+            accesskey="p"
             >View Collection</a
           >
         </div>

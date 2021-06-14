@@ -5,7 +5,7 @@
 {% block head_title %} | Bag {% endblock head_title %}
 <!-- 1 -->
 {% block content %}
-<section class="">
+<section lang="en" class="">
   <div class="container outer_container gooeys invert_shadow">
     <div class="inner_div back_shadow my-2">
       <div class="container mb-2">
@@ -74,6 +74,7 @@
                   <a
                     href="{% url 'checkout:address' %}"
                     class="hfi btn-grad_blue mb-4"
+                    aria-label="Proceed to checkout"
                   >
                     <span class="text-uppercase mx-2">Checkout</span>
                     <span class="icon">
@@ -83,6 +84,7 @@
                   <a
                     href="{% url 'shop:shop' %}"
                     class="hfi btn-grad_pink mb-4"
+                    aria-label="Keep Shopping"
                   >
                     <span class="icon">
                       <i class="fas fa-arrow-circle-left"></i>
@@ -117,6 +119,7 @@
                   <a
                     class="remove-item text-danger text-center"
                     id="remove_{{ item.item_id }}"
+                    aria-label="Remove item from cart"
                   >
                     <i class="fas fa-lg fa-trash-alt"></i>
                   </a>
@@ -129,7 +132,10 @@
               </div>
               {% endfor %}
               <div class="btt-button shadow-sm rounded-2 border border-black">
-                <a class="btt-link d-flex h-100">
+                <a
+                  class="btt-link d-flex h-100"
+                  aria-label="Remove item from cart"
+                >
                   <i
                     class="fas fa-angle-double-up text-black mx-auto my-auto"
                   ></i>
