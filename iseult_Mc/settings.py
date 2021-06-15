@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # if "DEV" in os.environ:
 DEBUG = True
-# else: 
+# else:
 #     DEBUG = False
 
 if "DEV" in os.environ:
@@ -25,13 +25,11 @@ if "DEV" in os.environ:
     ALLOWED_HOSTS = ['*']
 else:
     ALLOWED_HOSTS = ['www.iseultmccormackcreations.eu', '127.0.0.1']
-    
 
 
 TAX_RATE_PERCENTAGE = 23
 
 FREE_DELIVERY_THRESHOLD = 200
-
 
 
 # Application definition
@@ -51,7 +49,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'mathfilters',
-    
+
     'crispy_forms',
     'ckeditor',
     'home',
@@ -59,7 +57,7 @@ INSTALLED_APPS = [
     'bag',
     'checkout',
     'profiles'
- 
+
 ]
 
 MIDDLEWARE = [
@@ -103,7 +101,7 @@ AUTHENTICATION_BACKENDS = [
 
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
-   
+
 ]
 
 # Alluth Configuration
@@ -136,8 +134,8 @@ WSGI_APPLICATION = 'iseult_Mc.wsgi.application'
 # }
 # else:
 DATABASES = {
-        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-    }
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -204,7 +202,7 @@ if "DEV" in os.environ:
     STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY')
     STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
     STRIPE_WH_SECRET = env('STRIPE_WH_SECRET')
-    
+
 else:
     STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
     STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
@@ -240,9 +238,7 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 NOTIFY_EMAIL = os.environ.get('NOTIFY_EMAIL')
 DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
-    
 
-   
 
 # CLOUDINARY_CONFIG
 if "DEV" in os.environ:
@@ -253,7 +249,7 @@ if "DEV" in os.environ:
     }
 else:
     CLOUDINARY_STORAGE = {
-            'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
-            'API_KEY': os.environ.get('API_KEY'),
-            'API_SECRET': os.environ.get('API_SECRET'),
-        }
+        'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
+        'API_KEY': os.environ.get('API_KEY'),
+        'API_SECRET': os.environ.get('API_SECRET'),
+    }

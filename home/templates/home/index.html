@@ -1,19 +1,16 @@
 {% extends "base.html" %}
- 
+
 {% load static %}
- 
+
 {% block head_title %} | Home {% endblock head_title %}
- 
+
 {% block content %}
 <main class="flyers">
   <section lang="en">
     <div class="container">
       <div class="row index_container">
         <div class="col-12 index_image">
-          <img
-            src="{% static 'img/logos/Logo-words-black-trans.png' %}"
-            alt="hero_logo"
-          />
+          <img src="{% static 'img/logos/Logo-words-black-trans.png' %}" alt="hero_logo" />
         </div>
         <div class="col-12 index_heading">
           {% for bio in home %}
@@ -34,11 +31,7 @@
       </div>
       <div class="row">
         <div class="col-12 col-md-8 offset-md-2 border-20">
-          <div
-            id="carouselExampleFade"
-            class="carousel slide carousel-fade"
-            data-ride="carousel"
-          >
+          <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner text-center border-20">
               <div class="carousel-item active border-20">
                 <figure class="quote border-20 invert_shad_purpal">
@@ -98,9 +91,33 @@
                     craft shop.
                   </blockquote>
                   <figcaption>
-                    &mdash; <span class="purpal"></span> |
+                    &mdash; <span class="purpal">Oonagh McCann</span> |
                     <span class="aqua">Aug 17 2020 </span>|
                     <cite>Visual Arts Ireland.ie</cite>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="carousel-item">
+                <figure class="quote invert_shad_purpal">
+                  <blockquote>
+                    Iseult's is a true artistic talent. Its in her DNA and cannot be ignored.She is an inspration and
+                    every piece is better than the last
+                  </blockquote>
+                  <figcaption>
+                    &mdash; <span class="purpal">Joanne</span> |
+                    <span class="aqua">Sep 17 2020 </span>|
+                    <cite>Visual Arts Ireland.ie</cite>
+                  </figcaption>
+                </figure>
+                <figure class="quote invert_shad_purpal">
+                  <blockquote>
+                    The colours are so beautiful, earthy and wild, each piece is like a peek into her soul. It's pure
+                    magic.&#9734;&#9734;&#9734;&#9734;&#9734;
+                  </blockquote>
+                  <figcaption>
+                    &mdash; <span class="purpal">Clinton Davis</span> |
+                    <span class="aqua">Jun 15 2021 </span>|
+                    <cite>iseultmccormackcreations.eu</cite>
                   </figcaption>
                 </figure>
               </div>
@@ -160,28 +177,12 @@
                 </figure>
               </div>
             </div>
-            <a
-              class="carousel-control-prev"
-              href="#carouselExampleFade"
-              role="button"
-              data-slide="prev"
-            >
-              <span
-                class="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
+            <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="sr-only">Previous</span>
             </a>
-            <a
-              class="carousel-control-next"
-              href="#carouselExampleFade"
-              role="button"
-              data-slide="next"
-            >
-              <span
-                class="carousel-control-next-icon"
-                aria-hidden="true"
-              ></span>
+            <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="sr-only">Next</span>
             </a>
           </div>
@@ -191,5 +192,5 @@
   </section>
 </main>
 
- 
+
 {% endblock content %}

@@ -259,32 +259,26 @@ p {
 }
 
 .btn-grad_red {
-  background-image: linear-gradient(
-    to right,
-    #ee0979 0%,
-    #ff6a00 51%,
-    #ee0979 100%
-  );
+  background-image: linear-gradient(to right,
+      #ee0979 0%,
+      #ff6a00 51%,
+      #ee0979 100%);
 }
 
 .btn-grad_pink {
   border: 1px solid #bd3c81;
-  background-image: linear-gradient(
-    to right,
-    #fbd3e9 0%,
-    #bb377d 51%,
-    #fbd3e9 100%
-  );
+  background-image: linear-gradient(to right,
+      #fbd3e9 0%,
+      #bb377d 51%,
+      #fbd3e9 100%);
 }
 
 .btn-grad_blue {
   border: 1px solid #1b3084;
-  background-image: linear-gradient(
-    to right,
-    #1a2980 0%,
-    #26d0ce 51%,
-    #1a2980 100%
-  );
+  background-image: linear-gradient(to right,
+      #1a2980 0%,
+      #26d0ce 51%,
+      #1a2980 100%);
 }
 
 .btn-grad_pink,
@@ -304,19 +298,22 @@ p {
 }
 
 .btn-grad_red:hover {
-  background-position: right center; /* change the direction of the change here */
+  background-position: right center;
+  /* change the direction of the change here */
   color: #fff;
   text-decoration: none;
 }
 
 .btn-grad_pink:hover {
-  background-position: right center; /* change the direction of the change here */
+  background-position: right center;
+  /* change the direction of the change here */
   color: #fff;
   text-decoration: none;
 }
 
 .btn-grad_blue:hover {
-  background-position: right center; /* change the direction of the change here */
+  background-position: right center;
+  /* change the direction of the change here */
   color: #fff;
   text-decoration: none;
 }
@@ -500,6 +497,7 @@ nav {
     -ms-transform: translateY(-50px);
     -o-transform: translateY(-50px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -553,25 +551,19 @@ footer {
   box-shadow: 0 -1px 10px -2px rgba(0, 0, 0, 0.6);
   -webkit-box-shadow: 0 -1px 10px -2px rgba(0, 0, 0, 0.6);
   background: rgb(68, 68, 68);
-  background: -moz-linear-gradient(
-    180deg,
-    rgba(68, 68, 68, 0.5) 0%,
-    rgba(60, 60, 60, 1) 5%
-  );
+  background: -moz-linear-gradient(180deg,
+      rgba(68, 68, 68, 0.5) 0%,
+      rgba(60, 60, 60, 1) 5%);
 
-  background: -webkit-linear-gradient(
-    180deg,
-    rgba(68, 68, 68, 0.5) 0%,
-    rgba(60, 60, 60, 1) 5%
-  );
+  background: -webkit-linear-gradient(180deg,
+      rgba(68, 68, 68, 0.5) 0%,
+      rgba(60, 60, 60, 1) 5%);
 
-  background: linear-gradient(
-    180deg,
-    rgba(68, 68, 68, 0.5) 0%,
-    rgba(60, 60, 60, 1) 5%
-  );
+  background: linear-gradient(180deg,
+      rgba(68, 68, 68, 0.5) 0%,
+      rgba(60, 60, 60, 1) 5%);
 
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#444444",endColorstr="#3c3c3c",GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#444444", endColorstr="#3c3c3c", GradientType=1);
 }
 
 .footer_pages_list {
@@ -621,7 +613,8 @@ footer {
 
 .spinning {
   animation-name: spin;
-  animation-duration: 20000ms; /* How long lasts 1 turn */
+  animation-duration: 20000ms;
+  /* How long lasts 1 turn */
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
@@ -630,6 +623,7 @@ footer {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -693,6 +687,11 @@ blockquote:before {
 }
 
 .quote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 15rem;
   margin: 0;
   background: var(--inner_BG);
   padding: 1em;
@@ -711,10 +710,12 @@ cite {
   color: var(--lightPurpal);
   font-weight: 700;
 }
+
 .aqua {
   color: var(--aqua);
   font-weight: 700;
 }
+
 .invert_shad_purpal {
   box-shadow: 0 2px 15px -1px var(--lightPurpal) inset;
 }
@@ -846,6 +847,7 @@ cite {
   backdrop-filter: blur(5px);
   width: 90%;
 }
+
 .detail_form {
   width: 100%;
 }
@@ -1030,6 +1032,7 @@ select option[value=""] {
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
 }
+
 @media (max-width: 336px) {
   .artist_pic {
     width: 15rem;
@@ -1090,6 +1093,7 @@ select option[value=""] {
   .outer_container-wide {
     width: 100%;
   }
+
   .btn-grad_blue,
   .btn-grad_pink,
   .btn-grad_red {
