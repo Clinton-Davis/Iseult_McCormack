@@ -1,11 +1,11 @@
 {% extends "base.html" %}
-<!-- 1 -->
+ 
 {% load i18n %}
-<!-- 1 -->
+ 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
-<!-- 1 -->
+ 
 {% block content %}
-<!-- 1 -->
+ 
 <div class="container_background">
   <div class="container data_container gooeys invert_shadow">
     <div class="inner_div back_shadow">
@@ -25,9 +25,9 @@
         action="{% url 'account_signup' %}"
       >
         {% csrf_token %}
-        <!-- 1 -->
+         
         {{ form|crispy }}
-        <!-- 1 -->
+         
         {% if redirect_field_value %}
         <input
           type="hidden"

@@ -1,12 +1,12 @@
 {% extends "base.html" %}
-<!-- 1 -->
+ 
 {% load static %}
-<!-- 1 -->
+ 
 {% load bag_tools %}
-<!-- 1 -->
-<!-- 1 -->
+ 
+ 
 {% block head_title %} | Checkout-Payment {% endblock head_title %}
-<!-- 1 -->
+ 
 {% block content %}
 <section lang="en" class="">
   <div class="container data_container gooeys invert_shadow">
@@ -66,11 +66,11 @@
               <div class="col-6">
                 <p class="my-0 float-right">
                   {% if free_delivery_delta == 0 %}
-                  <!-- 1 -->
+                   
                   Free Delivery
-                  <!-- 1 -->
+                   
                   {% else %}
-                  <!-- 1 -->
+                   
                   &euro; {{ delivery | floatformat:2 }} {% endif %}
                 </p>
               </div>
@@ -239,15 +239,15 @@
   </div>
 </div>
 {% endblock %}
-<!-- 1 -->
+ 
 {% block postloadjs %}
-<!-- 1 -->
+ 
 {{ block.super }}
-<!-- 1 -->
+ 
 {{ stripe_public_key|json_script:"id_stripe_public_key" }}
-<!-- 1 -->
+ 
 {{ client_secret|json_script:"id_client_secret" }}
-<!-- 1 -->
+ 
 
 <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock postloadjs %}

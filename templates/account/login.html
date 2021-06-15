@@ -1,11 +1,11 @@
 {% extends "base.html" %}
-<!-- 1 -->
+ 
 {% load i18n %}
-<!-- 1 -->
+ 
 {% load account socialaccount %}
-<!-- 1 -->
+ 
 {% block head_title %}{% trans "Login" %}{% endblock %}
-<!-- 1 -->
+ 
 {% block content %}
 <section lang="en" class="">
   <div class="container data_container gooeys invert_shadow">
@@ -13,7 +13,7 @@
       <h1 class="hf">{% trans "Login" %}</h1>
 
       {% get_providers as socialaccount_providers %}
-      <!-- 1 -->
+       
       {% if socialaccount_providers %}
       <p>
         {% blocktrans with site.name as site_name %}Please Login with one of
@@ -35,7 +35,7 @@
       </div>
 
       {% include "socialaccount/snippets/login_extra.html" %}
-      <!-- 1 -->
+       
       {% else %}
       <p class="center-text">
         {% blocktrans %}If you have not created an account yet, then please
@@ -49,9 +49,9 @@
 
       <form class="hf" method="POST" action="{% url 'account_login' %}">
         {% csrf_token %}
-        <!-- 1 -->
+         
         {{ form|crispy }}
-        <!-- 1 -->
+         
         {% if redirect_field_value %}
         <input
           type="hidden"

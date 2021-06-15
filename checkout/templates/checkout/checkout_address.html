@@ -1,41 +1,30 @@
 {% extends "base.html" %}
-<!-- 1 -->
+
 {% load static %}
-<!-- 1 -->
+
 {% block head_title %}| Shipping Details{% endblock head_title %}
-<!-- 1 -->
+
 {% block content %}
 <section lang="en" class="">
   <div class="container data_container gooeys invert_shadow">
     <div class="inner_div back_shadow">
       <h1 class="display-3 text-center">Delivery</h1>
-      <form
-        action="{% url 'checkout:address' %}"
-        method="POST"
-        id="payment-form"
-      >
+      <form action="{% url 'checkout:address' %}" method="POST" id="payment-form">
         {% csrf_token %}
         <fieldset class="rounded px-3 mb-5">
           <legend class="fieldset-label small text-black px-2 w-auto">
             Delivery to:
           </legend>
-          <!-- 1 -->
+
           {{ address_form.full_name | as_crispy_field }}
-          <!-- 1 -->
           {{ address_form.phone_number | as_crispy_field }}
-          <!-- 1 -->
           {{ address_form.street_address1 | as_crispy_field }}
-          <!-- 1 -->
           {{ address_form.street_address2 | as_crispy_field }}
-          <!-- 1 -->
           {{ address_form.town_or_city | as_crispy_field }}
-          <!-- 1 -->
           {{ address_form.postcode | as_crispy_field }}
-          <!-- 1 -->
           {{ address_form.county | as_crispy_field }}
-          <!-- 1 -->
           {{ address_form.country | as_crispy_field }}
-          <!-- 1 -->
+
           <div class="form-check form-check-inline float-right mr-0"></div>
         </fieldset>
 

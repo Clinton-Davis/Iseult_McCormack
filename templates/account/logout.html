@@ -1,9 +1,9 @@
 {% extends "base.html" %}
-<!-- 1 -->
+ 
 {% load i18n %}
-<!-- 1 -->
+ 
 {% block head_title %}{% trans "Sign Out" %}{% endblock %}
-<!-- 1 -->
+ 
 {% block content %}
 <section lang="en" class="center_page">
   <div
@@ -22,16 +22,16 @@
         action="{% url 'account_logout' %}"
       >
         {% csrf_token %}
-        <!-- 1 -->
+         
         {% if redirect_field_value %}
         <input
           type="hidden"
           name="{{ redirect_field_name }}"
           value="{{ redirect_field_value }}"
         />
-        <!-- 1 -->
+         
         {% endif %}
-        <!-- 1 -->
+         
         <button type="submit" class="mx-auto btn-grad_red">
           {% trans 'Sign Out' %}
         </button>

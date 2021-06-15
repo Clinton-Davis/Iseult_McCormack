@@ -1,21 +1,21 @@
 {% extends "base.html" %}
-<!-- 1 -->
+ 
 {% load i18n %}
-<!-- 1 -->
+ 
 {% load account %}
-<!-- 1 -->
+ 
 {% block head_title %}{% trans "Confirm E-mail Address" %}{% endblock %}
-<!-- 1 -->
+ 
 {% block content %}
 <div class="container_background">
   <div class="container data_container gooeys invert_shadow">
     <div class="inner_div back_shadow">
       <h1 class="hf">{% trans "Confirm E-mail Address" %}</h1>
-      <!-- 1 -->
+       
       {% if confirmation %}
-      <!-- 1 -->
+       
       {% user_display confirmation.email_address.user as user_display %}
-      <!-- 1 -->
+       
       <p>
         {% blocktrans with confirmation.email_address.email as email %}Please
         confirm that <a href="mailto:{{ email }}">{{ email }}</a> is an e-mail
@@ -31,20 +31,20 @@
           {% trans 'Confirm' %}
         </button>
       </form>
-      <!-- 1 -->
+       
       {% else %}
-      <!-- 1 -->
+       
       {% url 'account_email' as email_url %}
-      <!-- 1 -->
+       
       <p>
         {% blocktrans %}This e-mail confirmation link expired or is invalid.
         Please
         <a href="{{ email_url }}">issue a new e-mail confirmation request</a>.
         {% endblocktrans %}
       </p>
-      <!-- 1 -->
+       
       {% endif %}
-      <!-- 1 -->
+       
     </div>
   </div>
 </div>
