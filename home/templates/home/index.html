@@ -8,7 +8,7 @@
 <main class="flyers">
   <section lang="en">
     <div class="container">
-      <div class=" row index_container">
+      <div class="row index_container">
         <div class="col-12 index_image">
           <img
             src="{% static 'img/logos/Logo-words-black-trans.png' %}"
@@ -16,12 +16,175 @@
           />
         </div>
         <div class="col-12 index_heading">
-          {% for bio in home  %}
-          <h5 class="text-center">
-            {{bio.bio|safe}}
-          </h5>
+          {% for bio in home %}
+          <h5 class="text-center">{{bio.bio|safe}}</h5>
           {% endfor %}
         </div>
+      </div>
+    </div>
+  </section>
+  <hr class="black_hr" />
+  <!-- Blockquotes section -->
+  <section class="blockquotes_wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 mb-4">
+          <h2 class="text-center hfi display-4">What People Say</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-8 offset-md-2 border-20">
+          <div
+            id="carouselExampleFade"
+            class="carousel slide carousel-fade"
+            data-ride="carousel"
+          >
+            <div class="carousel-inner text-center border-20">
+              <div class="carousel-item active border-20">
+                <figure class="quote border-20 invert_shad_purpal">
+                  <blockquote>Amazing work, each piece unique.</blockquote>
+                  <figcaption>
+                    &mdash; <span class="purpal">Stephen</span> |
+                    <span class="aqua">Jun 9 2021</span> |
+                    <cite>Visual Arts Ireland.ie</cite>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="carousel-item">
+                <figure class="quote invert_shad_aqua">
+                  <blockquote>
+                    &#9734;&#9734;&#9734;&#9734;&#9734; Lovely colourful scraf.
+                    Really happy with this buy.
+                  </blockquote>
+                  <figcaption>
+                    &mdash;<span class="purpal">Aileen</span> |
+                    <span class="aqua">Dec 2 2020</span> |<cite>ESTY.com</cite>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="carousel-item">
+                <figure class="quote invert_shad_purpal">
+                  <blockquote>
+                    Iseult has been an artist all her life, it’s wonderful now
+                    for all of us as we get to share in her gift of beautiful
+                    work that shows her passion & love in every piece! Her
+                    beautiful hand painted silk scarfs are a real specialty too
+                  </blockquote>
+                  <figcaption>
+                    &mdash; <span class="purpal">Rebecca Healy-Nolan</span> |
+                    <span class="aqua">Aug 19 2020</span> |
+                    <cite>Visual Arts Ireland.ie</cite>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="carousel-item">
+                <figure class="quote invert_shad_aqua">
+                  <blockquote>
+                    Beautiful work.. I find I loose myself in her work, looking
+                    beyond what's on the canvas. Beautiful.
+                  </blockquote>
+                  <figcaption>
+                    &mdash; <span class="purpal">Michael looney </span>|
+                    <span class="aqua">Aug 17 2020</span> |
+                    <cite>Visual Arts Ireland.ie</cite>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="carousel-item">
+                <figure class="quote invert_shad_purpal">
+                  <blockquote>
+                    Iseult's art is so vibrant and beautiful. I was so honoured
+                    to be able showcase Iseult's work last year in my art &
+                    craft shop.
+                  </blockquote>
+                  <figcaption>
+                    &mdash; <span class="purpal"></span> |
+                    <span class="aqua">Aug 17 2020 </span>|
+                    <cite>Visual Arts Ireland.ie</cite>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="carousel-item">
+                <figure class="quote invert_shad_aqua">
+                  <blockquote>
+                    Look at those colours, so vibrant and awash with unlimited
+                    imagination. Brighten up even the darkest of days. Iseult
+                    you are incredible. Love your work.
+                  </blockquote>
+                  <figcaption>
+                    &mdash; <span class="purpal">Grainne Roddy</span> |
+                    <span class="aqua">Aug 20 2020</span> |
+                    <cite>Visual Arts Ireland.ie</cite>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="carousel-item">
+                <figure class="quote invert_shad_purpal">
+                  <blockquote>
+                    I love my piece my Iseult. Makes me smile every time I pass
+                    it. Beautiful work!
+                  </blockquote>
+                  <figcaption>
+                    &mdash; <span class="purpal">Fionnuala O’Sullivan</span> |
+                    <span class="aqua">Aug 20 2020</span> |
+                    <cite>Visual Arts Ireland.ie</cite>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="carousel-item">
+                <figure class="quote invert_shad_aqua">
+                  <blockquote>
+                    Iseult is a born artist! She was probably creating art
+                    before she could speak :) I love her intuitive style - it
+                    makes each piece so unique.
+                  </blockquote>
+                  <figcaption>
+                    &mdash;<span class="purpal">Áine </span> |
+                    <span class="aqua">Aug 22 2020</span> |
+                    <cite>Visual Arts Ireland.ie</cite>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="carousel-item">
+                <figure class="quote invert_shad_purpal">
+                  <blockquote>
+                    &#9734;&#9734;&#9734;&#9734;&#9734; Absolutely bloody
+                    gorgeous!!!! Vibrant colors and sheer perfection! Can’t wait
+                    to parade around town in this beauty. Lovely seller!
+                  </blockquote>
+                  <figcaption>
+                    &mdash; <span class="purpal">Michele</span> |
+                    <span class="aqua">Oct 13 2020</span> |
+                    <cite>ETSY.com</cite>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+            <a
+              class="carousel-control-prev"
+              href="#carouselExampleFade"
+              role="button"
+              data-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a
+              class="carousel-control-next"
+              href="#carouselExampleFade"
+              role="button"
+              data-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
