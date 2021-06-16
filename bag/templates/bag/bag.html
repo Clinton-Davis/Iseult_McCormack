@@ -165,21 +165,21 @@
           {% endfor %}
           <tr>
             <td colspan="5" class="pt-5 text-right">
-              <h5 class="hfi">
+              <h5 class="hf">
                 <strong>Bag Total: &euro;{{ bag_total|floatformat:2 }}</strong>
               </h5>
               {% if selected_location == "None" %}
-              <a href="{% url 'checkout:address' %}"><small>Add address for Delivary cost</small></a>
+              <a href="{% url 'checkout:address' %}"><small>Add Shipping Detials for Delivary Cost</small></a>
 
               {% else %}
 
               {% if product.category.name == "paintings" %}
-              <h5 class="hfi">
+              <h5 class="hf">
                 Delivary: &euro;{{code_parcel_price|floatformat:2 }}
               </h5>
               <small>(To {{selected_location}})</small>
               {% else %}
-              <h5 class="hfi">
+              <h5 class="hf">
                 Delivary: &euro;{{ code_packet_price|floatformat:2 }}
               </h5>
               <small>(To {{selected_location}})</small>

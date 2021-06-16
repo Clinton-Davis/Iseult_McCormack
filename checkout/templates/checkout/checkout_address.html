@@ -8,13 +8,11 @@
 <section lang="en" class="">
   <div class="container data_container gooeys invert_shadow">
     <div class="inner_div back_shadow">
-      <h1 class="display-3 text-center">Delivery</h1>
+      <h1 class="display-4 mb-4 text-center hfi">Shipping Details</h1>
       <form action="{% url 'checkout:address' %}" method="POST" id="payment-form">
         {% csrf_token %}
         <fieldset class="rounded px-3 mb-5">
-          <legend class="fieldset-label small text-black px-2 w-auto">
-            Delivery to:
-          </legend>
+
 
           {{ address_form.full_name | as_crispy_field }}
           {{ address_form.phone_number | as_crispy_field }}
@@ -28,8 +26,8 @@
           <div class="form-check form-check-inline float-right mr-0"></div>
         </fieldset>
 
-        <div class="submit-button text-right mt-3 mb-2 hfib">
-          <button id="submit-button" class="btn-grad_blue hfi">
+        <div class="submit-button text-right mt-3 mb-2 hf">
+          <button id="submit-button" class="btn-grad_blue hf">
             <span class="mx-2">Save & continue</span>
             <span class="icon">
               <i class="fas fa-lock"></i>

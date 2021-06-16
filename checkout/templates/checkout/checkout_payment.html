@@ -1,12 +1,12 @@
 {% extends "base.html" %}
- 
+
 {% load static %}
- 
+
 {% load bag_tools %}
- 
- 
+
+
 {% block head_title %} | Checkout-Payment {% endblock head_title %}
- 
+
 {% block content %}
 <section lang="en" class="">
   <div class="container data_container gooeys invert_shadow">
@@ -14,24 +14,19 @@
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <hr />
-            <h2 class="hfib mb-4 text-center">Checkout</h2>
+            <h1 class="display-4 hfi mb-4 text-center">Order Summary</h1>
             <hr />
           </div>
         </div>
         <div class="row">
           <div class="col-12 mb-5">
-            <p class="text-muted">Order Summary ({{ product_count }})</p>
+            <p class="text-muted">Artworks ({{ product_count }})</p>
             <div class="row">
               {% for item in bag_items %}
               <div class="row checkout_items">
                 <div class="mb-1">
                   <a href="{% url 'shop:product_detail' item.product.id %}">
-                    <img
-                      class=""
-                      src="{{ item.product.image.url }}"
-                      alt="{{ item.product.name }}"
-                    />
+                    <img class="" src="{{ item.product.image.url }}" alt="{{ item.product.name }}" />
                   </a>
                 </div>
                 <div class="">
@@ -47,8 +42,9 @@
 
               {% endfor %}
             </div>
-            <hr class="my-4" />
-            <br />
+            <hr class="" />
+
+            <h3 class="hfi text-center">Order Amount</h3>
             <div class="row text-black hf">
               <div class="col-6">
                 <p class="my-0">Items:</p>
@@ -66,11 +62,11 @@
               <div class="col-6">
                 <p class="my-0 float-right">
                   {% if free_delivery_delta == 0 %}
-                   
+
                   Free Delivery
-                   
+
                   {% else %}
-                   
+
                   &euro; {{ delivery | floatformat:2 }} {% endif %}
                 </p>
               </div>
@@ -81,15 +77,13 @@
               </div>
               <div class="col-6">
                 <p class="my-0">
-                  <strong class="float-right"
-                    >&euro; {{ grand_total | floatformat:2 }}</strong
-                  >
+                  <strong class="float-right">&euro; {{ grand_total | floatformat:2 }}</strong>
                 </p>
               </div>
             </div>
             <hr class="my-4" />
-            <br />
-            <p class="ml-3 hf">Delivaring To:</p>
+
+            <h3 class="hfi text-center">Shipping To:</h3>
             <div class="row text-black hf">
               <div class="col-6">
                 <div class="my-0">{{profile.full_name|title}}</div>
@@ -108,51 +102,20 @@
           </div>
         </div>
         <hr class="mb-3" />
+        <h3 class="hfi text-center">Order Payment</h3>
         <div class="row">
           <div class="col-12">
-            <form
-              action="{% url 'checkout:checkout_payment' %}"
-              method="POST"
-              id="payment-form"
-            >
+            <form action="{% url 'checkout:checkout_payment' %}" method="POST" id="payment-form">
               {% csrf_token %}
-              <input
-                type="hidden"
-                name="full_name"
-                value="{{profile.full_name}}"
-              />
-              <input
-                type="hidden"
-                name="email"
-                value="{{profile.user.email}}"
-              />
-              <input
-                type="hidden"
-                name="phone_number"
-                value="{{profile.phone_number}}"
-              />
+              <input type="hidden" name="full_name" value="{{profile.full_name}}" />
+              <input type="hidden" name="email" value="{{profile.user.email}}" />
+              <input type="hidden" name="phone_number" value="{{profile.phone_number}}" />
 
-              <input
-                type="hidden"
-                name="street_address1"
-                value="{{profile.street_address1}}"
-              />
-              <input
-                type="hidden"
-                name="street_address2"
-                value="{{profile.street_address2}}"
-              />
-              <input
-                type="hidden"
-                name="postcode"
-                value="{{profile.postcode}}"
-              />
+              <input type="hidden" name="street_address1" value="{{profile.street_address1}}" />
+              <input type="hidden" name="street_address2" value="{{profile.street_address2}}" />
+              <input type="hidden" name="postcode" value="{{profile.postcode}}" />
 
-              <input
-                type="hidden"
-                name="town_or_city"
-                value="{{profile.town_or_city}}"
-              />
+              <input type="hidden" name="town_or_city" value="{{profile.town_or_city}}" />
               <input type="hidden" name="county" value="{{profile.county}}" />
               <input type="hidden" name="country" value="{{profile.country}}" />
               <fieldset class="px-3">
@@ -162,56 +125,32 @@
                 <!-- A Stripe card element will go here -->
                 <div class="mb-3" id="card-element"></div>
                 <!-- Used to display form errors -->
-                <div
-                  class="mb-3 text-danger"
-                  id="card-errors"
-                  role="alert"
-                ></div>
+                <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                 <!-- Pass the client secret to the view so we can get the payment intent id -->
-                <input
-                  type="hidden"
-                  value="{{ client_secret }}"
-                  name="client_secret"
-                />
+                <input type="hidden" value="{{ client_secret }}" name="client_secret" />
               </fieldset>
 
               <div class="row mb-4">
                 <div class="col-12 payment-icons_container">
-                  <img
-                    class="payment_icons ml-1"
-                    src="/static/img/visa-logo-svgrepo-com.svg"
-                    alt="Instagram icon"
-                  /><img
-                    class="payment_icons ml-1"
-                    src="/static/img/mastercard-2-logo-svgrepo-com.svg"
-                    alt="Instagram icon"
-                  /><img
-                    class="payment_icons ml-1"
-                    src="/static/img/american-express-svgrepo-com.svg"
-                    alt="Instagram icon"
-                  /><img
-                    class="payment_icons ml-1"
-                    src="/static/img/maestro-svgrepo-com.svg"
-                    alt="Instagram icon"
-                  /><img
-                    class="payment_icons ml-1"
-                    src="/static/img/jcb-svgrepo-com.svg"
-                    alt="Instagram icon"
-                  />
+                  <img class="payment_icons ml-1" src="/static/img/visa-logo-svgrepo-com.svg"
+                    alt="Instagram icon" /><img class="payment_icons ml-1"
+                    src="/static/img/mastercard-2-logo-svgrepo-com.svg" alt="Instagram icon" /><img
+                    class="payment_icons ml-1" src="/static/img/american-express-svgrepo-com.svg"
+                    alt="Instagram icon" /><img class="payment_icons ml-1" src="/static/img/maestro-svgrepo-com.svg"
+                    alt="Instagram icon" /><img class="payment_icons ml-1" src="/static/img/jcb-svgrepo-com.svg"
+                    alt="Instagram icon" />
                 </div>
               </div>
               <p class="small text-info my-1 text-center">
                 <span class="icon">
                   <i class="fas fa-exclamation-circle"></i>
                 </span>
-                <span
-                  >Your card will be charged
-                  <strong>&euro;{{ grand_total|floatformat:2 }}</strong></span
-                >
+                <span>Your card will be charged
+                  <strong>&euro;{{ grand_total|floatformat:2 }}</strong></span>
               </p>
               <div class="submit-button text-right mt-3 mb-2">
                 <button id="submit-button" class="btn-grad_blue">
-                  <span class="hfi mx-2">Make Payment</span>
+                  <span class="hf mx-2">Make Payment</span>
                   <span class="icon">
                     <i class="fas fa-lock"></i>
                   </span>
@@ -220,7 +159,7 @@
                   <span class="icon">
                     <i class="fas fa-arrow-circle-left"></i>
                   </span>
-                  <span class="hfi mx-1">Adjust Bag</span>
+                  <span class="hf mx-1">Adjust Bag</span>
                 </a>
               </div>
             </form>
@@ -239,15 +178,15 @@
   </div>
 </div>
 {% endblock %}
- 
+
 {% block postloadjs %}
- 
+
 {{ block.super }}
- 
+
 {{ stripe_public_key|json_script:"id_stripe_public_key" }}
- 
+
 {{ client_secret|json_script:"id_client_secret" }}
- 
+
 
 <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock postloadjs %}

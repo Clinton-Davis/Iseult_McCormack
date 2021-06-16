@@ -36,8 +36,11 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  animation: opening 1s ease-in-out;
-  -webkit-animation: opening 1s ease-in-out;
+  animation: opening 1.5s ease-in-out;
+  -webkit-animation: opening 1.5s ease-in-out;
+  -moz-animation: opening 1.5s ease-in-out;
+  -ms-animation: opening 1.5s ease-in-out;
+  -o-animation: opening 1.5s ease-in-out;
   background-color: var(--body_BG);
 }
 
@@ -144,14 +147,30 @@ p {
 .invert_shadow {
   box-shadow: 0 2px 21px -1px rgba(0, 0, 0, 1),
     0 2px 15px -1px rgba(0, 0, 0, 1) inset;
+  -webkit-box-shadow: 0 2px 21px -1px rgba(0, 0, 0, 1),
+    0 2px 15px -1px rgba(0, 0, 0, 1) inset;
+  -moz-box-shadow: 0 2px 21px -1px rgba(0, 0, 0, 1),
+    0 2px 15px -1px rgba(0, 0, 0, 1) inset;
+  -ms-box-shadow: 0 2px 21px -1px rgba(0, 0, 0, 1),
+    0 2px 15px -1px rgba(0, 0, 0, 1) inset;
+  -o-box-shadow: 0 2px 21px -1px rgba(0, 0, 0, 1),
+    0 2px 15px -1px rgba(0, 0, 0, 1) inset;
 }
 
 .back_shadow {
   box-shadow: 0 2px 21px -1px rgba(0, 0, 0, 1);
+  -webkit-box-shadow: 0 2px 21px -1px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 0 2px 21px -1px rgba(0, 0, 0, 1);
+  -ms-box-shadow: 0 2px 21px -1px rgba(0, 0, 0, 1);
+  -o-box-shadow: 0 2px 21px -1px rgba(0, 0, 0, 1);
 }
 
 .back_shadow_light {
   box-shadow: 0 2px 21px -1px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 2px 21px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 2px 21px -1px rgba(0, 0, 0, 0.5);
+  -ms-box-shadow: 0 2px 21px -1px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 0 2px 21px -1px rgba(0, 0, 0, 0.5);
 }
 
 .border-20 {
@@ -292,7 +311,15 @@ p {
   background-size: 200% auto;
   color: white;
   box-shadow: 0 0 20px #eee;
+  -webkit-box-shadow: 0 0 20px #eee;
+  -moz-box-shadow: 0 0 20px #eee;
+  -ms-box-shadow: 0 0 20px #eee;
+  -o-box-shadow: 0 0 20px #eee;
   border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
   font-size: 1rem;
   width: 100%;
 }
@@ -346,6 +373,9 @@ nav {
   background-color: var(--inner_BG);
   box-shadow: 0 1px 10px -2px rgba(0, 0, 0, 0.6);
   -webkit-box-shadow: 0 1px 10px -2px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0 1px 10px -2px rgba(0, 0, 0, 0.6);
+  -ms-box-shadow: 0 1px 10px -2px rgba(0, 0, 0, 0.6);
+  -o-box-shadow: 0 1px 10px -2px rgba(0, 0, 0, 0.6);
   z-index: 10;
 }
 
@@ -550,6 +580,10 @@ footer {
   margin-top: auto;
   box-shadow: 0 -1px 10px -2px rgba(0, 0, 0, 0.6);
   -webkit-box-shadow: 0 -1px 10px -2px rgba(0, 0, 0, 0.6);
+
+  -moz-box-shadow: 0 -1px 10px -2px rgba(0, 0, 0, 0.6);
+  -ms-box-shadow: 0 -1px 10px -2px rgba(0, 0, 0, 0.6);
+  -o-box-shadow: 0 -1px 10px -2px rgba(0, 0, 0, 0.6);
   background: rgb(68, 68, 68);
   background: -moz-linear-gradient(180deg,
       rgba(68, 68, 68, 0.5) 0%,
@@ -718,10 +752,18 @@ cite {
 
 .invert_shad_purpal {
   box-shadow: 0 2px 15px -1px var(--lightPurpal) inset;
+  -webkit-box-shadow: 0 2px 15px -1px var(--lightPurpal) inset;
+  -moz-box-shadow: 0 2px 15px -1px var(--lightPurpal) inset;
+  -ms-box-shadow: 0 2px 15px -1px var(--lightPurpal) inset;
+  -o-box-shadow: 0 2px 15px -1px var(--lightPurpal) inset;
 }
 
 .invert_shad_aqua {
   box-shadow: 0 2px 15px -1px var(--aqua) inset;
+  -webkit-box-shadow: 0 2px 15px -1px var(--aqua) inset;
+  -moz-box-shadow: 0 2px 15px -1px var(--aqua) inset;
+  -ms-box-shadow: 0 2px 15px -1px var(--aqua) inset;
+  -o-box-shadow: 0 2px 15px -1px var(--aqua) inset;
 }
 
 .quote figcaption,
@@ -759,14 +801,20 @@ cite {
   -moz-border-radius: 15px;
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
-  box-shadow: 0 2px 15px -1px rgba(0, 0, 0, 1),
-    0 2px 15px -1px rgba(0, 0, 0, 1) inset;
+  box-shadow: 0 2px 15px -1px rgba(0, 0, 0, 1);
+  -webkit-box-shadow: 0 2px 15px -1px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 0 2px 15px -1px rgba(0, 0, 0, 1);
+  -ms-box-shadow: 0 2px 15px -1px rgba(0, 0, 0, 1);
+  -o-box-shadow: 0 2px 15px -1px rgba(0, 0, 0, 1);
   backdrop-filter: blur(15px);
 }
 
 .shop_container a:hover {
-  box-shadow: 0 2px 25px -1px rgba(0, 0, 0, 1),
-    0 2px 15px -1px rgba(0, 0, 0, 1) inset;
+  box-shadow: 0 2px 25px -1px rgba(0, 0, 0, 1);
+  -webkit-box-shadow: 0 2px 25px -1px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 0 2px 25px -1px rgba(0, 0, 0, 1);
+  -ms-box-shadow: 0 2px 25px -1px rgba(0, 0, 0, 1);
+  -o-box-shadow: 0 2px 25px -1px rgba(0, 0, 0, 1);
   transform: scale(1.025);
   -webkit-transform: scale(1.025);
   -moz-transform: scale(1.025);
@@ -953,6 +1001,10 @@ cite {
 .stripe-style-input:focus,
 .stripe-style-input:active {
   box-shadow: 0 1px 3px 0 #cfd7df;
+  -webkit-box-shadow: 0 1px 3px 0 #cfd7df;
+  -moz-box-shadow: 0 1px 3px 0 #cfd7df;
+  -ms-box-shadow: 0 1px 3px 0 #cfd7df;
+  -o-box-shadow: 0 1px 3px 0 #cfd7df;
 }
 
 .StripeElement--webkit-autofill {
