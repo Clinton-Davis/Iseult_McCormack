@@ -1,26 +1,26 @@
 {% load mathfilters %}
-Iseult McCormack Creations
 
 Hello {{ order.get_first_name }}.
 
-We thank you for choosing my shop.
+We thank you for choosing my boutique.
 
 It is my pleasure to confirm your order for the date specified below. 
 
 Order Date:   {{ order.date }}
 Order Number: {{ order.order_number }}
 
+Artworks:
 {% for item in order.lineitems.all %}
 {{ item.quantity }} {{ item.product.name|safe }} @ €{{ item.product.price|div:100|floatformat:2 }}        
 {% endfor %}
 
-You Paid:
+Your Payment:
     Order Total: €{{ order.order_total|div:100|floatformat:2 }}
     Delivery:    €{{ order.delivery_cost|div:100|floatformat:2 }}
     Grand Total: €{{ order.grand_total|div:100|floatformat:2 }}
 
 
-Your order will be shipped to:
+Your Shipping Details:
     {{ order.street_address1 }}
     {{ order.street_address2 }}
     {{ order.town_or_city }}
@@ -35,7 +35,7 @@ I can be reached at {{ contact_email }} if you have questions.
 Hope to see you again soon.
 
 My sincere gratitude
-Iseult
+Iseult McCormack
 
 
 
