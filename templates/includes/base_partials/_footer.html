@@ -3,71 +3,45 @@
   <div class="container-fluid">
     <div class="row inner_footer">
       <div class="col-6 col-md-4 text-center">
-        <a href="index.html"
-          ><img
-            alt="Iseult's Logo"
-            class="footer_logo"
-            src="/static/img/logos/Logo-words-white-trans.png"
-            accesskey="h"
-        /></a>
+        <a href="index.html"><img alt="Iseult's Logo" class="footer_logo"
+            src="/static/img/logos/Logo-words-white-trans.png" accesskey="h" /></a>
       </div>
-
       <div class="col-6 col-md-4 text-white my-4">
         <div class="footer_pages_list">
-          <h4 class="hf">Pages</h4>
-          <ul>
+          <h4 class="hf text-center">Pages</h4>
+          <ul class="page_grid">
             <li>
               <a href="{% url 'home' %}" aria-label="link to home page">Home</a>
             </li>
             <li>
-              <a href="{% url 'about' %}" aria-label="link to Artist page"
-                >Artist</a
-              >
+              <a href="{% url 'about' %}" aria-label="link to Artist page">Artist</a>
             </li>
             <li>
-              <a href="{% url 'contact' %}" aria-label="link to Contact page"
-                >Contact Me</a
-              >
+              <a href="{% url 'contact' %}" aria-label="link to Contact page">Contact Me</a>
             </li>
             <li>
-              <a href="{% url 'gallery' %}" aria-label="link to Gallery"
-                >Gallery</a
-              >
+              <a href="{% url 'gallery' %}" aria-label="link to Gallery">Gallery</a>
             </li>
             <li>
-              <a href="{% url 'shop:shop' %}" aria-label="link to Boutique page"
-                >Boutique</a
-              >
+              <a href="{% url 'shop:shop' %}" aria-label="link to Boutique page">Boutique</a>
             </li>
             {% if user.is_authenticated %}
             <li>
-              <a
-                href="{% url 'profiles:profile' %}"
-                aria-label="link to Dashboard"
-                >Dashboard</a
-              >
+              <a href="{% url 'profiles:profile' %}" aria-label="link to Dashboard">Dashboard</a>
             </li>
             <li>
-              <a href="{% url 'account_logout' %}" aria-label="link to Log Out"
-                >Log Out</a
-              >
+              <a href="{% url 'account_logout' %}" aria-label="link to Log Out">Log Out</a>
             </li>
             {% else %}
             <li>
-              <a href="{% url 'account_login' %}" aria-label="link to Login"
-                >Login</a
-              >
+              <a href="{% url 'account_login' %}" aria-label="link to Login">Login</a>
             </li>
             {% endif %}
             <li>
-              <a href="{% url 'terms' %}" aria-label="link to Terms of Use"
-                >Terms of Use</a
-              >
+              <a href="{% url 'terms' %}" aria-label="link to Terms of Use">Terms of Use</a>
             </li>
             <li>
-              <a href="{% url 'privacy' %}" aria-label="link to Privacy Policy"
-                >Privacy Policy</a
-              >
+              <a href="{% url 'privacy' %}" aria-label="link to Privacy Policy">Privacy Policy</a>
             </li>
           </ul>
         </div>
@@ -75,38 +49,15 @@
       <div class="col-md-4">
         <div class="row social_icons_row">
           <div class="social-icons_container">
-            <a
-              href="https://www.facebook.com/iseultmccormackcreations/"
-              aria-label="link to Facebook page"
-              target="_blank"
-              rel="nopener noreferrer"
-              ><img
-                class="social_icons"
-                src="/static/img/social_icons/facebook_colored.svg"
-                alt="Facebook icon"
-            /></a>
-            <a
-              href="#"
-              aria-label="link to twitter page"
-              target="_blank"
-              rel="nopener noreferrer"
-              ><img
-                class="social_icons"
-                src="/static/img/social_icons/twitter.svg"
-                alt="twitter icon"
-                target="_blank"
-                rel="nopener noreferrer"
-            /></a>
-            <a
-              href="https://www.instagram.com/iseultmccormackcreations/"
-              aria-label="link to twitter page"
-              target="_blank"
-              rel="nopener noreferrer"
-              ><img
-                class="social_icons"
-                src="/static/img/social_icons/instagram.svg"
-                alt="Instagram icon"
-            /></a>
+            <a href="https://www.facebook.com/iseultmccormackcreations/" aria-label="link to Facebook page"
+              target="_blank" rel="nopener noreferrer"><img class="social_icons"
+                src="/static/img/social_icons/facebook_colored.svg" alt="Facebook icon" /></a>
+            <a href="#" aria-label="link to twitter page" target="_blank" rel="nopener noreferrer"><img
+                class="social_icons" src="/static/img/social_icons/twitter.svg" alt="twitter icon" target="_blank"
+                rel="nopener noreferrer" /></a>
+            <a href="https://www.instagram.com/iseultmccormackcreations/" aria-label="link to twitter page"
+              target="_blank" rel="nopener noreferrer"><img class="social_icons"
+                src="/static/img/social_icons/instagram.svg" alt="Instagram icon" /></a>
           </div>
         </div>
         <div class="row">
@@ -114,52 +65,26 @@
             <h5 class="hf">Accepted payment methods</h5>
           </div>
           <div class="payment-icons_container">
-            <img
-              class="payment_icons ml-1"
-              src="/static/img/card_icons/visa-logo-svgrepo-com.svg"
-              alt="Visa logo icon"
-            /><img
-              class="payment_icons ml-1"
-              src="/static/img/card_icons/mastercard-2-logo-svgrepo-com.svg"
-              alt="mastercard icon"
-            /><img
-              class="payment_icons ml-1"
-              src="/static/img/card_icons/american-express-svgrepo-com.svg"
-              alt="american express icon"
-            /><img
-              class="payment_icons ml-1"
-              src="/static/img/card_icons/maestro-svgrepo-com.svg"
-              alt="maestro icon"
-            /><img
-              class="payment_icons ml-1"
-              src="/static/img/card_icons/jcb-svgrepo-com.svg"
-              alt="jcb icon"
-            />
+            <img class="payment_icons ml-1" src="/static/img/card_icons/visa-logo-svgrepo-com.svg"
+              alt="Visa logo icon" /><img class="payment_icons ml-1"
+              src="/static/img/card_icons/mastercard-2-logo-svgrepo-com.svg" alt="mastercard icon" /><img
+              class="payment_icons ml-1" src="/static/img/card_icons/american-express-svgrepo-com.svg"
+              alt="american express icon" /><img class="payment_icons ml-1"
+              src="/static/img/card_icons/maestro-svgrepo-com.svg" alt="maestro icon" /><img class="payment_icons ml-1"
+              src="/static/img/card_icons/jcb-svgrepo-com.svg" alt="jcb icon" />
           </div>
         </div>
       </div>
-      <
       <div class="col-12 subfooter text-white">
         &copy; Iseult McCormack Creations 2021
       </div>
       <hr class="black_hr" />
       <div class="col-12 mt-1 subfooter">
-        <a
-          class="clint_link"
-          href="http://www.clintondavis.org"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="link to Digital-web solutions"
-        >
-          <img
-            class="icons DW_icons"
-            src="/static/img/logos/logo_white.svg"
-            alt="Digital-Web-Solutions icon" />
-          <img
-            class="cd_icon icons spinning"
-            src="/static/img/logos/color_icon__blue_favicon.svg"
-            alt="Digital-Web-Solutions spinning icon"
-        /></a>
+        <a class="clint_link" href="http://www.clintondavis.org" target="_blank" rel="noopener noreferrer"
+          aria-label="link to Digital-web solutions">
+          <img class="icons DW_icons" src="/static/img/logos/logo_white.svg" alt="Digital-Web-Solutions icon" />
+          <img class="cd_icon icons spinning" src="/static/img/logos/color_icon__blue_favicon.svg"
+            alt="Digital-Web-Solutions spinning icon" /></a>
       </div>
     </div>
   </div>

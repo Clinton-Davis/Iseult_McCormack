@@ -8,14 +8,16 @@ from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 from .forms import ContactForm
 from shop.models import Product
-from .models import ( About, Scarfs, Paintings, 
+from .models import (About, Scarfs, Paintings,
                      ImageGallery, Home, PrivacyPolicy,
-                     TermsConditions )
+                     TermsConditions)
+
 
 class IndexView(ListView):
-     model = Home
-     template_name = "home/index.html"
-     context_object_name = "home"
+    model = Home
+    template_name = "home/index.html"
+    context_object_name = "home"
+
 
 def aboutview(request):
     feat_item = Product.objects.filter(feat_item=True)
@@ -23,18 +25,18 @@ def aboutview(request):
     scarfs = Scarfs.objects.all()
     paintings = Paintings.objects.all()
     context = {
-        'feat_item' : feat_item,
+        'feat_item': feat_item,
         'about': about,
-        'scarfs':scarfs,
-        'paintings':paintings,
+        'scarfs': scarfs,
+        'paintings': paintings,
     }
     return render(request, "home/about.html", context)
 
 
 class GalleryView(ListView):
-     model = ImageGallery
-     template_name = "home/gallery.html"
-     context_object_name = "images"
+    model = ImageGallery
+    template_name = "home/gallery.html"
+    context_object_name = "images"
 
 
 class TermsView(ListView):
@@ -66,13 +68,17 @@ class ContactView(generic.FormView):
         message = form.cleaned_data.get('message')
 
         full_message = f"""
-        Received message below from {name}, {email}
+        Received Message/Comment below from: 
+        Name: {name}
+         
+        Email: {email},
         ___________________________
+        Message/Comment: 
         {message}
 
         """
         send_mail(
-            subject="Message from Focus contact form",
+            subject="Message/Comment from Webpage contact form",
             message=full_message,
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[settings.NOTIFY_EMAIL]

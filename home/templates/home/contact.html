@@ -1,20 +1,26 @@
 {% extends "base.html" %}
- 
+
 {% load static %}
- 
+
 {% block head_title %}| Contact Iseult {% endblock head_title %}
- 
+
 {% block content %}
-<section lang="en" class="gooey4">
+<section lang="en" class="flyers">
   <div class="container data_container">
     <div class="inner_div invert_shadow">
       <h1 class="display-3 text-center hfi">Get In Touch</h1>
       <p>You can get in touch with me here.</p>
       <form method="POST" class="">
         {% csrf_token %}
-         
         {{ form|crispy }}
-        <input type="submit" class="btn-grad_blue hfi" value="Send Message" />
+        <div class="" x-data="{open: false }">
+          <template x-if="open === false">
+            <a href="#" @click.prevent="open = true" class="btn-grad_red hf">Are you Human?</a>
+          </template>
+          <input type="submit" x-show="open" class="btn-grad_blue hf" value="Send Message" />
+        </div>
+
+
       </form>
     </div>
   </div>
