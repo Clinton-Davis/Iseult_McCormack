@@ -1043,7 +1043,7 @@ select option[value=""] {
   color: #aab7c4 !important;
 }
 
-#loading-overlay {
+.loading-overlay {
   display: none;
   position: fixed;
   top: 0;
