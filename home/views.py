@@ -10,13 +10,19 @@ from .forms import ContactForm
 from shop.models import Product
 from .models import (About, Scarfs, Paintings,
                      ImageGallery, Home, PrivacyPolicy,
-                     TermsConditions)
+                     TermsConditions, Comment)
 
 
 class IndexView(ListView):
     model = Home
     template_name = "home/index.html"
     context_object_name = "home"
+
+    def get_context_data(self, **kwargs):
+        comments = Comment.objects.all()
+        context = super().get_context_data(**kwargs)
+        context['comments'] = comments
+        return context
 
 
 def aboutview(request):

@@ -732,7 +732,7 @@ blockquote:before {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 15rem;
+  min-height: 18rem;
   margin: 0;
   background: var(--inner_BG);
   padding: 1em;
