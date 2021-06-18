@@ -6,6 +6,13 @@ from django.contrib.staticfiles.storage import staticfiles_storage
 from django.contrib import admin
 from django.urls import path, include
 from home.views import IndexView
+from django.contrib.sitemaps.views import sitemap
+from home.sitemaps import StaticViewSitemap
+
+sitemaps = {
+    'static': StaticViewSitemap,
+}
+
 
 urlpatterns = [
     path('', include('home.urls')),
@@ -17,6 +24,8 @@ urlpatterns = [
     path('checkout/', include('checkout.urls', namespace='checkout')),
     path('favicon.ico', RedirectView.as_view(
         url=staticfiles_storage.url('img/favicon.ico'))),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
+         name='django.contrib.sitemaps.views.sitemap'),
     url(r'^.*/$', IndexView.as_view(), name='home'),
 ]
 

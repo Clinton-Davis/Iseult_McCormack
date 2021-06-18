@@ -1,11 +1,12 @@
 from django.contrib import admin
-from .models import (About, Scarfs, 
-                     Paintings, ImageGallery, 
+from .models import (About, Scarfs,
+                     Paintings, ImageGallery,
                      Home, PrivacyPolicy,
-                     TermsConditions)
+                     TermsConditions, Comment)
 
 admin.site.register(Home)
 admin.site.register(About)
+admin.site.register(Comment)
 admin.site.register(Scarfs)
 admin.site.register(Paintings)
 admin.site.register(ImageGallery)

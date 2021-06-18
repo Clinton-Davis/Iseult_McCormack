@@ -5,7 +5,7 @@ class ContactForm(forms.Form):
     name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={
         'autofocus': True,
         'class': "form-group",
-        'placeholder': "Your Name",
+        'placeholder': "Your Full Name Please",
 
     }), label="")
     email = forms.EmailField(widget=forms.TextInput(attrs={
@@ -16,4 +16,5 @@ class ContactForm(forms.Form):
         'class': "form-group",
         'rows': "4",
         'cols': "50",
-        'placeholder': "Your Message"}), label="")
+        'placeholder': "Your Message/Comment"}), label="")
+   
