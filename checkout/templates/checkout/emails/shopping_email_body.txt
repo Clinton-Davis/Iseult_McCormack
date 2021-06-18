@@ -17,7 +17,7 @@ Artworks:
 Your Payment:
     Order Total: €{{ order.order_total|div:100|floatformat:2 }}
     Delivery:    €{{ order.delivery_cost|div:100|floatformat:2 }}
-    Grand Total: €{{ order.grand_total|div:100|floatformat:2 }}
+    Total: €{{ order.grand_total|div:100|floatformat:2 }}
 
 
 Your Shipping Details:

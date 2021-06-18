@@ -21,10 +21,9 @@
     <!-- Address Form -->
     <div class="col-12 col-lg-6 dashbord_blocks">
       <h4 class="hf text-center">Shipping Details</h4>
-      <hr />
+      <hr class="black_hr" />
       <form class="mt-3" action="{% url 'profiles:profile' %}" method="POST" id="profile-update-form">
         {% csrf_token %}
-
         {{ form|crispy }}
         <button class="btn-grad_blue hfi mb-2 w-100">Update Details</button>
       </form>
@@ -40,7 +39,7 @@
             <tr>
               <th class="hf">Order Number</th>
               <th class="text-center hf">Date</th>
-              <th class="text-right hf">Grand Total</th>
+              <th class="text-right hf">Total</th>
             </tr>
           </thead>
           <tbody>

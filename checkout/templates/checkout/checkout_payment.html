@@ -47,10 +47,10 @@
             <h3 class="hfi text-center">Order Amount</h3>
             <div class="row text-black hf">
               <div class="col-6">
-                <p class="my-0">Items:</p>
+                <p class="my-0">Subtotal:</p>
               </div>
               <div class="col-6">
-                <p class="my-0 float-right">
+                <p class="my-0 float_right">
                   &euro; {{ bag_total | floatformat:2 }}
                 </p>
               </div>
@@ -60,24 +60,22 @@
                 <p class="my-0">Delivery:</p>
               </div>
               <div class="col-6">
-                <p class="my-0 float-right">
+                <p class="my-0 float_right">
                   {% if free_delivery_delta == 0 %}
-
                   Free Delivery
-
                   {% else %}
-
-                  &euro; {{ delivery | floatformat:2 }} {% endif %}
+                  &euro; {{ delivery | floatformat:2 }}
+                  {% endif %}
                 </p>
               </div>
             </div>
             <div class="row text-black hf">
               <div class="col-6">
-                <p class="my-0 hfb">Grand Total:</p>
+                <p class="my-0 hfb">Total:</p>
               </div>
               <div class="col-6">
                 <p class="my-0">
-                  <strong class="float-right">&euro; {{ grand_total | floatformat:2 }}</strong>
+                  <strong class="float_right">&euro; {{ grand_total | floatformat:2 }}</strong>
                 </p>
               </div>
             </div>
