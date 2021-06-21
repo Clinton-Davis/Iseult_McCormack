@@ -52,8 +52,10 @@
                 <div class="col-6 my-1 float-right">
                   <h5>
                     {% if product.category == "painting" %}
-                    &euro;{{code_parcel_price|floatformat:2 }} {% else %}
-                    &euro;{{ code_packet_price|floatformat:2 }} {% endif %}
+                    &euro;{{code_parcel_price|floatformat:2 }}
+                    {% else %}
+                    &euro;{{ code_packet_price|floatformat:2 }}
+                    {% endif %}
                   </h5>
                   <small>(To {{ selected_location }})</small>
                 </div>
@@ -61,7 +63,7 @@
               </div>
               <div class="row">
                 <div class="col-6 my-1">
-                  <strong>Grand Total: </strong>
+                  <strong>Total: </strong>
                 </div>
                 <div class="col-6 my-1">
                   <strong>&euro; {{grand_total|floatformat:2}}</strong>
@@ -161,63 +163,56 @@
               </p>
             </td>
           </tr>
-
-          {% endfor %}
-          <tr>
-            <td colspan="5" class="pt-5 text-right">
-              <h5 class="hf">
-                <strong>Bag Total: &euro;{{ bag_total|floatformat:2 }}</strong>
-              </h5>
-              {% if selected_location == "None" %}
-              <a href="{% url 'checkout:address' %}"><small>Add Shipping Detials for Delivary Cost</small></a>
-
-              {% else %}
-
-              {% if product.category.name == "paintings" %}
-              <h5 class="hf">
-                Delivary: &euro;{{code_parcel_price|floatformat:2 }}
-              </h5>
-              <small>(To {{selected_location}})</small>
-              {% else %}
-              <h5 class="hf">
-                Delivary: &euro;{{ code_packet_price|floatformat:2 }}
-              </h5>
-              <small>(To {{selected_location}})</small>
-              {% endif %}
-
-              {% endif %}
-
-              <h4 class="mt-4">
-                {% if location_name == "None" %}
-                <strong class="hf">Total:
-                  <span class="hf">&euro;</span>
-                  {{grand_total|floatformat:2}}</strong><br />
-                <small>Without Delivary</small>
-                {% else %}
-                <strong class="hf">Grand Total:
-                  <span class="hf">&euro;</span>
-                  {{grand_total|floatformat:2}}</strong>
-                {% endif %}
-              </h4>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="5" class="text-right">
-              <a href="{% url 'checkout:address' %}" class="hfi btn-grad_blue float-right ml-1">
-                <span class="mx-2">Checkout</span>
-                <span class="icon">
-                  <i class="fas fa-lock"></i>
-                </span>
-              </a>
-              <a href="{% url 'shop:shop' %}" class="hfi btn-grad_pink float-left">
-                <span class="icon">
-                  <i class="fas fa-arrow-circle-left"></i>
-                </span>
-                <span class="mx-1">Keep Shopping</span>
-              </a>
-            </td>
-          </tr>
         </table>
+        <hr class="black_hr" />
+        <div class="col-12">
+          <h3 class="hf text-center">
+            <strong class="">Totals</strong>
+          </h3>
+
+        </div>
+        <hr class="black_hr" />
+        {% endfor %}
+        <div class="grid">
+          <div class="hf">Subtotal:</div>
+          <div class="">&euro; {{ bag_total|floatformat:2 }}</div>
+        </div>
+        <div class="grid">
+          <div class="hf">Delivary:</div>
+          <div class="hf">
+            {% if selected_location == "None" %}
+            <a href="{% url 'checkout:address' %}">
+              <small>Add Shipping Detials for <br>Delivary Cost</small>
+            </a>
+            {% else %}
+            {% if product.category.name == "paintings" %}
+            &euro;{{code_parcel_price|floatformat:2 }}
+            {% else %}
+            &euro;{{ code_packet_price|floatformat:2 }}
+            {% endif %}
+            {% endif %}
+          </div>
+        </div>
+        <div class="grid">
+          <div class="hf fs-4"><strong>Total:</strong></div>
+          <div class="fs-4"><strong>&euro; {{ grand_total|floatformat:2 }}</strong>
+          </div>
+        </div>
+        <hr class="black_hr" />
+
+        <a href="{% url 'checkout:address' %}" class="hfi btn-grad_blue float-right ml-1">
+          <span class="mx-2">Checkout</span>
+          <span class="icon">
+            <i class="fas fa-lock"></i>
+          </span>
+        </a>
+        <a href="{% url 'shop:shop' %}" class="hfi btn-grad_pink float-left">
+          <span class="icon">
+            <i class="fas fa-arrow-circle-left"></i>
+          </span>
+          <span class="mx-1">Keep Shopping</span>
+        </a>
+
       </div>
       {% else %}
       <a href="{% url 'shop:shop' %}" class="hfi btn-grad_pink">

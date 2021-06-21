@@ -924,6 +924,14 @@ cite {
 .mobile_bag_totals {
   display: flex;
 }
+.grid {
+  margin: 1rem;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  place-items: center;
+}
+
+
 
 /** Gallery Page */
 
