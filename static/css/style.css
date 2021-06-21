@@ -160,7 +160,6 @@ p {
   color: var(--lightPurpal);
 }
 
-
 .invert_shadow {
   box-shadow: 0 2px 21px -1px rgba(0, 0, 0, 1),
     0 2px 15px -1px rgba(0, 0, 0, 1) inset;
@@ -294,7 +293,9 @@ p {
   width: auto;
 }
 
-
+#submit-button {
+  padding: 1em 3em;
+}
 
 .remove-item {
   cursor: pointer;
@@ -948,10 +949,10 @@ cite {
   display: flex;
 }
 .grid {
-  margin: 1rem;
+  margin: 1rem 0;
   display: grid;
   grid-template-columns: 50% 50%;
-  place-items: center;
+
 }
 
 
@@ -997,6 +998,18 @@ cite {
 }
 
 /** Checkout Page  */
+
+.columns {
+  width: min(90%, 100%);
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.payment_icons_container {
+  display: flex;
+  justify-content:center;
+
+}
 
 /* Mobile sm */
 
@@ -1170,6 +1183,9 @@ select option[value=""] {
   .btn-grad_pink,
   .btn-grad_red {
     width: 50%;
+  }
+  #submit-button {
+    margin-left: 50%;
   }
 }
 

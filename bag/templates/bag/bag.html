@@ -131,7 +131,7 @@
         <table class="table table-sm table-borderless">
           <thead class="text-black">
             <tr>
-              <th scope="col">Product</th>
+              <th scope="col">Item</th>
               <th scope="col">Name</th>
               <th scope="col">Price</th>
 
@@ -163,16 +163,16 @@
               </p>
             </td>
           </tr>
+          {% endfor %}
         </table>
         <hr class="black_hr" />
         <div class="col-12">
-          <h3 class="hf text-center">
-            <strong class="">Totals</strong>
+          <h3 class="hf">
+            <strong class="mb-2">Bag Totals</strong>
           </h3>
 
         </div>
-        <hr class="black_hr" />
-        {% endfor %}
+
         <div class="grid">
           <div class="hf">Subtotal:</div>
           <div class="">&euro; {{ bag_total|floatformat:2 }}</div>

@@ -24,19 +24,19 @@
             <div class="row">
               {% for item in bag_items %}
               <div class="row checkout_items">
-                <div class="mb-1">
+                <div class="mb-1 col-4">
                   <a href="{% url 'shop:product_detail' item.product.id %}">
                     <img class="" src="{{ item.product.image.url }}" alt="{{ item.product.name }}" />
                   </a>
                 </div>
-                <div class="">
+                <div class=" col-4">
                   <p class="my-0">
-                    <strong class="hf">{{ item.product.name }}</strong>
+                    <strong class="hf text-break">{{ item.product.name }}</strong>
+                    <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
                   </p>
-                  <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
                 </div>
-                <div class="">
-                  <p class="my-0 small">&euro; {{ item.product.get_price }}</p>
+                <div class="col-4">
+                  <p class="my-0">&euro; {{ item.product.get_price }}</p>
                 </div>
               </div>
 
@@ -44,7 +44,7 @@
             </div>
             <hr class="" />
 
-            <h3 class="hfi text-center">Order Amount</h3>
+            <h3 class="hfi">Order Amount:</h3>
             <div class="row text-black hf">
               <div class="col-6">
                 <p class="my-0">Subtotal:</p>
@@ -71,37 +71,63 @@
             </div>
             <div class="row text-black hf">
               <div class="col-6">
-                <p class="my-0 hfb">Total:</p>
+                <p class="my-0 hfb fs-5"><strong>Total:</strong></p>
               </div>
               <div class="col-6">
                 <p class="my-0">
-                  <strong class="float_right">&euro; {{ grand_total | floatformat:2 }}</strong>
+                  <strong class="fs-5">&euro; {{ grand_total | floatformat:2 }}</strong>
                 </p>
               </div>
             </div>
             <hr class="my-4" />
 
-            <h3 class="hfi text-center">Shipping To:</h3>
-            <div class="row text-black hf">
-              <div class="col-6">
+            <h3 class="hfi">Shipping To:</h3>
+            <div class="shipping-wrapper">
+              <div class="columns text-black hf">
+                <div class="my-0 ">Name:</div>
                 <div class="my-0">{{profile.full_name|title}}</div>
-                <div class="my-0">{{user.email}}</div>
+              </div>
+              <div class="columns text-black hf">
+                <div class="my-0 ">Email:</div>
+                <div class="my-0 text-break">{{user.email}}</div>
+              </div>
+              <div class="columns text-black hf">
+                <div class="my-0 ">Phone:</div>
                 <div class="my-0">{{profile.phone_number}}</div>
+              </div>
+              <div class="columns text-black hf">
+                <div class="my-0 ">Address:</div>
                 <div class="my-0">{{profile.street_address1}}</div>
-                {% if not profile.street_address2 == 'None' %}
-                <div class="my-0">{{profile.street_address2}}</div>
+              </div>
+              <div class="columns text-black hf">
+                {% if not profilet_address2 == 'None' %}
+                <div class="my-0 "></div>
+                <div class="my-0 col-9">{{profile.street_address2}}</div>
                 {% else %}
                 {% endif %}
+              </div>
+              <div class="columns text-black hf">
+                <div class="my-0 ">Town/City:</div>
                 <div class="my-0">{{profile.town_or_city}}</div>
+              </div>
+              <div class="columns text-black hf">
+                <div class="my-0 ">Postcode:</div>
                 <div class="my-0">{{profile.postcode}}</div>
+              </div>
+              <div class="columns text-black hf">
+                <div class="my-0 ">County:</div>
                 <div class="my-0">{{profile.county}}</div>
+              </div>
+              <div class="columns text-black hf">
+                <div class="my-0 ">Country:</div>
                 <div class="my-0">{{profile.country}}</div>
               </div>
             </div>
+
           </div>
         </div>
         <hr class="mb-3" />
-        <h3 class="hfi text-center">Order Payment</h3>
+        <h3 class="hfi">Order Payment:</h3>
         <div class="row">
           <div class="col-12">
             <form action="{% url 'checkout:checkout_payment' %}" method="POST" id="payment-form">
@@ -129,27 +155,21 @@
                 <input type="hidden" value="{{ client_secret }}" name="client_secret" />
               </fieldset>
 
-              <div class="row mb-4">
-                <div class="col-12 payment-icons_container">
-                  <img class="payment_icons ms-1" src="/static/img/visa-logo-svgrepo-com.svg"
-                    alt="Instagram icon" /><img class="payment_icons ms-1"
-                    src="/static/img/mastercard-2-logo-svgrepo-com.svg" alt="Instagram icon" /><img
-                    class="payment_icons ms-1" src="/static/img/american-express-svgrepo-com.svg"
-                    alt="Instagram icon" /><img class="payment_icons ms-1" src="/static/img/maestro-svgrepo-com.svg"
-                    alt="Instagram icon" /><img class="payment_icons ms-1" src="/static/img/jcb-svgrepo-com.svg"
+              <div class=" mb-4">
+                <div class="col-12 payment_icons_container">
+                  <img class="payment_icons ms-1" src="/static/img/visa-logo-svgrepo-com.svg" alt="Instagram icon" />
+                  <img class="payment_icons ms-1" src="/static/img/mastercard-2-logo-svgrepo-com.svg"
                     alt="Instagram icon" />
+                  <img class="payment_icons ms-1" src="/static/img/american-express-svgrepo-com.svg"
+                    alt="Instagram icon" />
+                  <img class="payment_icons ms-1" src="/static/img/maestro-svgrepo-com.svg" alt="Instagram icon" />
+                  <img class="payment_icons ms-1" src="/static/img/jcb-svgrepo-com.svg" alt="Instagram icon" />
                 </div>
               </div>
-              <p class="small text-info my-1 text-center">
-                <span class="icon">
-                  <i class="fas fa-exclamation-circle"></i>
-                </span>
-                <span>Your card will be charged
-                  <strong>&euro;{{ grand_total|floatformat:2 }}</strong></span>
-              </p>
-              <div class="submit-button text-right mt-3 mb-2 btn-wrapper">
-                <button id="submit-button" class="btn-grad_blue ml-auto">
-                  <span class="hf mx-2">Make Payment</span>
+
+              <div class="mt-3 mb-2 btn-wrapper">
+                <button id="submit-button" class="btn-grad_blue">
+                  <span class="hf mx-2"><strong>Pay&nbsp; &euro;{{ grand_total|floatformat:2 }}</strong> </span>
                   <span class="icon">
                     <i class="fas fa-lock"></i>
                   </span>
