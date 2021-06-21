@@ -37,8 +37,8 @@
       {% else %}
       <p class="center-text">
         {% blocktrans %}If you have not created an account yet, then please
-        <a href="{{ signup_url }}"><span class="aqua bold"><strong>Sign</strong></span>
-          <span class="purpel"><strong>Up</strong></span>.</a>{%endblocktrans %}
+        <a href="{{ signup_url }} "><span class="aqua bold underline fs-5"><strong>Sign</strong></span>
+          <span class="purpel underline fs-5"><strong>Up</strong></span>.</a>{%endblocktrans %}
       </p>
       {% endif %}
 
@@ -52,7 +52,7 @@
         {% endif %}
         <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
         <button class="primaryAction btn-grad_blue" type="submit">
-          {% trans "Sign In" %}
+          Login
         </button>
       </form>
     </div>

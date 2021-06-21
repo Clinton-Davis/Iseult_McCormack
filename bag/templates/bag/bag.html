@@ -31,16 +31,16 @@
             {% if bag_items %}
             <div class="d-block d-md-none">
               <div class="row">
-                <div class="col-6">
-                  <strong>Bag Total: </strong>
+                <div class="col-6 hf">
+                  Bag Total:
                 </div>
                 <div class="col-6 my-1">
-                  <strong>&euro; {{ bag_total|floatformat:2 }}</strong>
+                  &euro; {{ bag_total|floatformat:2 }}
                 </div>
               </div>
               <div class="row">
-                <div class="col-6 my-1">
-                  <strong>Delivary: </strong>
+                <div class="col-6 my-1 hf">
+                  Delivary:
                 </div>
 
                 {% if selected_location == "None" %}
@@ -63,17 +63,17 @@
               </div>
               <div class="row">
                 <div class="col-6 my-1">
-                  <strong>Total: </strong>
+                  <strong class="hf fs-4">Total: </strong>
                 </div>
                 <div class="col-6 my-1">
-                  <strong>&euro; {{grand_total|floatformat:2}}</strong>
+                  <strong class="hf fs-4">&euro; {{grand_total|floatformat:2}}</strong>
                 </div>
               </div>
               <hr />
               <div class="row">
                 <div class="col">
-                  <a href="{% url 'checkout:address' %}" class="hfi btn-grad_blue mb-4"
-                    aria-label="Proceed to checkout">
+                  <a href="{% url 'checkout:address' %}" class="hfi btn-grad_blue mb-4 ml-auto"
+                    style="margin-left: auto;" aria-label="Proceed to checkout">
                     <span class="text-uppercase mx-2">Checkout</span>
                     <span class="icon">
                       <i class="fas fa-lock"></i>
@@ -195,23 +195,25 @@
         </div>
         <div class="grid">
           <div class="hf fs-4"><strong>Total:</strong></div>
-          <div class="fs-4"><strong>&euro; {{ grand_total|floatformat:2 }}</strong>
+          <div class="hf fs-4"><strong>&euro; {{ grand_total|floatformat:2 }}</strong>
           </div>
         </div>
         <hr class="black_hr" />
+        <div class="btn-wrapper">
+          <a href="{% url 'checkout:address' %}" class="hfi btn-grad_blue ml-auto" style="margin-left: auto;">
+            <span class="mx-2">Checkout</span>
+            <span class="icon">
+              <i class="fas fa-lock"></i>
+            </span>
+          </a>
+          <a href="{% url 'shop:shop' %}" class="hfi btn-grad_pink float-left">
+            <span class="icon">
+              <i class="fas fa-arrow-circle-left"></i>
+            </span>
+            <span class="mx-1">Keep Shopping</span>
+          </a>
 
-        <a href="{% url 'checkout:address' %}" class="hfi btn-grad_blue float-right ml-1">
-          <span class="mx-2">Checkout</span>
-          <span class="icon">
-            <i class="fas fa-lock"></i>
-          </span>
-        </a>
-        <a href="{% url 'shop:shop' %}" class="hfi btn-grad_pink float-left">
-          <span class="icon">
-            <i class="fas fa-arrow-circle-left"></i>
-          </span>
-          <span class="mx-1">Keep Shopping</span>
-        </a>
+        </div>
 
       </div>
       {% else %}

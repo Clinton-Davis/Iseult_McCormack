@@ -90,7 +90,8 @@
                 <div class="my-0">{{profile.street_address1}}</div>
                 {% if not profile.street_address2 == 'None' %}
                 <div class="my-0">{{profile.street_address2}}</div>
-                {% else %} {% endif %}
+                {% else %}
+                {% endif %}
                 <div class="my-0">{{profile.town_or_city}}</div>
                 <div class="my-0">{{profile.postcode}}</div>
                 <div class="my-0">{{profile.county}}</div>
@@ -130,12 +131,12 @@
 
               <div class="row mb-4">
                 <div class="col-12 payment-icons_container">
-                  <img class="payment_icons ml-1" src="/static/img/visa-logo-svgrepo-com.svg"
-                    alt="Instagram icon" /><img class="payment_icons ml-1"
+                  <img class="payment_icons ms-1" src="/static/img/visa-logo-svgrepo-com.svg"
+                    alt="Instagram icon" /><img class="payment_icons ms-1"
                     src="/static/img/mastercard-2-logo-svgrepo-com.svg" alt="Instagram icon" /><img
-                    class="payment_icons ml-1" src="/static/img/american-express-svgrepo-com.svg"
-                    alt="Instagram icon" /><img class="payment_icons ml-1" src="/static/img/maestro-svgrepo-com.svg"
-                    alt="Instagram icon" /><img class="payment_icons ml-1" src="/static/img/jcb-svgrepo-com.svg"
+                    class="payment_icons ms-1" src="/static/img/american-express-svgrepo-com.svg"
+                    alt="Instagram icon" /><img class="payment_icons ms-1" src="/static/img/maestro-svgrepo-com.svg"
+                    alt="Instagram icon" /><img class="payment_icons ms-1" src="/static/img/jcb-svgrepo-com.svg"
                     alt="Instagram icon" />
                 </div>
               </div>
@@ -146,8 +147,8 @@
                 <span>Your card will be charged
                   <strong>&euro;{{ grand_total|floatformat:2 }}</strong></span>
               </p>
-              <div class="submit-button text-right mt-3 mb-2">
-                <button id="submit-button" class="btn-grad_blue">
+              <div class="submit-button text-right mt-3 mb-2 btn-wrapper">
+                <button id="submit-button" class="btn-grad_blue ml-auto">
                   <span class="hf mx-2">Make Payment</span>
                   <span class="icon">
                     <i class="fas fa-lock"></i>

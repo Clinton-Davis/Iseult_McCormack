@@ -75,28 +75,6 @@ a .a_card:hover {
   text-decoration: none;
 }
 
-.a {
-  display: inline;
-}
-
-.px-15 {
-  padding: 0 1rem;
-}
-
-.mt-10vh {
-  margin-top: -10vh;
-}
-
-.center_page {
-  display: flex;
-  align-items: center;
-}
-
-.display_center {
-  display: flex;
-  justify-content: center;
-}
-
 section {
   /* height: fit-content; */
   min-height: 65vh;
@@ -117,6 +95,44 @@ li {
 p {
   max-width: 60ch;
   color: var(--P_black);
+}
+
+.a {
+  display: inline;
+}
+
+.px-15 {
+  padding: 0 1rem;
+}
+
+.mt-10vh {
+  margin-top: -10vh;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+
+.center_page {
+  display: flex;
+  align-items: center;
+}
+
+.display_center {
+  display: flex;
+  justify-content: center;
+}
+
+.form-group {
+  margin: 1rem 0;
+}
+
+.underline {
+  text-decoration: underline;
 }
 
 .hf {
@@ -143,6 +159,7 @@ p {
 .purpel {
   color: var(--lightPurpal);
 }
+
 
 .invert_shadow {
   box-shadow: 0 2px 21px -1px rgba(0, 0, 0, 1),
@@ -217,7 +234,7 @@ p {
 
 /**--Back-Grounds--*/
 
-.flyers {
+/* .flyers {
   background-image: url(/static/img/backgrounds/LiveBackGround.svg);
   background-size: cover;
   background-position: center center;
@@ -236,7 +253,7 @@ p {
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
-}
+} */
 
 .outer_container {
   padding: 1em;
@@ -272,6 +289,12 @@ p {
 }
 
 /**--Button */
+
+.btn-wrapper {
+  width: auto;
+}
+
+
 
 .remove-item {
   cursor: pointer;
@@ -468,7 +491,7 @@ nav {
     width: 100%;
     top: 7vh;
     z-index: -10;
-    background: var(--body_BG);
+    background: var(--inner_BG);
     transform: translateY(-300%);
     -webkit-transform: translateY(-300%);
     -moz-transform: translateY(-300%);
@@ -1146,7 +1169,7 @@ select option[value=""] {
   .btn-grad_blue,
   .btn-grad_pink,
   .btn-grad_red {
-    width: 75%;
+    width: 50%;
   }
 }
 
