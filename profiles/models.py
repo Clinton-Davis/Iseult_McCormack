@@ -16,11 +16,12 @@ class UserProfile(models.Model):
     full_name = models.CharField(max_length=80, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=True, blank=True)
     street_address1 = models.CharField(max_length=80, null=True, blank=True)
-    street_address2 = models.CharField( max_length=80, null=True, blank=True)
+    street_address2 = models.CharField(max_length=80, null=True, blank=True)
     town_or_city = models.CharField(max_length=40, null=True, blank=True)
-    postcode = models.CharField( max_length=20, null=True, blank=True)
+    postcode = models.CharField(max_length=20, null=True, blank=True)
     county = models.CharField(max_length=80, null=True, blank=True)
-    country = CountryField( blank_label='Country', null=True, blank=True)
+    country = CountryField(blank_label='Country', null=True, blank=True)
+
     def __str__(self):
         return self.full_name
 
@@ -32,5 +33,5 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
     """
     if created:
         UserProfile.objects.create(user=instance)
-            # Existing users: just save the profile
+        # Existing users: just save the profile
     instance.userprofile.save()
