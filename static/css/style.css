@@ -233,7 +233,7 @@ p {
 
 /**--Back-Grounds--*/
 
-/* .flyers {
+.flyers {
   background-image: url(/static/img/backgrounds/LiveBackGround.svg);
   background-size: cover;
   background-position: center center;
@@ -252,7 +252,7 @@ p {
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
-} */
+}
 
 .outer_container {
   padding: 1em;
@@ -948,6 +948,7 @@ cite {
 .mobile_bag_totals {
   display: flex;
 }
+
 .grid {
   margin: 1rem 0;
   display: grid;
@@ -1007,7 +1008,7 @@ cite {
 
 .payment_icons_container {
   display: flex;
-  justify-content:center;
+  justify-content: center;
 
 }
 
@@ -1184,6 +1185,7 @@ select option[value=""] {
   .btn-grad_red {
     width: 50%;
   }
+
   #submit-button {
     margin-left: 50%;
   }
