@@ -2,6 +2,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import url
 from django.views.generic.base import RedirectView
+from django.views.generic.base import TemplateView
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.contrib import admin
 from django.urls import path, include
@@ -26,7 +27,9 @@ urlpatterns = [
         url=staticfiles_storage.url('img/favicon.ico'))),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
          name='django.contrib.sitemaps.views.sitemap'),
-    url(r'^.*/$', IndexView.as_view(), name='home'),
+    path('robots.txt', TemplateView.as_view(
+        template_name='robots.txt', content_type='text/plain'),),
+    url(r'^.*/$', IndexView.as_view(), name='home')
 ]
 
 if settings.DEBUG:
