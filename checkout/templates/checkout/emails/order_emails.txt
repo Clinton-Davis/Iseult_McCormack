@@ -8,7 +8,7 @@ items:
     Code: {{ item.product.code }}
 {% endfor %}
 Client:
-    Name:  {{ order.full_name }}
+    Name:  {{ order.first_name }} {{ order.last_name }}
     Phone: {{ order.phone_number }}
     Email: {{ order.email }}
 

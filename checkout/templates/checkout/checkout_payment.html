@@ -85,24 +85,24 @@
             <div class="shipping-wrapper">
               <div class="columns text-black hf">
                 <div class="my-0 ">Name:</div>
-                <div class="my-0">{{profile.full_name|title}}</div>
+                <div class="my-0">{{ profile.first_name|title }} {{ profile.last_name|title }}</div>
               </div>
               <div class="columns text-black hf">
                 <div class="my-0 ">Email:</div>
-                <div class="my-0 text-break">{{user.email}}</div>
+                <div class="my-0 text-break">{{ user.email }}</div>
               </div>
               <div class="columns text-black hf">
                 <div class="my-0 ">Phone:</div>
-                <div class="my-0">{{profile.phone_number}}</div>
+                <div class="my-0">{{ profile.phone_number }}</div>
               </div>
               <div class="columns text-black hf">
                 <div class="my-0 ">Address:</div>
-                <div class="my-0">{{profile.street_address1}}</div>
+                <div class="my-0">{{ profile.street_address1 }}</div>
               </div>
               <div class="columns text-black hf">
                 {% if not profilet_address2 == 'None' %}
                 <div class="my-0 "></div>
-                <div class="my-0 col-9">{{profile.street_address2}}</div>
+                <div class="my-0 col-9">{{ profile.street_address2 }}</div>
                 {% else %}
                 {% endif %}
               </div>
@@ -132,7 +132,8 @@
           <div class="col-12">
             <form action="{% url 'checkout:checkout_payment' %}" method="POST" id="payment-form">
               {% csrf_token %}
-              <input type="hidden" name="full_name" value="{{profile.full_name}}" />
+              <input type="hidden" name="first_name" value="{{profile.first_name}}" />
+              <input type="hidden" name="last_name" value="{{profile.last_name}}" />
               <input type="hidden" name="email" value="{{profile.user.email}}" />
               <input type="hidden" name="phone_number" value="{{profile.phone_number}}" />
 

@@ -1,6 +1,6 @@
 {% load mathfilters %}
 
-Hello {{ order.get_first_name }}.
+Hello {{ order.first_name }}.
 
 We thank you for choosing my boutique.
 

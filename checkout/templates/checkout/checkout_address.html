@@ -14,7 +14,8 @@
         <fieldset class="rounded px-3 mb-5">
 
 
-          {{ address_form.full_name | as_crispy_field }}
+          {{ address_form.first_name | as_crispy_field }}
+          {{ address_form.last_name | as_crispy_field }}
           {{ address_form.phone_number | as_crispy_field }}
           {{ address_form.street_address1 | as_crispy_field }}
           {{ address_form.street_address2 | as_crispy_field }}

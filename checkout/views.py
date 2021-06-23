@@ -97,7 +97,8 @@ def checkout(request):
         bag = request.session.get('bag', {})
 
         form_data = {
-            'full_name': profile.full_name,
+            'first_name': profile.first_name,
+            'last_name': profile.last_name,
             'email': profile.user.email,
             'phone_number': profile.phone_number,
             'country': profile.country,

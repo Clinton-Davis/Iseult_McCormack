@@ -27,7 +27,7 @@ class UserProfile(models.Model):
     country = CountryField(blank_label='Country', null=True, blank=True)
 
     def __str__(self):
-        return self.full_name
+        return self.first_name, self.last_name
 
 
 @receiver(post_save, sender=User)
