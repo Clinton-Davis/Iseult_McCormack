@@ -32,11 +32,13 @@ def get_delivary_price(request):
     else:
         delivery = code.packet_price
     return delivery
-    
+
+
 def get_country_name(name):
     code = Delivary.objects.get(code=name)
     name = code.name
     return name
+
 
 @require_POST
 def cache_checkout_data(request):
@@ -53,7 +55,8 @@ def cache_checkout_data(request):
         messages.error(request, 'Sorry, your payment cannot be \
             processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
-    
+
+
 @login_required()
 def checkout_address(request):
     template = "checkout/checkout_address.html"
@@ -63,37 +66,36 @@ def checkout_address(request):
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
-            #Adding userprofiles full name to User first and lastname
-            user.first_name = profile.full_name.split()[0].capitalize()
-            user.last_name = profile.full_name.split()[1].capitalize()
+            # Adding userprofiles full name to User first and lastname
+            user.first_name = profile.first_name.capitalize()
+            user.last_name = profile.last_name.capitalize()
             user.save()
             print(user.first_name, user.last_name)
             messages.success(request, 'Profile updated successfully')
-            
+
             return redirect(reverse('checkout:checkout_payment'))
         else:
             messages.error(
                 request, 'Update failed, Please ensure the form is valid.')
     else:
         form = UserProfileForm(instance=profile)
-   
+
     context = {
         "address_form": form
     }
-    return render(request, template, context)        
+    return render(request, template, context)
 
 
 @login_required()
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-    
+
     profile = UserProfile.objects.get(user=request.user)
-    
 
     if request.method == 'POST':
         bag = request.session.get('bag', {})
-        
+
         form_data = {
             'full_name': profile.full_name,
             'email': profile.user.email,
@@ -104,8 +106,8 @@ def checkout(request):
             'street_address1': profile.street_address1,
             'street_address2': profile.street_address2,
             'county': profile.county,
-            }
-        
+        }
+
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
@@ -144,18 +146,18 @@ def checkout(request):
                     )
                     order.delete()
                     return redirect(reverse('view_bag'))
-                
+
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('checkout:checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
-                                   Please double check your information.')      
+                                   Please double check your information.')
     else:
         bag = request.session.get('bag', {})
         if not bag:
-                messages.error(
-                    request, "There's nothing in your bag at the moment")
-                return redirect(reverse('shop:shop'))
+            messages.error(
+                request, "There's nothing in your bag at the moment")
+            return redirect(reverse('shop:shop'))
 
         current_bag = bag_contents(request)
         total = current_bag['grand_total']
@@ -164,7 +166,7 @@ def checkout(request):
         intent = stripe.PaymentIntent.create(
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
-            )
+        )
         order_form = OrderForm()
 
     if not stripe_public_key:
@@ -188,20 +190,20 @@ def checkout_success(request, order_number):
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-    #Gets the Items in the bag takes it out of stock
+    # Gets the Items in the bag takes it out of stock
     bag = request.session.get('bag', {})
     for item_id, item_data in bag.items():
-         product = Product.objects.get(id=item_id)
-         qty = item_data
-         inventory = product.inventory - qty
-         if inventory == 0:
-             product.in_stock = False
-         product.save()
-         
+        product = Product.objects.get(id=item_id)
+        qty = item_data
+        inventory = product.inventory - qty
+        if inventory == 0:
+            product.in_stock = False
+        product.save()
+
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
         # Attach the user's profile to the order
-        order.user_profile = profile   
+        order.user_profile = profile
         order.save()
 
         # Save the user's info
@@ -224,8 +226,6 @@ def checkout_success(request, order_number):
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
 
-   
-    
     if 'bag' in request.session:
         del request.session['bag']
 

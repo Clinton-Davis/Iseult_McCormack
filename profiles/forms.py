@@ -14,12 +14,13 @@ class UserProfileForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
         placeholders = {
-            'full_name': 'Your Full Name',
-            'phone_number': 'Phone Number',
+            'first_name': 'First name',
+            'last_name': 'Last name (Surname)',
+            'phone_number': 'Phone Number (Optional)',
             'postcode': 'Postal Code',
             'town_or_city': 'Town or City',
             'street_address1': 'Street Address 1',
-            'street_address2': 'Street Address 2',
+            'street_address2': 'Street Address 2 (Optional)',
             'county': 'County, State or Locality',
         }
 
