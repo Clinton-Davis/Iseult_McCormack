@@ -10,22 +10,8 @@ var clientSecret = $("#id_client_secret").text().slice(1, -1);
 // var country = $("#id_country").text().slice(1, -1);
 var stripe = Stripe(stripePublicKey);
 var elements = stripe.elements();
-var style = {
-  base: {
-    color: "#000",
-    fontFamily: '"Montserrat", sans-serif',
-    fontSmoothing: "antialiased",
-    fontSize: "16px",
-    "::placeholder": {
-      color: "#aab7c4",
-    },
-  },
-  invalid: {
-    color: "#d41023",
-    iconColor: "#dc3545",
-  },
-};
-var card = elements.create("card", { style: style });
+
+var card = elements.create("card");
 card.mount("#card-element");
 
 // Handle realtime validation errors on the card element
