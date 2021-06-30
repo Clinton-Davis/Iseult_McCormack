@@ -1,3 +1,4 @@
+
 from django.urls import path
 from blog.views import (
     BlogListView,
@@ -6,9 +7,9 @@ from blog.views import (
     BlogCreateView,
     BlogUpdateView,
     BlogDeleteView,
-    # BlogAuthorPageView,
+    BlogAuthorPageView,
     like,
-    # CategoryView
+    CategoryView
 
 
 )
@@ -23,5 +24,8 @@ urlpatterns = [
     path('<slug>/', BlogDetailView.as_view(), name='details'),
     path('<slug>/update/', BlogUpdateView.as_view(), name='update'),
     path('<slug>/delete/',  BlogDeleteView.as_view(), name='delete'),
+    path('category/<str:category>/', CategoryView, name='category'),
+    path('author/<int:pk>/',
+         BlogAuthorPageView.as_view(), name='author'),
     path('like/<slug>/', like, name='like')
 ]

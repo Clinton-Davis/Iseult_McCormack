@@ -6,10 +6,29 @@ from ckeditor.fields import RichTextField
 from django.utils.text import slugify
 
 
+class BlogCategory(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'BlogCategories'
+
+    category_name = models.CharField(max_length=254)
+    friendly_blog_name = models.CharField(
+        max_length=254, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+    def get_friendly_blog_name(self):
+        return self.friendly_blog_name
+
+
 class Blog(models.Model):
-    title = models.CharField(max_length=50)
-    content = RichTextField(blank=True, null=True)
-    thumbnail = models.ImageField()
+    title = models.CharField(max_length=250)
+    category = models.ForeignKey(
+        'BlogCategory', null=True, on_delete=models.SET_NULL)
+    overview = models.TextField(blank=False, null=False)
+    content = RichTextField(blank=False, null=False)
+    image = models.ImageField(upload_to='blog/', blank=True, null=True)
     publish_date = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)

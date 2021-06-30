@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Blog, BlogView, Like,  Category
+from .models import Blog, BlogView, Like,  BlogCategory
 from .forms import BlogCommentForm, BlogForm
 
 
@@ -18,7 +18,7 @@ class BlogListView(ListView):
 
     def get_context_data(self, **kwargs):
         feature_blog = Blog.objects.filter(featured=True)
-        category_menu = Category.objects.all()
+        category_menu = BlogCategory.objects.all()
         context = super().get_context_data(**kwargs)
         context['feature_blog'] = feature_blog
         context['category_menu'] = category_menu
@@ -30,7 +30,7 @@ class SearchView(View):
 
     def get(self, request, *args, **kwargs):
         all_blogs = Blog.objects.all()
-        category_menu = Category.objects.all()
+        category_menu = BlogCategory.objects.all()
         query = None
 
         if 's' in request.GET:
@@ -51,7 +51,7 @@ class SearchView(View):
 
 def CategoryView(request, category):
     category_blogs = Blog.objects.filter(category=category)
-    category_menu = Category.objects.all()
+    category_menu = BlogCategory.objects.all()
     all_blogs = Blog.objects.all()
     context = {
         'category': category,
