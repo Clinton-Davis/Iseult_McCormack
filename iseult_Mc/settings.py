@@ -21,10 +21,10 @@ if "DEV" in os.environ:
 else:
     SECRET_KEY = os.environ.get('SECRET_KEY')
 
-if "DEV" in os.environ:
+# if "DEV" in os.environ:
     ALLOWED_HOSTS = ['*']
-else:
-    ALLOWED_HOSTS = ['www.iseultmccormackcreations.eu', '127.0.0.1']
+# else:
+#     ALLOWED_HOSTS = ['www.iseultmccormackcreations.eu', '127.0.0.1']
 
 
 TAX_RATE_PERCENTAGE = 23
@@ -210,12 +210,13 @@ else:
     STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
     STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET')
 
-# SESSION_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = False
+# CSRF_COOKIE_SECURE = False
 # SECURE_BROWSER_XSS_FILTER = True
 # SECURE_CONTENT_TYPE_NOSNIFF = True
 # SECURE_HSTS_SECONDS = 3153600
 # SECURE_REDIRECT_EXEMPT = []
-# SECURE_SSL_REDIRECT = True
+# SECURE_SSL_REDIRECT = False
 # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
