@@ -9,6 +9,7 @@ from django.urls import path, include
 from home.views import IndexView
 from django.contrib.sitemaps.views import sitemap
 from home.sitemaps import StaticViewSitemap
+from django.http import HttpResponse
 
 sitemaps = {
     'static': StaticViewSitemap,
@@ -16,6 +17,7 @@ sitemaps = {
 
 
 urlpatterns = [
+    # path('', lambda request: HttpResponse('the cow jumped over the moon')),
     path('', include('home.urls')),
     path('accounts/', include('allauth.urls')),
     path('iseult-admin/', admin.site.urls),
